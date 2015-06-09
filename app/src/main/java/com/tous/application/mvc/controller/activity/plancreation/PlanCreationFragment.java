@@ -98,15 +98,24 @@ public class PlanCreationFragment extends BaseFragment implements PlanCreationFr
 	@Override
 	public void onSavePlan() {
 
-		Plan plan = new Plan(); // TODO 땜빵
-		plan.setName( fragmentLayout.getPlanName() );
-		plan.setStartDate( DateUtil.formatToInt( startDateCalendar.getTime() ) );
-		plan.setEndDate( DateUtil.formatToInt( endDateCalendar.getTime() ) );
-		plan.setContent( fragmentLayout.getPlanContent() );
+		Plan plan = getPlan();
+
 		PlanTable.from( getActivity() ).insert( plan );
 
 		OttoUtil.getInstance().post( new OnRefreshViewEvent() );
 		getActivity().finish();
+	}
+
+	private Plan getPlan() {
+
+		Plan plan = new Plan();
+
+		plan.setName( fragmentLayout.getPlanName() );
+		plan.setContent( fragmentLayout.getPlanContent() );
+		plan.setStartDate( DateUtil.formatToInt( startDateCalendar.getTime() ) );
+		plan.setEndDate( DateUtil.formatToInt( endDateCalendar.getTime() ) );
+
+		return plan;
 	}
 
 	@Override
