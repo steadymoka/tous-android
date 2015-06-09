@@ -36,10 +36,9 @@ public class PlanCreationActivityLayout extends SupportActivityLayout<PlanCreati
 		return R.id.frameLayout_container_plan_creation;
 	}
 
-	public void setTitle( boolean flag ) {
+	public void setTitleNew() {
 
-		if ( flag ) // TODO 땜빵
-			actionBar.setTitle( "새로운 여정" );
+		actionBar.setTitle( "새로운 여정" );
 	}
 
 }

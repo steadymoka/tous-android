@@ -8,4 +8,8 @@ public interface PlanCreationFragmentLayoutListener extends LayoutListener {
 
 	void onSavePlan();
 
+	void onShowStartDatePicker();
+
+	void onShowEndDatePicker();
+
 }

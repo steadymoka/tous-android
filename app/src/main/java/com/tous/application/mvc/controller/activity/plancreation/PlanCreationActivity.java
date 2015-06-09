@@ -22,10 +22,23 @@ public class PlanCreationActivity extends BaseActivity implements PlanCreationAc
 		setContentView( activityLayout.getRootView() );
 
 		long planId = getIntent().getLongExtra( KEY_PLAN_ID, -1 );
-		activityLayout.setTitle( -1 == planId ); // TODO 땜빵
+
+		PlanCreationFragment planCreationFragment;
+		if ( -1 == planId ) {
+
+			activityLayout.setTitleNew();
+			planCreationFragment = PlanCreationFragment.newInstance()
+					.setPlanId( planId );
+		}
+		else {
+
+			planCreationFragment = PlanCreationFragment.newInstance()
+					.setPlanId( planId )
+					.setEditMode( true );
+		}
 
 		getSupportFragmentManager().beginTransaction()
-				.replace( activityLayout.getFrameContainerId(), PlanCreationFragment.newInstance().setPlanId( planId ) )
+				.replace( activityLayout.getFrameContainerId(), planCreationFragment )
 				.commit();
 	}
 

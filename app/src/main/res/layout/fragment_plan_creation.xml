@@ -35,7 +35,8 @@
 				android:layout_marginRight="8dp"
 				android:adjustViewBounds="true"
 				android:cropToPadding="true"
-				android:scaleType="centerInside"/>
+				android:scaleType="centerInside"
+				android:src="@drawable/ic_write_text_gray"/>
 
 			<EditText
 				android:id="@+id/editText_plan_name"
@@ -43,13 +44,65 @@
 				android:layout_height="match_parent"
 				android:background="@color/transparency"
 				android:gravity="center_vertical"
-				android:hint="여행 제목을 입력해주세요"
+				android:hint="@string/fragment_plan_create_name"
 				android:nextFocusDown="@+id/autoCompleteTextView_unit"
 				android:nextFocusRight="@+id/autoCompleteTextView_unit"
 				android:singleLine="true"
 				android:textColor="#FF666666"
 				android:textColorHint="#FFC8C8C8"
 				android:textSize="16dp"/>
+
+		</LinearLayout>
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="8dp"
+			android:gravity="center_vertical"
+			android:paddingLeft="16dp"
+			android:paddingRight="16dp"
+			android:text="@string/fragment_plan_create_period_label"
+			android:textColor="#FFC8C8C8"/>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="8dp"
+			android:gravity="center"
+			android:orientation="horizontal">
+
+			<Button
+				android:id="@+id/button_startDate"
+				android:layout_width="0dp"
+				android:layout_height="36dp"
+				android:layout_weight="1"
+				android:background="@drawable/shape_fragment_creation_view_background"
+				android:gravity="center"
+				android:maxLength="18"
+				android:singleLine="true"
+				android:textColor="#FF666666"
+				android:textColorHint="#FFE1E1E1"
+				android:textSize="@dimen/text_size_small"/>
+
+			<View
+				style="@style/HorizontalDivider"
+				android:layout_width="12dp"
+				android:layout_height="1dp"
+				android:layout_marginLeft="8dp"
+				android:layout_marginRight="8dp"/>
+
+			<Button
+				android:id="@+id/button_endDate"
+				android:layout_width="0dp"
+				android:layout_height="36dp"
+				android:layout_weight="1"
+				android:background="@drawable/shape_fragment_creation_view_background"
+				android:gravity="center"
+				android:maxLength="18"
+				android:singleLine="true"
+				android:textColor="#FF666666"
+				android:textColorHint="#FFE1E1E1"
+				android:textSize="@dimen/text_size_small"/>
 
 		</LinearLayout>
 
@@ -69,41 +122,8 @@
 				android:layout_marginRight="8dp"
 				android:adjustViewBounds="true"
 				android:cropToPadding="true"
-				android:scaleType="centerInside"/>
-
-			<EditText
-				android:id="@+id/editText_period"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:background="@color/transparency"
-				android:gravity="center_vertical"
-				android:hint="여행 기간을 입력해주세요"
-				android:nextFocusDown="@+id/autoCompleteTextView_unit"
-				android:nextFocusRight="@+id/autoCompleteTextView_unit"
-				android:singleLine="true"
-				android:textColor="#FF666666"
-				android:textColorHint="#FFC8C8C8"
-				android:textSize="16dp"/>
-
-		</LinearLayout>
-
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="48dp"
-			android:layout_weight="3"
-			android:background="@drawable/shape_fragment_creation_view_background"
-			android:gravity="center_vertical"
-			android:orientation="horizontal"
-			android:paddingLeft="16dp"
-			android:paddingRight="16dp">
-
-			<ImageView
-				android:layout_width="24dp"
-				android:layout_height="32dp"
-				android:layout_marginRight="8dp"
-				android:adjustViewBounds="true"
-				android:cropToPadding="true"
-				android:scaleType="centerInside"/>
+				android:scaleType="centerInside"
+				android:src="@drawable/ic_write_text_gray"/>
 
 			<EditText
 				android:id="@+id/editText_content"
@@ -125,7 +145,6 @@
 			android:layout_width="match_parent"
 			android:layout_height="48dp"
 			android:layout_weight="3"
-			android:background="@drawable/shape_fragment_creation_view_background"
 			android:gravity="center_vertical"
 			android:orientation="horizontal"
 			android:paddingLeft="16dp"
@@ -137,6 +156,7 @@
 				android:layout_marginRight="8dp"
 				android:adjustViewBounds="true"
 				android:cropToPadding="true"
+				android:src="@drawable/ic_add_user_black"
 				android:scaleType="centerInside"/>
 
 			<TextView
@@ -144,10 +164,10 @@
 				android:layout_height="match_parent"
 				android:background="@color/transparency"
 				android:gravity="center_vertical"
-				android:text="추후 멤버 추가를 할수있습니다"
 				android:nextFocusDown="@+id/autoCompleteTextView_unit"
 				android:nextFocusRight="@+id/autoCompleteTextView_unit"
 				android:singleLine="true"
+				android:text="추후 멤버 추가를 할수있습니다"
 				android:textColor="#FF666666"
 				android:textColorHint="#FFC8C8C8"
 				android:textSize="16dp"/>

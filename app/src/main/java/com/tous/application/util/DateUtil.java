@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 
@@ -107,6 +108,21 @@ public class DateUtil {
 	public static int getDiffDayCount( int fromDate, int toDate ) {
 
 		return getDiffDayCount( String.valueOf( fromDate ), String.valueOf( toDate ) );
+	}
+
+	private static final Calendar calendar_getDiffDateFromRealToday = Calendar.getInstance();
+
+	public static Date getDiffDateFromToday( int diff ) {
+
+		Date todayDate = getTodayDate();
+
+		synchronized ( calendar_getDiffDateFromRealToday ) {
+
+			calendar_getDiffDateFromRealToday.setTime( todayDate );
+			calendar_getDiffDateFromRealToday.add( GregorianCalendar.DAY_OF_YEAR, diff );
+
+			return calendar_getDiffDateFromRealToday.getTime();
+		}
 	}
 
 }
