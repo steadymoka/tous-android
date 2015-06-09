@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<declare-styleable name="BaseTheme">
+		<attr name="actionBarIconColor" format="color"/>
+		<attr name="actionBarInsetStart" format="dimension"/>
+		<attr name="spinnerBarInsetStart" format="dimension"/>
+		<attr name="popupItemBackground" format="reference"/>
+		<attr name="photoItemForeground" format="reference"/>
+		<attr name="photoItemForegroundBorderless" format="reference"/>
+	</declare-styleable>
+
+	<!-- PagerSlidingTabStrip -->
+	<declare-styleable name="PagerSlidingTabStrip">
+		<attr name="indicatorColor" format="color"/>
+		<attr name="underlineColor" format="color"/>
+		<attr name="dividerColor" format="color"/>
+		<attr name="indicatorHeight" format="dimension"/>
+		<attr name="underlineHeight" format="dimension"/>
+		<attr name="dividerPadding2" format="dimension"/>
+		<attr name="tabPaddingLeftRight" format="dimension"/>
+		<attr name="scrollOffset" format="dimension"/>
+		<attr name="tabBackground" format="reference"/>
+		<attr name="shouldExpand" format="boolean"/>
+		<attr name="textAllCaps2" format="boolean"/>
+	</declare-styleable>
+
+</resources>

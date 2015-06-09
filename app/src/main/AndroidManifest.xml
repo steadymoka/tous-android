@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+	package="com.tous.application"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<uses-permission android:name="android.permission.INTERNET"/>
+
+	<application
+		android:name="com.tous.application.TousApplication"
+		android:allowBackup="true"
+		android:hardwareAccelerated="true"
+		android:icon="@drawable/ic_launcher"
+		android:label="@string/app_name"
+		android:theme="@style/Theme.Tous.NoActionBar">
+
+		<meta-data
+			android:name="io.fabric.ApiKey"
+			android:value="6d24f8ab187cc8183fd712a002bda2e260725370"/>
+
+		<!--++++++++++++++++++++++++++ Activity ++++++++++++++++++++++++++-->
+
+		<!-- SplashActivity -->
+		<activity
+			android:name=".splash.SplashActivity"
+			android:screenOrientation="portrait">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
+
+		<!-- MainActivity -->
+		<activity
+			android:name=".mvc.controller.activity.account.SignInActivity"
+			android:configChanges="keyboardHidden|orientation|screenSize"
+			android:launchMode="singleTask"
+			android:screenOrientation="portrait"/>
+
+		<!-- MainActivity -->
+		<activity
+			android:name=".mvc.controller.activity.main.MainActivity"
+			android:configChanges="keyboardHidden|orientation|screenSize"
+			android:launchMode="singleTask"
+			android:screenOrientation="portrait"/>
+
+		<!-- DetailPlanActivity -->
+		<activity
+			android:name=".mvc.controller.activity.plandetail.DetailPlanActivity"
+			android:configChanges="keyboardHidden|orientation|screenSize"
+			android:parentActivityName=".mvc.controller.activity.main.MainActivity"
+			android:launchMode="singleTask"
+			android:screenOrientation="portrait"/>
+
+		<!-- PlanListActivity -->
+		<activity
+			android:name=".mvc.controller.activity.planlist.PlanListActivity"
+			android:configChanges="keyboardHidden|orientation|screenSize"
+			android:parentActivityName=".mvc.controller.activity.main.MainActivity"
+			android:launchMode="singleTask"
+			android:screenOrientation="portrait"/>
+
+		<!-- PlanCreationActivity -->
+		<activity
+			android:name=".mvc.controller.activity.plancreation.PlanCreationActivity"
+			android:configChanges="keyboardHidden|orientation|screenSize"
+			android:parentActivityName=".mvc.controller.activity.planlist.PlanListActivity"
+			android:launchMode="singleTask"
+			android:screenOrientation="portrait"/>
+
+		<!-- SpotCreationActivity -->
+		<activity
+			android:name=".mvc.controller.activity.spot.SpotCreationActivity"
+			android:configChanges="keyboardHidden|orientation|screenSize"
+			android:parentActivityName=".mvc.controller.activity.plandetail.DetailPlanActivity"
+			android:launchMode="singleTask"
+			android:screenOrientation="portrait"/>
+
+		<!-- SpotDetailActivity -->
+		<activity
+			android:name=".mvc.controller.activity.spot.SpotDetailActivity"
+			android:configChanges="keyboardHidden|orientation|screenSize"
+			android:parentActivityName=".mvc.controller.activity.plandetail.DetailPlanActivity"
+			android:launchMode="singleTask"
+			android:screenOrientation="portrait"/>
+
+		<!--++++++++++++++++++++++++++ Provider ++++++++++++++++++++++++++-->
+
+		<!-- TousProvider -->
+		<provider
+			android:name="com.tous.application.database.TousProvider"
+			android:authorities="com.tous.provider"
+			android:exported="false"
+			android:syncable="true"/>
+
+	</application>
+
+</manifest>

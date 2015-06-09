@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<com.tous.application.widget.PagerSlidingTabStrip
+		android:id="@+id/pagerSlidingTabStrip"
+		android:layout_width="match_parent"
+		android:layout_height="42dp"
+		android:background="#FFF4F4F4"
+		android:textColor="#FFCCCCCC"
+		app:dividerColor="#FFF4F4F4"
+		app:dividerPadding2="11dp"
+		app:indicatorColor="@color/base_app_color_red"
+		app:indicatorHeight="1dp"
+		app:shouldExpand="true"
+		app:textAllCaps2="false"
+		app:underlineColor="@android:color/transparent"/>
+
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1">
+
+		<android.support.v4.view.ViewPager
+			android:id="@+id/viewPager"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"/>
+
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/ab_solid_shadow_holo"/>
+
+	</FrameLayout>
+
+</LinearLayout>

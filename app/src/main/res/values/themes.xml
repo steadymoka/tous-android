@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<!-- Theme.Tous -->
+	<style name="Theme.Tous" parent="Theme.AppCompat.Light">
+		<!--<item name="actionBarIconColor">#fff</item>-->
+		<!--<item name="actionBarInsetStart">@dimen/keyline_2</item>-->
+		<!--<item name="homeAsUpIndicator">@drawable/ic_up</item>-->
+		<!--<item name="spinnerBarInsetStart">@dimen/keyline_2_minus_16dp</item>-->
+		<!--<item name="popupItemBackground">?android:selectableItemBackground</item>-->
+		<!--<item name="photoItemForeground">?android:selectableItemBackground</item>-->
+		<!--<item name="photoItemForegroundBorderless">?android:selectableItemBackground</item>-->
+
+		<item name="colorPrimary">@color/base_app_color_red</item>
+		<item name="colorPrimaryDark">@color/base_app_color_week_red</item>
+		<item name="colorAccent">@color/accent_material_dark</item>
+		<item name="actionBarStyle">@style/Widget.Tous.ActionBar</item>
+
+		<!--<item name="android:windowContentOverlay">@null</item>-->
+		<!--<item name="android:windowBackground">@android:color/white</item>-->
+		<!--<item name="android:homeAsUpIndicator">@drawable/ic_up</item>-->
+
+		<!--<item name="android:popupMenuStyle">@style/Widget.Tous.PopupMenu</item>-->
+		<!--<item name="android:listPopupWindowStyle">@style/Widget.Tous.PopupMenu</item>-->
+
+		<!--<item name="searchViewStyle">@style/Widget.Tous.SearchView</item>-->
+	</style>
+
+	<!-- Theme.Tous.NoActionBar -->
+	<style name="Theme.Tous.NoActionBar" parent="Theme.Tous">
+		<item name="android:windowActionBar" tools:ignore="NewApi">false</item>
+		<item name="android:windowNoTitle">true</item>
+
+		<!-- Support library compatibility -->
+		<item name="windowActionBar">false</item>
+	</style>
+
+</resources>

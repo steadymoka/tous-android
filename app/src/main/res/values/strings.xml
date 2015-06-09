@@ -1,0 +1,18 @@
+<resources>
+
+	<string name="app_name">Tous</string>
+
+	<string name="dialog_loading_textview_wait">잠시만 기다려주세요</string>
+
+	<!-- DetailPlanFragment Tap Info -->
+	<string name="activity_task_detail_tab_transport">교통</string>
+	<string name="activity_task_detail_tab_spot">명소</string>
+	<string name="activity_task_detail_tab_restaurant">맛집</string>
+	<string name="activity_task_detail_tab_lodgment">숙박</string>
+
+	<string name="fragment_detail_plan_menu_edit_plan">계획수정</string>
+
+	<!-- PlanCreationFragment -->
+	<string name="fragment_plan_creation_save">저장</string>
+
+</resources>

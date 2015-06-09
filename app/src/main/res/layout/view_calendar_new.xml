@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
+
+	<com.moka.framework.widget.calendar.view.CalendarHeaderView
+		android:id="@+id/calendarHeaderView"
+		android:layout_width="match_parent"
+		android:layout_height="18dp"
+		android:layout_alignParentTop="true"
+		android:background="@color/white"/>
+
+	<!--<View-->
+		<!--style="@style/HorizontalDivider"-->
+		<!--android:id="@+id/horizontalDivider"-->
+		<!--android:layout_below="@+id/calendarHeaderView"/>-->
+
+	<FrameLayout
+		android:id="@+id/frameLayout_calendarContainer"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/calendarHeaderView">
+
+		<com.moka.framework.widget.calendar.view.CalendarViewPager
+			android:id="@+id/monthViewPager"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"/>
+
+		<com.moka.framework.widget.calendar.view.CalendarViewPager
+			android:id="@+id/weekViewPager"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"/>
+
+	</FrameLayout>
+
+</RelativeLayout>

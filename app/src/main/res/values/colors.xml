@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<color name="white">#FFFFFFFF</color>
+	<color name="white_pressed">#FFDDDDDD</color>
+	<color name="transparency">#00000000</color>
+	<color name="transparency_pressed">#22000000</color>
+	<color name="week_blue">#FF42ABD3</color>
+	<color name="text_normal">#FF778391</color>
+	<color name="text_small">#FFA7AEB5</color>
+	<color name="transparent">#80000000</color>
+	<color name="black">#FF000000</color>
+	<color name="hint">#FFC1C1C1</color>
+	<color name="background">#FF00AFD8</color>
+	<color name="gray">#FFD2D2D2</color>
+	<color name="red">#FFEF1424</color>
+
+	<color name="theme_accent_1">#00b0ff</color>
+	<color name="theme_accent_1_light">#8ad4fa</color>
+	<color name="theme_accent_2">#e91e63</color>
+
+	<!-- BaseAppColor -->
+	<color name="base_app_color_red">#EF1424</color>
+	<color name="base_app_color_week_red">#E5AAB8</color>
+
+	<!-- TextView -->
+	<color name="base_text_view_selected">#FFED1844</color>
+	<color name="base_text_view_non_selected">#FFCCCCCC</color>
+
+	<!-- PagerSlidingTabStrip -->
+	<color name="background_tab_pressed">#6641CEA9</color>
+
+	<!-- SettingFragment -->
+	<color name="fragment_setting_listview_divider">#FFE6E6E6</color>
+
+	<!-- CalendarView -->
+	<color name="view_calendar_griditem_background_gray">#FFF4F4F4</color>
+	<color name="view_calendar_griditem_background_gray_pressed">#FFD0D0D0</color>
+	<color name="view_calendar_griditem_background_gray_disabled">#FFD0D0D0</color>
+	<color name="view_calendar_griditem_background_red">#FFFF3971</color>
+	<color name="view_calendar_griditem_background_red_pressed">#FF9A2840</color>
+	<color name="view_calendar_griditem_background_red_disabled">#FF9A2840</color>
+	<color name="view_calendar_griditem_background_green">#FF41CEA9</color>
+	<color name="view_calendar_griditem_background_green_pressed">#FF3EAE90</color>
+	<color name="view_calendar_griditem_background_green_disabled">#FF3EAE90</color>
+	<color name="view_calendar_griditem_background_blue">#FF5681E2</color>
+	<color name="view_calendar_griditem_background_blue_pressed">#FF4B70BD</color>
+	<color name="view_calendar_griditem_background_blue_disabled">#FF4B70BD</color>
+
+</resources>

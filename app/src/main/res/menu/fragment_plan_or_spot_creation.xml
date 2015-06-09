@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<item
+		android:id="@+id/menuItem_save"
+		android:icon="@drawable/ic_menu_accept"
+		android:title="@string/fragment_plan_creation_save"
+		app:showAsAction="always"/>
+
+</menu>
