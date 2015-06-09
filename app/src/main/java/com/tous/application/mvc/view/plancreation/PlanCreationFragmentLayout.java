@@ -118,4 +118,10 @@ public class PlanCreationFragmentLayout extends FragmentLayout<PlanCreationFragm
 		editText_content.setText( content );
 	}
 
+	public void setErrorPlanName() {
+
+		editText_plan_name.requestFocus();
+		editText_plan_name.setError( getActivity().getString( R.string.fragment_plan_create_error_plan_name ) );
+	}
+
 }

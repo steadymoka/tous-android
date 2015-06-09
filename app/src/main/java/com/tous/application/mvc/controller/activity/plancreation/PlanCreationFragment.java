@@ -2,6 +2,7 @@ package com.tous.application.mvc.controller.activity.plancreation;
 
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -100,10 +101,12 @@ public class PlanCreationFragment extends BaseFragment implements PlanCreationFr
 
 		Plan plan = getPlan();
 
-		PlanTable.from( getActivity() ).insert( plan );
+		if ( isValidPlan( plan ) ) {
 
-		OttoUtil.getInstance().post( new OnRefreshViewEvent() );
-		getActivity().finish();
+			PlanTable.from( getActivity() ).insert( plan );
+			OttoUtil.getInstance().post( new OnRefreshViewEvent() );
+			getActivity().finish();
+		}
 	}
 
 	private Plan getPlan() {
@@ -116,6 +119,17 @@ public class PlanCreationFragment extends BaseFragment implements PlanCreationFr
 		plan.setEndDate( DateUtil.formatToInt( endDateCalendar.getTime() ) );
 
 		return plan;
+	}
+
+	private boolean isValidPlan( Plan plan ) {
+
+		if ( TextUtils.isEmpty( plan.getName() ) ) {
+
+			fragmentLayout.setErrorPlanName();
+			return false;
+		}
+
+		return true;
 	}
 
 	@Override
