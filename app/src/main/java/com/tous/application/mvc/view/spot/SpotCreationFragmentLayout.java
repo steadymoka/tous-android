@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.moka.framework.view.FragmentLayout;
 import com.tous.application.R;
 import com.tous.application.mvc.controller.activity.spot.SpotCreationFragment;
+import com.tous.application.mvc.controller.activity.spot.SpotDetailFragment;
 
 
 public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragment, SpotCreationFragmentLayoutListener> implements View.OnClickListener {
@@ -93,6 +94,7 @@ public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragm
 			case R.id.textView_search_spot_web:
 
 				getLayoutListener().onSearchSpotInWeb();
+				break;
 
 			case R.id.button_startTime:
 
