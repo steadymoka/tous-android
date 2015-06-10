@@ -47,19 +47,29 @@ public class MainFragment extends BaseFragment implements MainFragmentLayoutList
 		handler = new Handler();
 		OttoUtil.getInstance().register( this );
 
+		initView();
 		refreshView();
-		fragmentLayout.showCalendar();
-		fragmentLayout.setDayIndex( CalendarUtil.getDayIndexFrom( DateUtil.getTodayDate() ) );
 
 		return fragmentLayout.getRootView();
 	}
 
+	private void initView() {
+
+		fragmentLayout.showCalendar();
+		handler.postDelayed( new Runnable() {
+
+			@Override
+			public void run() {
+
+				fragmentLayout.setDayIndex( CalendarUtil.getDayIndexFrom( DateUtil.parseDate( plan.getStartDate() ) ) );
+			}
+		}, 100 );
+//		fragmentLayout.setDayIndex( CalendarUtil.getDayIndexFrom( DateUtil.parseDate( plan.getStartDate() ) ) );
+	}
+
 	private void refreshView() {
 
-		String startDate = DateUtil.formatIntDateToString( plan.getStartDate() );
-		String endDate = DateUtil.formatIntDateToString( plan.getEndDate() );
-		fragmentLayout.setPlanName( plan.getName() ); //+ " " + startDate + " ~ " + endDate );
-
+		fragmentLayout.setPlanName( plan.getName() );
 		calendarAdapter.setPlan( plan );
 	}
 
@@ -96,17 +106,9 @@ public class MainFragment extends BaseFragment implements MainFragmentLayoutList
 	@Override
 	public void onCalendarItemSelected( final CalendarCellData data ) {
 
-		handler.post( new Runnable() {
-
-			@Override
-			public void run() {
-
-				int dayIndex = CalendarUtil.getDayIndexFrom( data.getDate() );
-				if ( null != fragmentLayout )
-					fragmentLayout.setDayIndex( dayIndex );
-			}
-
-		} );
+		int dayIndex = CalendarUtil.getDayIndexFrom( data.getDate() );
+		if ( null != fragmentLayout )
+			fragmentLayout.setDayIndex( dayIndex );
 	}
 
 	@Override
@@ -115,15 +117,21 @@ public class MainFragment extends BaseFragment implements MainFragmentLayoutList
 		Date date = CalendarUtil.getDateFromDayIndex( dayIndex );
 		int currentDate = CalendarUtil.getIntDate( date );
 
-		setDayCount( currentDate );
+		setDayCountTextAndFloatingButton( currentDate );
 	}
 
-	private void setDayCount( int currentDate ) {
+	private void setDayCountTextAndFloatingButton( int currentDate ) {
 
-		if ( plan.isPlaningDate( currentDate ) )
+		if ( plan.isPlaningDate( currentDate ) ) {
+
 			fragmentLayout.setDayCount( plan.getDayCount( currentDate ) + "일째" );
-		else
+			fragmentLayout.setFloatingActionButton( true );
+		}
+		else {
+
 			fragmentLayout.setDayCount( "ToUs 와 함께" );
+			fragmentLayout.setFloatingActionButton( false );
+		}
 	}
 
 	@Override
@@ -138,12 +146,20 @@ public class MainFragment extends BaseFragment implements MainFragmentLayoutList
 		fragmentLayout.showMap();
 	}
 
-	@Subscribe
-	public void onClickToDetailPlan( ScheduleItemFragment.OnClickToDetailPlan onClickToDetailPlan ) {
+	@Override
+	public void onClickToDetailPlan() {
 
 		Intent intent = new Intent( getActivity(), DetailPlanActivity.class );
 		intent.putExtra( DetailPlanActivity.KEY_PLAN_ID, plan.getId() );
 		startActivity( intent );
+	}
+
+	@Subscribe
+	public void onClickToDetailPlan( ScheduleItemFragment.OnClickToDetailPlan onClickToDetailPlan ) {
+
+//		Intent intent = new Intent( getActivity(), DetailPlanActivity.class );
+//		intent.putExtra( DetailPlanActivity.KEY_PLAN_ID, plan.getId() );
+//		startActivity( intent );
 	}
 
 	@Override

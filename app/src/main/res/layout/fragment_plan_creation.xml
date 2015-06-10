@@ -45,8 +45,6 @@
 				android:background="@color/transparency"
 				android:gravity="center_vertical"
 				android:hint="@string/fragment_plan_create_name"
-				android:nextFocusDown="@+id/autoCompleteTextView_unit"
-				android:nextFocusRight="@+id/autoCompleteTextView_unit"
 				android:singleLine="true"
 				android:textColor="#FF666666"
 				android:textColorHint="#FFC8C8C8"
@@ -132,8 +130,6 @@
 				android:background="@color/transparency"
 				android:gravity="center_vertical"
 				android:hint="여행에 대해서 간단하게 설명해주세요"
-				android:nextFocusDown="@+id/autoCompleteTextView_unit"
-				android:nextFocusRight="@+id/autoCompleteTextView_unit"
 				android:singleLine="true"
 				android:textColor="#FF666666"
 				android:textColorHint="#FFC8C8C8"
@@ -164,12 +160,9 @@
 				android:layout_height="match_parent"
 				android:background="@color/transparency"
 				android:gravity="center_vertical"
-				android:nextFocusDown="@+id/autoCompleteTextView_unit"
-				android:nextFocusRight="@+id/autoCompleteTextView_unit"
 				android:singleLine="true"
 				android:text="추후 멤버 추가를 할수있습니다"
 				android:textColor="#FF666666"
-				android:textColorHint="#FFC8C8C8"
 				android:textSize="16dp"/>
 
 		</LinearLayout>

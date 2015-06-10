@@ -25,4 +25,6 @@ public interface MainFragmentLayoutListener extends LayoutListener {
 
 	void onClickToMap();
 
+	void onClickToDetailPlan();
+
 }

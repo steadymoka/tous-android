@@ -8,14 +8,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.moka.framework.view.FragmentLayout;
+import com.moka.framework.widget.adapter.OnScrollDelegate;
+import com.moka.framework.widget.scrollobservableview.ObservableRecyclerView;
 import com.tous.application.R;
 import com.tous.application.mvc.controller.activity.main.schedule.ScheduleItemFragment;
 
 
 public class ScheduleItemFragmentLayout extends FragmentLayout<ScheduleItemFragment, ScheduleFragmentLayoutListener> implements View.OnClickListener {
 
-	//	private ObservableRecyclerView observableRecyclerView_schedule;
-//	private OnScrollDelegate onScrollDelegate;
+	private ObservableRecyclerView observableRecyclerView_schedule;
+	private OnScrollDelegate onScrollDelegate;
 	private ImageView tempId; // TODO 땜빵
 	private TextView textView_no;
 

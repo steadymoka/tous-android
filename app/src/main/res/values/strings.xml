@@ -20,4 +20,10 @@
 	<string name="fragment_plan_create_error_end_date">여행의 끝날짜는 시작날짜보다 빠를수 없습니다</string>
 	<string name="fragment_plan_create_error_plan_name">여행 제목을 입력해주세요</string>
 
+	<!-- SpotCreationFragment -->
+	<string name="fragment_spot_creation_search_spot">웹사이트 주소를 검색해주세요</string>
+	<string name="fragment_spot_creation_spot_name">갈곳 이름을 입력해주세요</string>
+	<string name="fragment_spot_creation_spot_time_label">여행 시간을 입력해주세요</string>
+	<string name="fragment_spot_creation_spot_content">장소에 대해서 간단하게 설명해주세요</string>
+
 </resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/open_in_browser"
+        android:title="브라우저로 열기"/>
+    <item
+        android:id="@+id/copy_link"
+        android:title="링크 복사하기"/>
+
+</menu>

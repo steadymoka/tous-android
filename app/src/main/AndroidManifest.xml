@@ -84,6 +84,14 @@
 			android:launchMode="singleTask"
 			android:screenOrientation="portrait"/>
 
+		<!-- WebViewActivity -->
+		<activity
+			android:name=".mvc.controller.activity.browser.WebViewActivity"
+			android:configChanges="keyboardHidden|orientation|screenSize"
+			android:parentActivityName=".mvc.controller.activity.plandetail.DetailPlanActivity"
+			android:launchMode="singleTask"
+			android:screenOrientation="portrait"/>
+
 		<!--++++++++++++++++++++++++++ Provider ++++++++++++++++++++++++++-->
 
 		<!-- TousProvider -->
