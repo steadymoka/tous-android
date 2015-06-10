@@ -69,6 +69,26 @@
 			android:gravity="center"
 			android:orientation="horizontal">
 
+			<EditText
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:background="@color/transparency"
+				android:layout_marginLeft="16dp"
+				android:gravity="center"
+				android:singleLine="true"
+				android:text="2"
+				android:textColor="#FF666666"
+				android:textColorHint="#FFC8C8C8"
+				android:textSize="16dp"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:layout_marginRight="16dp"
+				android:gravity="center_vertical"
+				android:text="일차"
+				android:textColor="#FF666666"/>
+
 			<Button
 				android:id="@+id/button_startTime"
 				android:layout_width="0dp"
@@ -110,8 +130,7 @@
 			android:layout_weight="3"
 			android:gravity="center_vertical"
 			android:orientation="horizontal"
-			android:paddingLeft="16dp"
-			android:paddingRight="16dp">
+			android:paddingLeft="16dp">
 
 			<ImageView
 				android:layout_width="24dp"
@@ -123,10 +142,40 @@
 				android:scaleType="centerInside"/>
 
 			<TextView
-				android:id="@+id/textView_search_spot"
+				android:id="@+id/textView_search_spot_map"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
-				android:background="@color/transparency"
+				android:background="@drawable/selector_background_creation_button_function"
+				android:gravity="center_vertical"
+				android:hint="주소검색"
+				android:singleLine="true"
+				android:textColor="#FF666666"
+				android:textSize="16dp"/>
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="48dp"
+			android:layout_weight="3"
+			android:gravity="center_vertical"
+			android:orientation="horizontal"
+			android:paddingLeft="16dp">
+
+			<ImageView
+				android:layout_width="24dp"
+				android:layout_height="32dp"
+				android:layout_marginRight="8dp"
+				android:adjustViewBounds="true"
+				android:cropToPadding="true"
+				android:src="@drawable/ic_search_holo_light"
+				android:scaleType="centerInside"/>
+
+			<TextView
+				android:id="@+id/textView_search_spot_web"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:background="@drawable/selector_background_creation_button_function"
 				android:gravity="center_vertical"
 				android:hint="@string/fragment_spot_creation_search_spot"
 				android:singleLine="true"

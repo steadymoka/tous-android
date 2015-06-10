@@ -38,25 +38,4 @@ public class WebViewActivity extends BaseActivity implements WebViewActivityLayo
 		}
 	}
 
-	@Override
-	public void onHomeMenuItemSelected() {
-
-		onBackPressed();
-	}
-
-	@Override
-	public boolean onOptionsItemSelected( MenuItem item ) {
-
-		if ( activityLayout.onOptionsItemSelected( item ) )
-			return true;
-		else
-			return super.onOptionsItemSelected( item );
-	}
-
-	@Override
-	public void onBackPressed() {
-
-		super.onBackPressed();
-	}
-
 }

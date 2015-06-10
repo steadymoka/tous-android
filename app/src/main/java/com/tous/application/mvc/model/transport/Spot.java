@@ -11,7 +11,8 @@ public class Spot extends DataObject {
 	private long serverId = -1;
 	private String name;
 	private String content;
-	private long timeAt;
+	private long startAt;
+	private long endAt;
 	private String address;
 	private String site;
 	private String type;
@@ -69,14 +70,24 @@ public class Spot extends DataObject {
 		this.content = content;
 	}
 
-	public long getTimeAt() {
+	public long getStartAt() {
 
-		return timeAt;
+		return startAt;
 	}
 
-	public void setTimeAt( long timeAt ) {
+	public void setStartAt( long startAt ) {
 
-		this.timeAt = timeAt;
+		this.startAt = startAt;
+	}
+
+	public long getEndAt() {
+
+		return endAt;
+	}
+
+	public void setEndAt( long endAt ) {
+
+		this.endAt = endAt;
 	}
 
 	public String getAddress() {

@@ -8,4 +8,12 @@ public interface SpotCreationFragmentLayoutListener extends LayoutListener {
 
 	void onSavePlan();
 
+	void onSearchSpotInWeb();
+
+	void onShowStartTimePicker();
+
+	void onShowEndTimePicker();
+
+	void onSearchSpotAddressInMap();
+
 }

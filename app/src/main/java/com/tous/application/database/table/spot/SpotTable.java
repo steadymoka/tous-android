@@ -33,13 +33,14 @@ public class SpotTable extends BaseTable<Spot> {
 	public static final String CONTENT = "content";
 	public static final String ADDRESS = "address";
 	public static final String SITE = "site";
-	public static final String TIME_AT = "time_at";
+	public static final String START_AT = "start_at";
+	public static final String END_AT = "end_at";
 	public static final String TYPE = "type";
 	public static final String DIRTY_FLAG = "dirty_flag";
 	public static final String CREATED_AT = "created_at";
 	public static final String UPDATED_AT = "updated_at";
 
-	private static final String[] PROJECTION = { ID, PLAN_ID, SERVER_ID, NAME, CONTENT, TIME_AT, ADDRESS, SITE, TYPE, DIRTY_FLAG, CREATED_AT, UPDATED_AT };
+	private static final String[] PROJECTION = { ID, PLAN_ID, SERVER_ID, NAME, CONTENT, START_AT, END_AT, ADDRESS, SITE, TYPE, DIRTY_FLAG, CREATED_AT, UPDATED_AT };
 
 	private Context context;
 
@@ -55,14 +56,14 @@ public class SpotTable extends BaseTable<Spot> {
 		final String queryStringFormat = "CREATE TABLE {table_name} ( " +
 				"{id} INTEGER PRIMARY KEY AUTOINCREMENT, {plan_id} TEXT, {server_id} INTEGER, " +
 				"{name} TEXT, {content} TEXT, " +
-				"{time_at} TEXT, {address} TEXT, {site} TEXT, {type} TEXT, " +
+				"{start_at} TEXT, {end_at} TEXT, {address} TEXT, {site} TEXT, {type} TEXT, " +
 				"{dirty_flag} INTEGER DEFAULT 1, {created_at} INTEGER, {updated_at} INTEGER);";
 
 		final String queryString = Phrase.from( queryStringFormat )
 				.put( "table_name", TABLE_NAME )
 				.put( "id", ID ).put( "plan_id", PLAN_ID ).put( "server_id", SERVER_ID )
 				.put( "name", NAME ).put( "content", CONTENT )
-				.put( "time_at", TIME_AT ).put( "address", ADDRESS ).put( "site", SITE ).put( "type", TYPE )
+				.put( "start_at", START_AT ).put( "end_at", END_AT ).put( "address", ADDRESS ).put( "site", SITE ).put( "type", TYPE )
 				.put( "dirty_flag", DIRTY_FLAG ).put( "created_at", CREATED_AT ).put( "updated_at", UPDATED_AT )
 				.format().toString();
 
@@ -80,7 +81,8 @@ public class SpotTable extends BaseTable<Spot> {
 		values.put( SERVER_ID, spot.getServerId() );
 		values.put( NAME, spot.getName() );
 		values.put( CONTENT, spot.getContent() );
-		values.put( TIME_AT, spot.getTimeAt() );
+		values.put( START_AT, spot.getStartAt() );
+		values.put( END_AT, spot.getEndAt() );
 		values.put( ADDRESS, spot.getAddress() );
 		values.put( SITE, spot.getSite() );
 		values.put( TYPE, spot.getType() );
@@ -197,7 +199,8 @@ public class SpotTable extends BaseTable<Spot> {
 		spot.setServerId( cursor.getLong( cursor.getColumnIndex( SERVER_ID ) ) );
 		spot.setName( cursor.getString( cursor.getColumnIndex( NAME ) ) );
 		spot.setContent( cursor.getString( cursor.getColumnIndex( CONTENT ) ) );
-		spot.setTimeAt( cursor.getInt( cursor.getColumnIndex( TIME_AT ) ) );
+		spot.setStartAt( cursor.getLong( cursor.getColumnIndex( START_AT ) ) );
+		spot.setEndAt( cursor.getLong( cursor.getColumnIndex( END_AT ) ) );
 		spot.setAddress( cursor.getString( cursor.getColumnIndex( ADDRESS ) ) );
 		spot.setSite( cursor.getString( cursor.getColumnIndex( SITE ) ) );
 		spot.setType( cursor.getString( cursor.getColumnIndex( TYPE ) ) );
@@ -218,7 +221,8 @@ public class SpotTable extends BaseTable<Spot> {
 		values.put( SERVER_ID, spot.getServerId() );
 		values.put( NAME, spot.getName() );
 		values.put( CONTENT, spot.getContent() );
-		values.put( TIME_AT, spot.getTimeAt() );
+		values.put( START_AT, spot.getStartAt() );
+		values.put( END_AT, spot.getEndAt() );
 		values.put( ADDRESS, spot.getAddress() );
 		values.put( SITE, spot.getSite() );
 		values.put( TYPE, spot.getType() );

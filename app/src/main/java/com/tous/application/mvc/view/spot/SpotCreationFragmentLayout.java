@@ -1,10 +1,6 @@
 package com.tous.application.mvc.view.spot;
 
 
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,7 +21,8 @@ public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragm
 	private EditText editText_spot_name;
 	private Button button_startTime;
 	private Button button_endTime;
-	private TextView textView_search_spot;
+	private TextView textView_search_spot_map;
+	private TextView textView_search_spot_wab;
 	private EditText editText_content;
 
 	public SpotCreationFragmentLayout( SpotCreationFragment fragment, SpotCreationFragmentLayoutListener layoutListener, LayoutInflater inflater, ViewGroup container ) {
@@ -50,12 +47,15 @@ public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragm
 		button_endTime = (Button) findViewById( R.id.button_endTime );
 		button_endTime.setOnClickListener( this );
 
-		textView_search_spot = (TextView) findViewById( R.id.textView_search_spot );
-		SpannableString contractString = new SpannableString( getContext().getString( R.string.fragment_spot_creation_search_spot ) );
-		contractString.setSpan( new ForegroundColorSpan( 0xFF666666 ), 0, contractString.length(), Spanned.SPAN_COMPOSING );
-		contractString.setSpan( new UnderlineSpan(), 0, contractString.length(), Spanned.SPAN_COMPOSING );
-		textView_search_spot.setText( contractString );
-		textView_search_spot.setOnClickListener( this );
+		textView_search_spot_map = (TextView) findViewById( R.id.textView_search_spot_map );
+		textView_search_spot_map.setOnClickListener( this );
+
+		textView_search_spot_wab = (TextView) findViewById( R.id.textView_search_spot_web );
+//		SpannableString contractString = new SpannableString( getContext().getString( R.string.fragment_spot_creation_search_spot ) );
+//		contractString.setSpan( new ForegroundColorSpan( 0xFF666666 ), 0, contractString.length(), Spanned.SPAN_COMPOSING );
+//		contractString.setSpan( new UnderlineSpan(), 0, contractString.length(), Spanned.SPAN_COMPOSING );
+//		textView_search_spot.setText( contractString );
+		textView_search_spot_wab.setOnClickListener( this );
 
 		editText_content = (EditText) findViewById( R.id.editText_content );
 	}
@@ -85,13 +85,35 @@ public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragm
 
 		switch ( view.getId() ) {
 
+			case R.id.textView_search_spot_map:
 
+				getLayoutListener().onSearchSpotAddressInMap();
+				break;
+
+			case R.id.textView_search_spot_web:
+
+				getLayoutListener().onSearchSpotInWeb();
+
+			case R.id.button_startTime:
+
+				getLayoutListener().onShowStartTimePicker();
+				break;
+
+			case R.id.button_endTime:
+
+				getLayoutListener().onShowEndTimePicker();
+				break;
 		}
 	}
 
 	public void setTitle( String spotType ) {
 
 		getActivity().setTitle( spotType );
+	}
+
+	public void setErrorSpotName() {
+
+		editText_spot_name.setError( getActivity().getString( R.string.fragment_spot_creation_error_spot_name ) );
 	}
 
 	public String getSpotName() {

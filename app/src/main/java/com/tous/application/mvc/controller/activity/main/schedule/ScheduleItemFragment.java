@@ -13,9 +13,11 @@ import com.moka.framework.util.OttoUtil;
 import com.moka.framework.widget.adapter.ManjongRecyclerAdapter;
 import com.moka.framework.widget.calendar.util.CalendarUtil;
 import com.moka.framework.widget.scrollobservableview.OnTouchScrollListener;
+import com.squareup.otto.Subscribe;
 import com.tous.application.R;
 import com.tous.application.database.table.plan.PlanTable;
 import com.tous.application.database.table.spot.SpotTable;
+import com.tous.application.event.OnRefreshViewEvent;
 import com.tous.application.mvc.controller.activity.plandetail.DetailPlanFragment;
 import com.tous.application.mvc.model.itemdata.ScheduleItemData;
 import com.tous.application.mvc.model.itemdata.SpotItemData;
@@ -43,10 +45,11 @@ public class ScheduleItemFragment extends BaseFragment implements ScheduleFragme
 	public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
 
 		fragmentLayout = new ScheduleItemFragmentLayout( this, this, inflater, container );
-//		refreshView();
+		OttoUtil.getInstance().register( this );
+		refreshView();
 
 		Plan plan = PlanTable.from( getActivity() ).find( planId ); // TODO 땜빵
-		
+
 		// TODO 땜빵
 		if ( plan.isPlaningDate( DateUtil.formatToInt( CalendarUtil.getDateFromDayIndex( dayIndex ) ) ) )
 			fragmentLayout.setYesMode(); // TODO 땜빵
@@ -74,7 +77,7 @@ public class ScheduleItemFragment extends BaseFragment implements ScheduleFragme
 	private List<Spot> getDataFromDB() {
 
 		return SpotTable.from( getActivity() )
-				.findSpotListOfPlanAndType( planId, DetailPlanFragment.TYPE_VIEW_SPOT );
+				.findSpotListOfPlan( planId );
 	}
 
 	@Override
@@ -90,6 +93,19 @@ public class ScheduleItemFragment extends BaseFragment implements ScheduleFragme
 	public void onClickToDetail() {
 
 		OttoUtil.getInstance().post( new OnClickToDetailPlan() );
+	}
+
+	@Subscribe
+	public void onRefreshViewEvent( OnRefreshViewEvent onRefreshViewEvent ) {
+
+		refreshView();
+	}
+
+	@Override
+	public void onDestroyView() {
+
+		super.onDestroyView();
+		OttoUtil.getInstance().unregister( this );
 	}
 
 	public ScheduleItemFragment setPlanId( long planId ) {

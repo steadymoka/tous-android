@@ -13,10 +13,10 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.moka.framework.controller.BaseFragment;
 import com.moka.framework.view.FragmentLayout;
@@ -30,11 +30,9 @@ public class WebViewFragmentLayout extends FragmentLayout<BaseFragment, WebViewF
 
 	private ProgressBar progressBar_progress;
 
-	private ImageButton imageButton_back;
-	private ImageButton imageButton_forward;
 	private ImageView imageView_refresh;
 	private ProgressBar progressBar_loading;
-	private ImageView imageView_share;
+	private TextView textView_share;
 
 	public WebViewFragmentLayout( BaseFragment fragment, WebViewFragmentLayoutListener layoutListener, LayoutInflater inflater, ViewGroup container ) {
 
@@ -62,25 +60,19 @@ public class WebViewFragmentLayout extends FragmentLayout<BaseFragment, WebViewF
 
 		progressBar_progress = (ProgressBar) findViewById( R.id.progressBar_progress );
 
-		imageButton_back = (ImageButton) findViewById( R.id.imageButton_back );
-		imageButton_back.setOnClickListener( this );
-
-		imageButton_forward = (ImageButton) findViewById( R.id.imageButton_forward );
-		imageButton_forward.setOnClickListener( this );
-
 		imageView_refresh = (ImageView) findViewById( R.id.imageView_refresh );
 		imageView_refresh.setOnClickListener( this );
 
 		progressBar_loading = (ProgressBar) findViewById( R.id.progressBar_loading );
 
-		imageView_share = (ImageView) findViewById( R.id.imageView_share );
-		imageView_share.setOnClickListener( this );
+		textView_share = (TextView) findViewById( R.id.textView_share );
+		textView_share.setOnClickListener( this );
 
 		updateActionView();
 	}
 
-	@SuppressWarnings("deprecation")
-	@SuppressLint({ "SetJavaScriptEnabled", "NewApi" })
+	@SuppressWarnings( "deprecation" )
+	@SuppressLint( { "SetJavaScriptEnabled", "NewApi" } )
 	private void initWebSettings( WebSettings webSettings ) {
 
 		webSettings.setPluginState( WebSettings.PluginState.ON );
@@ -103,27 +95,19 @@ public class WebViewFragmentLayout extends FragmentLayout<BaseFragment, WebViewF
 
 		switch ( view.getId() ) {
 
-			case R.id.imageButton_back:
-
-				getLayoutListener().onGoBack();
-				break;
-
-			case R.id.imageButton_forward:
-
-				getLayoutListener().onGoForward();
-				break;
-
 			case R.id.imageView_refresh:
 
 				getLayoutListener().onRefresh();
 				break;
 
-			case R.id.imageView_share:
+			case R.id.textView_share:
 
 				getLayoutListener().onShare();
 				break;
 		}
 
+//		getLayoutListener().onGoBack();
+//		getLayoutListener().onGoForward();
 		updateActionView();
 	}
 
@@ -131,8 +115,6 @@ public class WebViewFragmentLayout extends FragmentLayout<BaseFragment, WebViewF
 
 		if ( null != webView ) {
 
-			imageButton_back.setEnabled( webView.canGoBack() );
-			imageButton_forward.setEnabled( webView.canGoForward() );
 		}
 	}
 

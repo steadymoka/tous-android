@@ -1,7 +1,9 @@
 package com.tous.application.mvc.controller.activity.spot;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -9,10 +11,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
 import com.moka.framework.controller.BaseFragment;
 import com.moka.framework.util.OttoUtil;
 import com.tous.application.database.table.spot.SpotTable;
 import com.tous.application.event.OnRefreshViewEvent;
+import com.tous.application.mvc.controller.activity.browser.WebViewActivity;
 import com.tous.application.mvc.model.transport.Spot;
 import com.tous.application.mvc.view.spot.SpotCreationFragmentLayout;
 import com.tous.application.mvc.view.spot.SpotCreationFragmentLayoutListener;
@@ -58,10 +62,55 @@ public class SpotCreationFragment extends BaseFragment implements SpotCreationFr
 		spot.setPlanId( planId );
 		spot.setName( fragmentLayout.getSpotName() );
 		spot.setType( spotType );
-		SpotTable.from( getActivity() ).insert( spot );
 
-		OttoUtil.getInstance().post( new OnRefreshViewEvent() );
-		getActivity().finish();
+		if ( isValidSpot( spot ) ) {
+
+			SpotTable.from( getActivity() ).insert( spot );
+			OttoUtil.getInstance().post( new OnRefreshViewEvent() );
+			getActivity().finish();
+		}
+	}
+
+	private boolean isValidSpot( Spot spot ) {
+
+		if ( TextUtils.isEmpty( spot.getName() ) ) {
+
+			fragmentLayout.setErrorSpotName();
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * onClickListener
+	 */
+
+	@Override
+	public void onSearchSpotInWeb() {
+
+		Intent intent = new Intent( getActivity(), WebViewActivity.class );
+		intent.putExtra( WebViewActivity.KEY_URL, "http://www.naver.com" );
+		startActivity( intent );
+	}
+
+	@Override
+	public void onSearchSpotAddressInMap() {
+
+	}
+
+	@Override
+	public void onShowStartTimePicker() {
+
+		RadialTimePickerDialog radialTimePickerDialog = RadialTimePickerDialog.newInstance( null, 24, 60, false );
+		radialTimePickerDialog.show( getFragmentManager(), "tag" );
+	}
+
+	@Override
+	public void onShowEndTimePicker() {
+
+		RadialTimePickerDialog radialTimePickerDialog = RadialTimePickerDialog.newInstance( null, 24, 60, true );
+		radialTimePickerDialog.show( getFragmentManager(), "tag" );
 	}
 
 	public SpotCreationFragment setType( String spotType ) {

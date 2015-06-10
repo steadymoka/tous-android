@@ -6,6 +6,4 @@ import com.moka.framework.view.LayoutListener;
 
 public interface WebViewActivityLayoutListener extends LayoutListener {
 
-	void onHomeMenuItemSelected();
-
 }
