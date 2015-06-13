@@ -25,6 +25,4 @@ public interface ScheduleFragmentLayoutListener extends LayoutListener {
 
 	void onClickToMap();
 
-	void onClickToDetailPlan();
-
 }

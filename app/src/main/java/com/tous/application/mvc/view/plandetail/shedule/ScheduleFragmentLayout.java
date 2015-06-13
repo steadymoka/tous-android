@@ -14,7 +14,6 @@ import com.moka.framework.widget.calendar.model.CalendarCellData;
 import com.moka.framework.widget.calendar.util.CalendarUtil;
 import com.moka.framework.widget.calendar.util.CalendarViewMode;
 import com.moka.framework.widget.calendar.view.CalendarView;
-import com.moka.framework.widget.fab.FloatingActionButton;
 import com.tous.application.R;
 import com.tous.application.mvc.controller.activity.plandetail.schedule.ScheduleFragment;
 
@@ -31,8 +30,6 @@ public class ScheduleFragmentLayout extends FragmentLayout<ScheduleFragment, Sch
 	private TextView textView_planName;
 
 	private ViewPager viewPager_schedule;
-
-	private FloatingActionButton floatingActionButton_detail_plan;
 
 	public ScheduleFragmentLayout( ScheduleFragment fragment, ScheduleFragmentLayoutListener layoutListener, LayoutInflater inflater, ViewGroup container ) {
 
@@ -68,9 +65,6 @@ public class ScheduleFragmentLayout extends FragmentLayout<ScheduleFragment, Sch
 		viewPager_schedule.setPageMargin( (int) ScreenUtil.dipToPixel( getContext(), 16 ) );
 		viewPager_schedule.setOnPageChangeListener( this );
 		viewPager_schedule.setAdapter( getLayoutListener().getSchedulePagerAdapter() );
-
-		floatingActionButton_detail_plan = (FloatingActionButton) findViewById( R.id.floatingActionButton_detail_plan );
-		floatingActionButton_detail_plan.setOnClickListener( this );
 	}
 
 	@Override
@@ -117,11 +111,6 @@ public class ScheduleFragmentLayout extends FragmentLayout<ScheduleFragment, Sch
 
 				getLayoutListener().onClickToMap();
 				break;
-
-			case R.id.floatingActionButton_detail_plan:
-
-				getLayoutListener().onClickToDetailPlan();
-				break;
 		}
 	}
 
@@ -161,11 +150,4 @@ public class ScheduleFragmentLayout extends FragmentLayout<ScheduleFragment, Sch
 		textView_planName.setText( planName );
 	}
 
-	public void setFloatingActionButton( boolean visible ) {
-
-		if ( visible )
-			floatingActionButton_detail_plan.setVisibility( View.VISIBLE );
-		else
-			floatingActionButton_detail_plan.setVisibility( View.GONE );
-	}
 }

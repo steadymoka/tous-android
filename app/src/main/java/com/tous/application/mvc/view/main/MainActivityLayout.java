@@ -18,7 +18,7 @@ import com.tous.application.mvc.controller.activity.main.MainActivity;
 import com.tous.application.mvc.controller.activity.main.drawer.NavigationDrawerFragment;
 
 
-public class MainActivityLayout extends SupportActivityLayout<MainActivity, MainActivityLayoutListener> {
+public class MainActivityLayout extends SupportActivityLayout<MainActivity, MainActivityLayoutListener> implements MainActivityListener {
 
 	private DrawerLayout drawerLayout;
 	private ToolbarLayout toolbarLayout;
@@ -47,8 +47,10 @@ public class MainActivityLayout extends SupportActivityLayout<MainActivity, Main
 		actionBar.setDisplayHomeAsUpEnabled( true );
 		actionBar.setHomeButtonEnabled( true );
 
-		drawerLayout = (DrawerLayout) findViewById( R.id.drawer_layout );
 		toolbarLayout = (ToolbarLayout) findViewById( R.id.toolbarLayout );
+		toolbarLayout.setAlpha( 1 );
+
+		drawerLayout = (DrawerLayout) findViewById( R.id.drawer_layout );
 
 		drawerToggle = new ContentDrawerToggle( getActivity(), drawerLayout, toolbarLayout.getToolbar(), 0, 0 );
 
@@ -76,6 +78,18 @@ public class MainActivityLayout extends SupportActivityLayout<MainActivity, Main
 	public int getFragmentContainerID() {
 
 		return R.id.frameLayout_container_main;
+	}
+
+	@Override
+	public void setExpandToolbar( boolean expandToolbar ) {
+
+		toolbarLayout.setExpand( expandToolbar );
+	}
+
+	@Override
+	public void setAlpha( float alpha ) {
+
+		toolbarLayout.setAlpha( alpha );
 	}
 
 	private static class ContentDrawerToggle extends ActionBarDrawerToggle {

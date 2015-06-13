@@ -1,7 +1,6 @@
 package com.tous.application.mvc.controller.activity.plandetail.schedule;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
@@ -15,9 +14,7 @@ import com.moka.framework.widget.calendar.adapter.CalendarViewAdapter;
 import com.moka.framework.widget.calendar.model.CalendarCellData;
 import com.moka.framework.widget.calendar.util.CalendarUtil;
 import com.moka.framework.widget.calendar.util.DateProvider;
-import com.squareup.otto.Subscribe;
 import com.tous.application.mvc.controller.activity.main.calendar.CalendarAdapter;
-import com.tous.application.mvc.controller.activity.plandetail.DetailPlanActivity;
 import com.tous.application.mvc.model.plan.Plan;
 import com.tous.application.mvc.view.plandetail.shedule.ScheduleFragmentLayout;
 import com.tous.application.mvc.view.plandetail.shedule.ScheduleFragmentLayoutListener;
@@ -61,7 +58,7 @@ public class ScheduleFragment extends BaseFragment implements ScheduleFragmentLa
 
 				fragmentLayout.setDayIndex( CalendarUtil.getDayIndexFrom( DateUtil.parseDate( plan.getStartDate() ) ) );
 			}
-		}, 100 );
+		}, 200 );
 //		fragmentLayout.setDayIndex( CalendarUtil.getDayIndexFrom( DateUtil.parseDate( plan.getStartDate() ) ) );
 	}
 
@@ -120,16 +117,10 @@ public class ScheduleFragment extends BaseFragment implements ScheduleFragmentLa
 
 	private void setDayCountTextAndFloatingButton( int currentDate ) {
 
-		if ( plan.isPlaningDate( currentDate ) ) {
-
+		if ( plan.isPlaningDate( currentDate ) )
 			fragmentLayout.setDayCount( plan.getDayCount( currentDate ) + "일째" );
-			fragmentLayout.setFloatingActionButton( true );
-		}
-		else {
-
+		else
 			fragmentLayout.setDayCount( "ToUs 와 함께" );
-			fragmentLayout.setFloatingActionButton( false );
-		}
 	}
 
 	@Override
@@ -142,22 +133,6 @@ public class ScheduleFragment extends BaseFragment implements ScheduleFragmentLa
 	public void onClickToMap() {
 
 		fragmentLayout.showMap();
-	}
-
-	@Override
-	public void onClickToDetailPlan() {
-
-		Intent intent = new Intent( getActivity(), DetailPlanActivity.class );
-		intent.putExtra( DetailPlanActivity.KEY_PLAN_ID, plan.getId() );
-		startActivity( intent );
-	}
-
-	@Subscribe
-	public void onClickToDetailPlan( ScheduleItemItemFragment.OnClickToDetailPlan onClickToDetailPlan ) {
-
-//		Intent intent = new Intent( getActivity(), DetailPlanActivity.class );
-//		intent.putExtra( DetailPlanActivity.KEY_PLAN_ID, plan.getId() );
-//		startActivity( intent );
 	}
 
 	@Override

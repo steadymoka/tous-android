@@ -4,6 +4,8 @@
 	xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
 	<application
 		android:name="com.tous.application.TousApplication"
@@ -30,7 +32,7 @@
 			</intent-filter>
 		</activity>
 
-		<!-- MainActivity -->
+		<!-- SignInActivity -->
 		<activity
 			android:name=".mvc.controller.activity.account.SignInActivity"
 			android:configChanges="keyboardHidden|orientation|screenSize"
@@ -58,7 +60,13 @@
 			android:configChanges="keyboardHidden|orientation|screenSize"
 			android:parentActivityName=".mvc.controller.activity.main.MainActivity"
 			android:launchMode="singleTask"
-			android:screenOrientation="portrait"/>
+			android:screenOrientation="portrait">
+
+			<meta-data
+				android:name="android.support.PARENT_ACTIVITY"
+				android:value=".mvc.controller.activity.main.MainActivity"/>
+
+		</activity>
 
 		<!-- PlanCreationActivity -->
 		<activity
@@ -89,6 +97,13 @@
 			android:name=".mvc.controller.activity.browser.WebViewActivity"
 			android:configChanges="keyboardHidden|orientation|screenSize"
 			android:parentActivityName=".mvc.controller.activity.plandetail.DetailPlanActivity"
+			android:launchMode="singleTask"
+			android:screenOrientation="portrait"/>
+
+		<!-- ImageEditorActivity -->
+		<activity
+			android:name=".mvc.controller.activity.image.editor.ImageEditorActivity"
+			android:configChanges="keyboardHidden|orientation|screenSize"
 			android:launchMode="singleTask"
 			android:screenOrientation="portrait"/>
 

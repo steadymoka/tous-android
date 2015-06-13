@@ -4,6 +4,7 @@ package com.tous.application.mvc.view.plandetail;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 
+import com.moka.framework.support.toolbar.ToolbarLayout;
 import com.moka.framework.view.SupportActivityLayout;
 import com.tous.application.R;
 import com.tous.application.mvc.controller.activity.plandetail.DetailPlanActivity;
@@ -12,6 +13,8 @@ import com.tous.application.mvc.controller.activity.plandetail.DetailPlanActivit
 public class DetailPlanActivityLayout extends SupportActivityLayout<DetailPlanActivity, DetailPlanActivityLayoutListener> {
 
 	private ActionBar actionBar;
+
+	private ToolbarLayout toolbarLayout;
 
 	public DetailPlanActivityLayout( DetailPlanActivity activity, DetailPlanActivityLayoutListener layoutListener ) {
 
@@ -31,6 +34,9 @@ public class DetailPlanActivityLayout extends SupportActivityLayout<DetailPlanAc
 		actionBar.setDisplayShowHomeEnabled( true );
 		actionBar.setDisplayHomeAsUpEnabled( true );
 		actionBar.setHomeButtonEnabled( true );
+
+		toolbarLayout = (ToolbarLayout) findViewById( R.id.toolbarLayout );
+		toolbarLayout.setAlpha( 1 );
 	}
 
 	public void setActionBarTitle( String title ) {

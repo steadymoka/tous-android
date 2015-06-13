@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<item
+		android:id="@+id/menuItem_saveCropedImage"
+		android:icon="@drawable/ic_menu_accept"
+		android:title="선택완료"
+		app:showAsAction="always"/>
+
+	<!--<item-->
+	<!--android:id="@+id/menuItem_completeCropImage"-->
+	<!--android:icon="@drawable/ic_menu_accept"-->
+	<!--android:title="@string/activity_gallery_menu_complite"-->
+	<!--app:showAsAction="always"/>-->
+
+</menu>

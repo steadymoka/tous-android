@@ -125,4 +125,14 @@ public class DateUtil {
 		}
 	}
 
+	private static final SimpleDateFormat dateFormatTimeStamp_formatToTimestamp = new SimpleDateFormat( "yyyyMMdd_HHmmss", Locale.getDefault() );
+
+	public static String formatToTimestamp( Date date ) {
+
+		synchronized ( dateFormatTimeStamp_formatToTimestamp ) {
+
+			return dateFormatTimeStamp_formatToTimestamp.format( date );
+		}
+	}
+
 }

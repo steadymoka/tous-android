@@ -46,7 +46,8 @@ public class ToolbarLayout extends FrameLayout {
 		rootView = LayoutInflater.from( getContext() ).inflate( R.layout.toolbar_tous, null );
 
 		toolbar = (Toolbar) rootView.findViewById( R.id.toolbar );
-//		view_shadow = rootView.findViewById( R.id.view_shadow );
+		toolbar.getBackground().setAlpha( 1 );
+		view_shadow = rootView.findViewById( R.id.view_shadow );
 		toolbar_frameLayout_content = (FrameLayout) rootView.findViewById( R.id.toolbar_frameLayout_content );
 
 		addView( rootView );
