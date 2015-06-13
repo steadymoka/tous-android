@@ -17,6 +17,7 @@ import com.tous.application.R;
 import com.tous.application.mvc.controller.activity.plancreation.PlanCreationActivity;
 import com.tous.application.mvc.controller.activity.plandetail.lodgment.LodgmentFragment;
 import com.tous.application.mvc.controller.activity.plandetail.restaurant.RestaurantFragment;
+import com.tous.application.mvc.controller.activity.plandetail.schedule.ScheduleFragment;
 import com.tous.application.mvc.controller.activity.plandetail.viewspot.ViewSpotFragment;
 import com.tous.application.mvc.controller.activity.plandetail.transport.TransportFragment;
 import com.tous.application.mvc.model.plan.Plan;
@@ -32,6 +33,7 @@ public class DetailPlanFragment extends BaseFragment implements DetailPlanFragme
 
 	private DetailPlanFragmentLayout fragmentLayout;
 
+	private ScheduleFragment scheduleFragment;
 	private RestaurantFragment restaurantFragment;
 	private TransportFragment transportFragment;
 	private ViewSpotFragment viewSpotFragment;
@@ -52,6 +54,10 @@ public class DetailPlanFragment extends BaseFragment implements DetailPlanFragme
 	public SlidingTabPagerAdapter getSlidingTabPagerAdapter() {
 
 		SlidingTabPagerAdapter slidingTabPagerAdapter = new SlidingTabPagerAdapter( getFragmentManager() );
+
+		if ( null == scheduleFragment )
+			scheduleFragment = ScheduleFragment.newInstance().setPlan( plan );
+		slidingTabPagerAdapter.addItem( new TabInfo( scheduleFragment, getString( R.string.activity_task_detail_tab_schedule ) ) );
 
 		if ( null == transportFragment )
 			transportFragment = TransportFragment.newInstance().setPlan( plan );

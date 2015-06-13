@@ -16,4 +16,6 @@ public interface SpotCreationFragmentLayoutListener extends LayoutListener {
 
 	void onSearchSpotAddressInMap();
 
+	void onSetPlanDay();
+
 }

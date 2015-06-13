@@ -26,6 +26,9 @@ public class SpotCreationFragment extends BaseFragment implements SpotCreationFr
 
 	private SpotCreationFragmentLayout fragmentLayout;
 
+	private RadialTimePickerDialog.OnTimeSetListener startTimeSetListener;
+	private RadialTimePickerDialog.OnTimeSetListener endTimeSetListener;
+
 	private String spotType;
 	private long planId;
 
@@ -87,20 +90,26 @@ public class SpotCreationFragment extends BaseFragment implements SpotCreationFr
 	 */
 
 	@Override
-	public void onSearchSpotInWeb() {
+	public void onSetPlanDay() {
 
-		Intent intent = new Intent( getActivity(), WebViewActivity.class );
-		intent.putExtra( WebViewActivity.KEY_URL, "http://www.naver.com" );
-		startActivity( intent );
-	}
-
-	@Override
-	public void onSearchSpotAddressInMap() {
 
 	}
 
 	@Override
 	public void onShowStartTimePicker() {
+
+		if ( null == startTimeSetListener ) {
+
+			startTimeSetListener = new RadialTimePickerDialog.OnTimeSetListener() {
+
+				@Override
+				public void onTimeSet( RadialTimePickerDialog radialTimePickerDialog, int hourOfDay, int minute ) {
+
+				}
+
+			};
+		}
+
 
 		RadialTimePickerDialog radialTimePickerDialog = RadialTimePickerDialog.newInstance( null, 24, 60, false );
 		radialTimePickerDialog.show( getFragmentManager(), "tag" );
@@ -111,6 +120,19 @@ public class SpotCreationFragment extends BaseFragment implements SpotCreationFr
 
 		RadialTimePickerDialog radialTimePickerDialog = RadialTimePickerDialog.newInstance( null, 24, 60, true );
 		radialTimePickerDialog.show( getFragmentManager(), "tag" );
+	}
+
+	@Override
+	public void onSearchSpotInWeb() {
+
+		Intent intent = new Intent( getActivity(), WebViewActivity.class );
+		intent.putExtra( WebViewActivity.KEY_URL, "http://www.naver.com" );
+		startActivity( intent );
+	}
+
+	@Override
+	public void onSearchSpotAddressInMap() {
+
 	}
 
 	public SpotCreationFragment setType( String spotType ) {

@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.moka.framework.controller.BaseActivity;
 import com.tous.application.database.table.plan.PlanTable;
+import com.tous.application.mvc.controller.activity.plandetail.schedule.ScheduleFragment;
 import com.tous.application.mvc.model.plan.Plan;
 import com.tous.application.mvc.view.main.MainActivityLayout;
 import com.tous.application.mvc.view.main.MainActivityLayoutListener;

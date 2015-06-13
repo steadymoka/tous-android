@@ -9,17 +9,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.moka.framework.view.FragmentLayout;
 import com.tous.application.R;
 import com.tous.application.mvc.controller.activity.spot.SpotCreationFragment;
-import com.tous.application.mvc.controller.activity.spot.SpotDetailFragment;
 
 
 public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragment, SpotCreationFragmentLayoutListener> implements View.OnClickListener {
 
 	private EditText editText_spot_name;
+	private LinearLayout linearLayout_plan_day;
 	private Button button_startTime;
 	private Button button_endTime;
 	private TextView textView_search_spot_map;
@@ -42,6 +43,9 @@ public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragm
 
 		editText_spot_name = (EditText) findViewById( R.id.editText_spot_name );
 
+		linearLayout_plan_day = (LinearLayout) findViewById( R.id.linearLayout_plan_day );
+		linearLayout_plan_day.setOnClickListener( this );
+
 		button_startTime = (Button) findViewById( R.id.button_startTime );
 		button_startTime.setOnClickListener( this );
 
@@ -52,10 +56,6 @@ public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragm
 		textView_search_spot_map.setOnClickListener( this );
 
 		textView_search_spot_wab = (TextView) findViewById( R.id.textView_search_spot_web );
-//		SpannableString contractString = new SpannableString( getContext().getString( R.string.fragment_spot_creation_search_spot ) );
-//		contractString.setSpan( new ForegroundColorSpan( 0xFF666666 ), 0, contractString.length(), Spanned.SPAN_COMPOSING );
-//		contractString.setSpan( new UnderlineSpan(), 0, contractString.length(), Spanned.SPAN_COMPOSING );
-//		textView_search_spot.setText( contractString );
 		textView_search_spot_wab.setOnClickListener( this );
 
 		editText_content = (EditText) findViewById( R.id.editText_content );
@@ -96,6 +96,11 @@ public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragm
 				getLayoutListener().onSearchSpotInWeb();
 				break;
 
+			case R.id.linearLayout_plan_day:
+
+				getLayoutListener().onSetPlanDay();
+				break;
+
 			case R.id.button_startTime:
 
 				getLayoutListener().onShowStartTimePicker();
@@ -121,6 +126,11 @@ public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragm
 	public String getSpotName() {
 
 		return editText_spot_name.getText().toString();
+	}
+
+	public String getContent() {
+
+		return editText_content.getText().toString();
 	}
 
 }

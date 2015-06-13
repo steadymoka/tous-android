@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<com.moka.framework.widget.scrollobservableview.ObservableRecyclerView
+		android:id="@+id/observableRecyclerView_schedule"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"/>
+
+	<TextView
+		android:id="@+id/textView_no"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_marginTop="50dp"
+		android:gravity="center"
+		android:text="여행을 계획해보세요"/>
+
+</LinearLayout>

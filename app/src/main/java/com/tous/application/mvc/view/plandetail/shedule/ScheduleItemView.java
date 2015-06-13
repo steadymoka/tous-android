@@ -1,4 +1,4 @@
-package com.tous.application.mvc.view.main.shedule;
+package com.tous.application.mvc.view.plandetail.shedule;
 
 
 import android.content.Context;
@@ -10,7 +10,6 @@ import com.moka.framework.util.OttoUtil;
 import com.moka.framework.widget.adapter.RecyclerItemView;
 import com.tous.application.R;
 import com.tous.application.mvc.model.itemdata.ScheduleItemData;
-import com.tous.application.mvc.model.itemdata.SpotItemData;
 
 
 public class ScheduleItemView extends RecyclerItemView<ScheduleItemData> implements View.OnClickListener {

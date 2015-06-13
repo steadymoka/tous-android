@@ -5,6 +5,7 @@
 	<string name="dialog_loading_textview_wait">잠시만 기다려주세요</string>
 
 	<!-- DetailPlanFragment Tap Info -->
+	<string name="activity_task_detail_tab_schedule">일정</string>
 	<string name="activity_task_detail_tab_transport">교통</string>
 	<string name="activity_task_detail_tab_spot">명소</string>
 	<string name="activity_task_detail_tab_restaurant">맛집</string>

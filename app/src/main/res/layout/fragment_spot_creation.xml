@@ -35,8 +35,8 @@
 				android:layout_marginRight="8dp"
 				android:adjustViewBounds="true"
 				android:cropToPadding="true"
-				android:src="@drawable/ic_write_text_gray"
-				android:scaleType="centerInside"/>
+				android:scaleType="centerInside"
+				android:src="@drawable/ic_write_text_gray"/>
 
 			<EditText
 				android:id="@+id/editText_spot_name"
@@ -69,25 +69,33 @@
 			android:gravity="center"
 			android:orientation="horizontal">
 
-			<EditText
+			<LinearLayout
+				android:id="@+id/linearLayout_plan_day"
 				android:layout_width="wrap_content"
-				android:layout_height="match_parent"
-				android:background="@color/transparency"
-				android:layout_marginLeft="16dp"
-				android:gravity="center"
-				android:singleLine="true"
-				android:text="2"
-				android:textColor="#FF666666"
-				android:textColorHint="#FFC8C8C8"
-				android:textSize="16dp"/>
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
 
-			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent"
-				android:layout_marginRight="16dp"
-				android:gravity="center_vertical"
-				android:text="일차"
-				android:textColor="#FF666666"/>
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_marginLeft="16dp"
+					android:background="@color/transparency"
+					android:gravity="center"
+					android:singleLine="true"
+					android:text="2"
+					android:textColor="#FF666666"
+					android:textColorHint="#FFC8C8C8"
+					android:textSize="16dp"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_marginRight="16dp"
+					android:gravity="center_vertical"
+					android:text="일차"
+					android:textColor="#FF666666"/>
+
+			</LinearLayout>
 
 			<Button
 				android:id="@+id/button_startTime"
@@ -138,8 +146,8 @@
 				android:layout_marginRight="8dp"
 				android:adjustViewBounds="true"
 				android:cropToPadding="true"
-				android:src="@drawable/ic_search_holo_light"
-				android:scaleType="centerInside"/>
+				android:scaleType="centerInside"
+				android:src="@drawable/ic_search_holo_light"/>
 
 			<TextView
 				android:id="@+id/textView_search_spot_map"
@@ -168,8 +176,8 @@
 				android:layout_marginRight="8dp"
 				android:adjustViewBounds="true"
 				android:cropToPadding="true"
-				android:src="@drawable/ic_search_holo_light"
-				android:scaleType="centerInside"/>
+				android:scaleType="centerInside"
+				android:src="@drawable/ic_search_holo_light"/>
 
 			<TextView
 				android:id="@+id/textView_search_spot_web"
@@ -190,28 +198,28 @@
 			android:background="@drawable/shape_fragment_creation_view_background"
 			android:gravity="center_vertical"
 			android:orientation="horizontal"
-			android:paddingTop="8dp"
 			android:paddingLeft="16dp"
-			android:paddingRight="16dp">
+			android:paddingRight="16dp"
+			android:paddingTop="8dp">
 
 			<ImageView
 				android:layout_width="24dp"
 				android:layout_height="32dp"
-				android:layout_marginRight="8dp"
 				android:layout_gravity="top"
+				android:layout_marginRight="8dp"
 				android:adjustViewBounds="true"
-				android:src="@drawable/ic_write_text_gray"
-				android:scaleType="centerInside"/>
+				android:scaleType="centerInside"
+				android:src="@drawable/ic_write_text_gray"/>
 
 			<EditText
 				android:id="@+id/editText_content"
 				android:layout_width="match_parent"
 				android:layout_height="100dp"
-				android:gravity="top"
+				android:layout_gravity="top"
 				android:layout_marginTop="8dp"
 				android:background="@color/transparency"
+				android:gravity="top"
 				android:hint="@string/fragment_spot_creation_spot_content"
-				android:layout_gravity="top"
 				android:textColor="#FF666666"
 				android:textColorHint="#FFC8C8C8"
 				android:textSize="16dp"/>

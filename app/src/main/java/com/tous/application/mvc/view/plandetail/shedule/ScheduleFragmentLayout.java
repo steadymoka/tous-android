@@ -1,0 +1,171 @@
+package com.tous.application.mvc.view.plandetail.shedule;
+
+
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.moka.framework.util.ScreenUtil;
+import com.moka.framework.view.FragmentLayout;
+import com.moka.framework.widget.calendar.model.CalendarCellData;
+import com.moka.framework.widget.calendar.util.CalendarUtil;
+import com.moka.framework.widget.calendar.util.CalendarViewMode;
+import com.moka.framework.widget.calendar.view.CalendarView;
+import com.moka.framework.widget.fab.FloatingActionButton;
+import com.tous.application.R;
+import com.tous.application.mvc.controller.activity.plandetail.schedule.ScheduleFragment;
+
+
+public class ScheduleFragmentLayout extends FragmentLayout<ScheduleFragment, ScheduleFragmentLayoutListener> implements CalendarView.CalendarListener, ViewPager.OnPageChangeListener, View.OnClickListener {
+
+	private TextView textView_calendar;
+	private TextView textView_map;
+
+	private ImageView mapView;
+	private CalendarView calendarView;
+
+	private TextView textView_dayCount;
+	private TextView textView_planName;
+
+	private ViewPager viewPager_schedule;
+
+	private FloatingActionButton floatingActionButton_detail_plan;
+
+	public ScheduleFragmentLayout( ScheduleFragment fragment, ScheduleFragmentLayoutListener layoutListener, LayoutInflater inflater, ViewGroup container ) {
+
+		super( fragment, layoutListener, inflater, container );
+	}
+
+	@Override
+	protected int getLayoutResId() {
+
+		return R.layout.fragment_schedule;
+	}
+
+	@Override
+	protected void onLayoutInflated() {
+
+		textView_calendar = (TextView) findViewById( R.id.textView_calendar );
+		textView_calendar.setOnClickListener( this );
+		textView_map = (TextView) findViewById( R.id.textView_map );
+		textView_map.setOnClickListener( this );
+
+		mapView = (ImageView) findViewById( R.id.mapView );
+
+		calendarView = (CalendarView) findViewById( R.id.calendarView );
+		calendarView.setCalendarListener( this );
+		calendarView.setScrollable( false );
+		calendarView.setDateProvider( getLayoutListener().getDateProvider() );
+		calendarView.init( getLayoutListener().getCalendarViewAdapter(), CalendarViewMode.WEEK );
+
+		textView_dayCount = (TextView) findViewById( R.id.textView_dayCount );
+		textView_planName = (TextView) findViewById( R.id.textView_planName );
+
+		viewPager_schedule = (ViewPager) findViewById( R.id.viewPager_schedule );
+		viewPager_schedule.setPageMargin( (int) ScreenUtil.dipToPixel( getContext(), 16 ) );
+		viewPager_schedule.setOnPageChangeListener( this );
+		viewPager_schedule.setAdapter( getLayoutListener().getSchedulePagerAdapter() );
+
+		floatingActionButton_detail_plan = (FloatingActionButton) findViewById( R.id.floatingActionButton_detail_plan );
+		floatingActionButton_detail_plan.setOnClickListener( this );
+	}
+
+	@Override
+	public void onMonthChanged( int year, int month ) {
+
+		textView_calendar.setText( String.format( "%02d월 %04d", month + 1, year ) );
+	}
+
+	@Override
+	public void onDateSelected( CalendarCellData data ) {
+
+		getLayoutListener().onCalendarItemSelected( data );
+	}
+
+
+	@Override
+	public void onPageScrolled( int position, float positionOffset, int positionOffsetPixels ) {
+
+	}
+
+	@Override
+	public void onPageSelected( int position ) {
+
+		getLayoutListener().onDaySelected( position );
+		calendarView.selectDate( CalendarUtil.getDateFromDayIndex( position ) );
+	}
+
+	@Override
+	public void onPageScrollStateChanged( int state ) {
+
+	}
+
+	@Override
+	public void onClick( View view ) {
+
+		switch ( view.getId() ) {
+
+			case R.id.textView_calendar:
+
+				getLayoutListener().onClickToCalendar();
+				break;
+
+			case R.id.textView_map:
+
+				getLayoutListener().onClickToMap();
+				break;
+
+			case R.id.floatingActionButton_detail_plan:
+
+				getLayoutListener().onClickToDetailPlan();
+				break;
+		}
+	}
+
+	public void setDayIndex( int dayIndex ) {
+
+		int oldIndex = viewPager_schedule.getCurrentItem();
+		int diff = Math.abs( dayIndex - oldIndex );
+
+		viewPager_schedule.setCurrentItem( dayIndex, ( 7 > diff ) );
+	}
+
+	public void showCalendar() {
+
+		calendarView.setVisibility( View.VISIBLE );
+		mapView.setVisibility( View.GONE );
+
+		textView_calendar.setTextColor( getActivity().getResources().getColor( R.color.base_text_view_selected ) );
+		textView_map.setTextColor( getActivity().getResources().getColor( R.color.base_text_view_non_selected ) );
+	}
+
+	public void showMap() {
+
+		calendarView.setVisibility( View.GONE );
+		mapView.setVisibility( View.VISIBLE );
+
+		textView_calendar.setTextColor( getActivity().getResources().getColor( R.color.base_text_view_non_selected ) );
+		textView_map.setTextColor( getActivity().getResources().getColor( R.color.base_text_view_selected ) );
+	}
+
+	public void setDayCount( String dayCount ) {
+
+		textView_dayCount.setText( dayCount );
+	}
+
+	public void setPlanName( String planName ) {
+
+		textView_planName.setText( planName );
+	}
+
+	public void setFloatingActionButton( boolean visible ) {
+
+		if ( visible )
+			floatingActionButton_detail_plan.setVisibility( View.VISIBLE );
+		else
+			floatingActionButton_detail_plan.setVisibility( View.GONE );
+	}
+}

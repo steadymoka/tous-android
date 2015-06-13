@@ -1,4 +1,4 @@
-package com.tous.application.mvc.view.main.shedule;
+package com.tous.application.mvc.view.plandetail.shedule;
 
 
 import android.support.v7.widget.RecyclerView;
@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import com.moka.framework.view.LayoutListener;
 
 
-public interface ScheduleFragmentLayoutListener extends LayoutListener {
+public interface ScheduleItemFragmentLayoutListener extends LayoutListener {
 
 	void onClickToDetail();
 

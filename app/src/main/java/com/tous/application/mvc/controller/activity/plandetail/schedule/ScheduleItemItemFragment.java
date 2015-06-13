@@ -1,8 +1,7 @@
-package com.tous.application.mvc.controller.activity.main.schedule;
+package com.tous.application.mvc.controller.activity.plandetail.schedule;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,28 +11,24 @@ import com.moka.framework.controller.BaseFragment;
 import com.moka.framework.util.OttoUtil;
 import com.moka.framework.widget.adapter.ManjongRecyclerAdapter;
 import com.moka.framework.widget.calendar.util.CalendarUtil;
-import com.moka.framework.widget.scrollobservableview.OnTouchScrollListener;
 import com.squareup.otto.Subscribe;
 import com.tous.application.R;
 import com.tous.application.database.table.plan.PlanTable;
 import com.tous.application.database.table.spot.SpotTable;
 import com.tous.application.event.OnRefreshViewEvent;
-import com.tous.application.mvc.controller.activity.plandetail.DetailPlanFragment;
 import com.tous.application.mvc.model.itemdata.ScheduleItemData;
-import com.tous.application.mvc.model.itemdata.SpotItemData;
 import com.tous.application.mvc.model.plan.Plan;
 import com.tous.application.mvc.model.transport.Spot;
-import com.tous.application.mvc.view.main.shedule.ScheduleFragmentLayoutListener;
-import com.tous.application.mvc.view.main.shedule.ScheduleItemFragmentLayout;
-import com.tous.application.mvc.view.main.shedule.ScheduleItemView;
-import com.tous.application.mvc.view.plandetail.viewspot.SpotItemView;
+import com.tous.application.mvc.view.plandetail.shedule.ScheduleItemFragmentLayoutListener;
+import com.tous.application.mvc.view.plandetail.shedule.ScheduleItemFragmentLayout;
+import com.tous.application.mvc.view.plandetail.shedule.ScheduleItemView;
 import com.tous.application.util.DateUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ScheduleItemFragment extends BaseFragment implements ScheduleFragmentLayoutListener {
+public class ScheduleItemItemFragment extends BaseFragment implements ScheduleItemFragmentLayoutListener {
 
 	private ScheduleItemFragmentLayout fragmentLayout;
 	private ManjongRecyclerAdapter<ScheduleItemData, ScheduleItemView> recyclerAdapter;
@@ -108,21 +103,21 @@ public class ScheduleItemFragment extends BaseFragment implements ScheduleFragme
 		OttoUtil.getInstance().unregister( this );
 	}
 
-	public ScheduleItemFragment setPlanId( long planId ) {
+	public ScheduleItemItemFragment setPlanId( long planId ) {
 
 		this.planId = planId;
 		return this;
 	}
 
-	public ScheduleItemFragment setDayIndex( int dayIndex ) {
+	public ScheduleItemItemFragment setDayIndex( int dayIndex ) {
 
 		this.dayIndex = dayIndex;
 		return this;
 	}
 
-	public static ScheduleItemFragment newInstance() {
+	public static ScheduleItemItemFragment newInstance() {
 
-		return new ScheduleItemFragment();
+		return new ScheduleItemItemFragment();
 	}
 
 	public class OnClickToDetailPlan implements OttoUtil.Event {

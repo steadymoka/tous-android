@@ -1,14 +1,10 @@
-package com.tous.application.mvc.controller.activity.main.schedule;
+package com.tous.application.mvc.controller.activity.plandetail.schedule;
 
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
-
-import com.moka.framework.widget.scrollobservableview.OnTouchScrollListener;
-
-import java.util.ArrayList;
 
 
 public class ScheduleAdapter extends FragmentStatePagerAdapter {
@@ -29,7 +25,7 @@ public class ScheduleAdapter extends FragmentStatePagerAdapter {
 	@Override
 	public Fragment getItem( int position ) {
 
-		return ScheduleItemFragment.newInstance()
+		return ScheduleItemItemFragment.newInstance()
 				.setPlanId( planId )
 				.setDayIndex( position );
 	}

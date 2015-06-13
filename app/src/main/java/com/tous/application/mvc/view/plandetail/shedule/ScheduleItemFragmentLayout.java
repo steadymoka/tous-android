@@ -1,27 +1,26 @@
-package com.tous.application.mvc.view.main.shedule;
+package com.tous.application.mvc.view.plandetail.shedule;
 
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.moka.framework.view.FragmentLayout;
 import com.moka.framework.widget.adapter.OnScrollDelegate;
 import com.moka.framework.widget.scrollobservableview.ObservableRecyclerView;
 import com.tous.application.R;
-import com.tous.application.mvc.controller.activity.main.schedule.ScheduleItemFragment;
+import com.tous.application.mvc.controller.activity.plandetail.schedule.ScheduleItemItemFragment;
 
 
-public class ScheduleItemFragmentLayout extends FragmentLayout<ScheduleItemFragment, ScheduleFragmentLayoutListener> implements View.OnClickListener {
+public class ScheduleItemFragmentLayout extends FragmentLayout<ScheduleItemItemFragment, ScheduleItemFragmentLayoutListener> implements View.OnClickListener {
 
 	private ObservableRecyclerView observableRecyclerView_schedule;
 	private OnScrollDelegate onScrollDelegate;
 	private TextView textView_no;
 
-	public ScheduleItemFragmentLayout( ScheduleItemFragment fragment, ScheduleFragmentLayoutListener layoutListener, LayoutInflater inflater, ViewGroup container ) {
+	public ScheduleItemFragmentLayout( ScheduleItemItemFragment fragment, ScheduleItemFragmentLayoutListener layoutListener, LayoutInflater inflater, ViewGroup container ) {
 
 		super( fragment, layoutListener, inflater, container );
 	}
@@ -29,7 +28,7 @@ public class ScheduleItemFragmentLayout extends FragmentLayout<ScheduleItemFragm
 	@Override
 	protected int getLayoutResId() {
 
-		return R.layout.fragment_schedule;
+		return R.layout.fragment_schedule_item;
 	}
 
 	@Override
