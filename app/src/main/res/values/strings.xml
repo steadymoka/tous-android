@@ -31,4 +31,8 @@
 	<!-- ImagePickerDialogFragment -->
 	<string name="dialog_image_picker_toast_not_found_activity">카메라를 실행할 수 없습니다</string>
 
+	<!-- SetDayCountDialogFragment -->
+	<string name="dialog_set_daycount_button">선택</string>
+	<string name="dialog_set_daycount_button_label">여행 날짜를 선택해주세요</string>
+
 </resources>

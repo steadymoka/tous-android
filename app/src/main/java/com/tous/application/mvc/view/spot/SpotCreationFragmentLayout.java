@@ -86,6 +86,11 @@ public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragm
 
 		switch ( view.getId() ) {
 
+			case R.id.linearLayout_plan_day:
+
+				getLayoutListener().onSetPlanDay();
+				break;
+
 			case R.id.textView_search_spot_map:
 
 				getLayoutListener().onSearchSpotAddressInMap();
@@ -94,11 +99,6 @@ public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragm
 			case R.id.textView_search_spot_web:
 
 				getLayoutListener().onSearchSpotInWeb();
-				break;
-
-			case R.id.linearLayout_plan_day:
-
-				getLayoutListener().onSetPlanDay();
 				break;
 
 			case R.id.button_startTime:

@@ -20,11 +20,12 @@
 	<color name="theme_accent_2">#e91e63</color>
 
 	<!-- BaseAppColor -->
-	<color name="base_app_color_red">#EF1424</color>
-	<color name="base_app_color_week_red">#E5AAB8</color>
+	<color name="base_app_color_red">#f44336</color>
+	<color name="base_app_color_week_red">#d32f2f</color>
 
 	<!-- TextView -->
-	<color name="base_text_view_selected">#FFED1844</color>
+	<!--<color name="base_text_view_selected">#FFED1844</color>-->
+	<color name="base_text_view_selected">#f44336</color>
 	<color name="base_text_view_non_selected">#FFCCCCCC</color>
 
 	<!-- PagerSlidingTabStrip -->

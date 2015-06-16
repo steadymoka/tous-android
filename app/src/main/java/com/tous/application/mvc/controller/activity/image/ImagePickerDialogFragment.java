@@ -359,9 +359,9 @@ public class ImagePickerDialogFragment extends BaseDialogFragment implements Vie
 
 	public interface OnImagePickedListener {
 
-		public void onImagePicked( ArrayList<String> imageNames );
+		void onImagePicked( ArrayList<String> imageNames );
 
-		public void onDeleteImage();
+		void onDeleteImage();
 
 	}
 

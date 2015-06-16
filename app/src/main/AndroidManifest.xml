@@ -44,6 +44,7 @@
 			android:name=".mvc.controller.activity.main.MainActivity"
 			android:configChanges="keyboardHidden|orientation|screenSize"
 			android:launchMode="singleTask"
+			android:theme="@style/Theme.Tous.NoStatusBar"
 			android:screenOrientation="portrait"/>
 
 		<!-- DetailPlanActivity -->

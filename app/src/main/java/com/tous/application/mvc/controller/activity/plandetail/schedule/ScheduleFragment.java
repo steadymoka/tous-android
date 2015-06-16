@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import com.moka.framework.controller.BaseFragment;
 import com.moka.framework.util.OttoUtil;
 import com.moka.framework.widget.calendar.adapter.CalendarViewAdapter;
-import com.moka.framework.widget.calendar.model.CalendarCellData;
 import com.moka.framework.widget.calendar.util.CalendarUtil;
 import com.moka.framework.widget.calendar.util.DateProvider;
 import com.tous.application.mvc.controller.activity.main.calendar.CalendarAdapter;
@@ -23,11 +22,11 @@ import com.tous.application.util.DateUtil;
 import java.util.Date;
 
 
-public class ScheduleFragment extends BaseFragment implements ScheduleFragmentLayoutListener, DateProvider {
+public class ScheduleFragment extends BaseFragment implements ScheduleFragmentLayoutListener {
 
 	private ScheduleFragmentLayout fragmentLayout;
 
-	private CalendarAdapter calendarAdapter;
+//	private CalendarAdapter calendarAdapter;
 	private ScheduleAdapter scheduleAdapter;
 
 	private Handler handler;
@@ -59,13 +58,12 @@ public class ScheduleFragment extends BaseFragment implements ScheduleFragmentLa
 				fragmentLayout.setDayIndex( CalendarUtil.getDayIndexFrom( DateUtil.parseDate( plan.getStartDate() ) ) );
 			}
 		}, 200 );
-//		fragmentLayout.setDayIndex( CalendarUtil.getDayIndexFrom( DateUtil.parseDate( plan.getStartDate() ) ) );
 	}
 
 	private void refreshView() {
 
 		fragmentLayout.setPlanName( plan.getName() );
-		calendarAdapter.setPlan( plan );
+//		calendarAdapter.setPlan( plan );
 	}
 
 	@Override
@@ -79,33 +77,32 @@ public class ScheduleFragment extends BaseFragment implements ScheduleFragmentLa
 		return scheduleAdapter;
 	}
 
-	@Override
-	public CalendarViewAdapter<?, ?> getCalendarViewAdapter() {
+//	@Override
+//	public CalendarViewAdapter<?, ?> getCalendarViewAdapter() {
+//
+//		if ( null == calendarAdapter )
+//			calendarAdapter = new CalendarAdapter( getActivity() );
+//
+//		return calendarAdapter;
+//	}
 
-		if ( null == calendarAdapter )
-			calendarAdapter = new CalendarAdapter( getActivity() );
-
-		return calendarAdapter;
-	}
-
-	@Override
-	public DateProvider getDateProvider() {
-
-		return this;
-	}
+//	@Override
+//	public DateProvider getDateProvider() {
+//
+//		return this;
+//	}
 
 	/**
 	 * Click Listener
 	 */
 
-	@Override
-	public void onCalendarItemSelected( final CalendarCellData data ) {
-
-		int dayIndex = CalendarUtil.getDayIndexFrom( data.getDate() );
-		if ( null != fragmentLayout )
-			fragmentLayout.setDayIndex( dayIndex );
-	}
-
+//	@Override
+//	public void onCalendarItemSelected( final CalendarCellData data ) {
+//
+//		int dayIndex = CalendarUtil.getDayIndexFrom( data.getDate() );
+//		if ( null != fragmentLayout )
+//			fragmentLayout.setDayIndex( dayIndex );
+//	}
 	@Override
 	public void onDaySelected( int dayIndex ) {
 
@@ -123,17 +120,17 @@ public class ScheduleFragment extends BaseFragment implements ScheduleFragmentLa
 			fragmentLayout.setDayCount( "ToUs 와 함께" );
 	}
 
-	@Override
-	public void onClickToCalendar() {
-
-		fragmentLayout.showCalendar();
-	}
-
-	@Override
-	public void onClickToMap() {
-
-		fragmentLayout.showMap();
-	}
+//	@Override
+//	public void onClickToCalendar() {
+//
+//		fragmentLayout.showCalendar();
+//	}
+//
+//	@Override
+//	public void onClickToMap() {
+//
+//		fragmentLayout.showMap();
+//	}
 
 	@Override
 	public void onDestroyView() {

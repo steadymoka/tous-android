@@ -17,12 +17,13 @@ import com.moka.framework.util.OttoUtil;
 import com.tous.application.database.table.spot.SpotTable;
 import com.tous.application.event.OnRefreshViewEvent;
 import com.tous.application.mvc.controller.activity.browser.WebViewActivity;
+import com.tous.application.mvc.controller.dialog.SetDayCountDialogFragment;
 import com.tous.application.mvc.model.transport.Spot;
 import com.tous.application.mvc.view.spot.SpotCreationFragmentLayout;
 import com.tous.application.mvc.view.spot.SpotCreationFragmentLayoutListener;
 
 
-public class SpotCreationFragment extends BaseFragment implements SpotCreationFragmentLayoutListener {
+public class SpotCreationFragment extends BaseFragment implements SpotCreationFragmentLayoutListener, SetDayCountDialogFragment.OnDoneAmountInputtedListener {
 
 	private SpotCreationFragmentLayout fragmentLayout;
 
@@ -92,6 +93,18 @@ public class SpotCreationFragment extends BaseFragment implements SpotCreationFr
 	@Override
 	public void onSetPlanDay() {
 
+		SetDayCountDialogFragment.newInstance()
+				.setDayCount( 5 )
+				.showDialog( getFragmentManager(), this );
+	}
+
+	@Override
+	public void onDoneAmountInputted( int previousAmount ) {
+
+	}
+
+	@Override
+	public void onInputCanceled() {
 
 	}
 
@@ -109,7 +122,6 @@ public class SpotCreationFragment extends BaseFragment implements SpotCreationFr
 
 			};
 		}
-
 
 		RadialTimePickerDialog radialTimePickerDialog = RadialTimePickerDialog.newInstance( null, 24, 60, false );
 		radialTimePickerDialog.show( getFragmentManager(), "tag" );

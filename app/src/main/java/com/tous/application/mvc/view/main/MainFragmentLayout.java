@@ -14,6 +14,7 @@ import com.tous.application.R;
 import com.tous.application.mvc.controller.activity.main.MainFragment;
 
 import java.io.File;
+import java.util.Random;
 
 
 public class MainFragmentLayout extends FragmentLayout<MainFragment, MainFragmentLayoutListener> implements View.OnClickListener {
@@ -67,16 +68,29 @@ public class MainFragmentLayout extends FragmentLayout<MainFragment, MainFragmen
 		}
 	}
 
-	public void setPlanBackgroundImage( String imagePath ) {
+	public void setPlanImage( String imagePath ) {
+
+		int defaultImage = R.drawable.sample_plan_background;
 
 		int headerWidth = ScreenUtil.getWidthPixels( getContext() );
 		int headerHeight = (int) ( headerWidth / 1.5f );
 
-		Picasso.with( getContext() )
-				.load( new File( imagePath ) )
-				.centerCrop()
-				.resize( headerWidth, headerHeight )
-				.into( imageView_plan_background );
+		if ( null != imagePath ) {
+
+			Picasso.with( getContext() )
+					.load( new File( imagePath ) )
+					.centerCrop()
+					.resize( headerWidth, headerHeight )
+					.into( imageView_plan_background );
+		}
+		else {
+
+			Picasso.with( getContext() )
+					.load( defaultImage )
+					.centerCrop()
+					.resize( headerWidth, headerHeight )
+					.into( imageView_plan_background );
+		}
 	}
 
 	public void setFloatingActionButton( boolean visible ) {

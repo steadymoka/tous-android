@@ -15,6 +15,7 @@ import com.tous.application.mvc.view.main.MainActivityListener;
 import com.tous.application.mvc.view.main.MainFragmentLayout;
 import com.tous.application.mvc.view.main.MainFragmentLayoutListener;
 import com.tous.application.util.ImageFileUtil;
+import com.tous.application.util.TousPreference;
 
 import java.util.ArrayList;
 
@@ -40,7 +41,9 @@ public class MainFragment extends BaseFragment implements MainFragmentLayoutList
 
 	private void refreshView() {
 
-
+		String imageName = TousPreference.getInstance( getActivity() ).getPlanImageName();
+		isExistImage = ( imageName != null );
+		fragmentLayout.setPlanImage( ImageFileUtil.from( getActivity() ).getFilePath( imageName ) );
 	}
 
 	@Override
@@ -72,7 +75,8 @@ public class MainFragment extends BaseFragment implements MainFragmentLayoutList
 	@Override
 	public void onImagePicked( ArrayList<String> imageNames ) {
 
-		fragmentLayout.setPlanBackgroundImage( ImageFileUtil.from( getActivity() ).getFilePath( imageNames.get( 0 ) ) );
+		TousPreference.getInstance( getActivity() ).setPlanImageName( imageNames.get( 0 ) );
+		fragmentLayout.setPlanImage( ImageFileUtil.from( getActivity() ).getFilePath( imageNames.get( 0 ) ) );
 
 		isExistImage = true;
 	}
@@ -80,6 +84,8 @@ public class MainFragment extends BaseFragment implements MainFragmentLayoutList
 	@Override
 	public void onDeleteImage() {
 
+		TousPreference.getInstance( getActivity() ).setPlanImageName( null );
+		fragmentLayout.setPlanImage( null );
 		isExistImage = false;
 	}
 

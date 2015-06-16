@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import com.moka.framework.support.toolbar.ToolbarLayout;
 import com.moka.framework.view.SupportActivityLayout;
@@ -51,7 +52,6 @@ public class MainActivityLayout extends SupportActivityLayout<MainActivity, Main
 		toolbarLayout.setAlpha( 1 );
 
 		drawerLayout = (DrawerLayout) findViewById( R.id.drawer_layout );
-
 		drawerToggle = new ContentDrawerToggle( getActivity(), drawerLayout, toolbarLayout.getToolbar(), 0, 0 );
 
 		drawerLayout.setDrawerListener( drawerToggle );
@@ -68,6 +68,16 @@ public class MainActivityLayout extends SupportActivityLayout<MainActivity, Main
 		navigationDrawerFragment = (NavigationDrawerFragment) getActivity().getSupportFragmentManager()
 				.findFragmentById( R.id.navigation_drawer );
 		navigationDrawerFragment.setDrawerLayout( drawerLayout );
+	}
+
+	private int getStatusBarHeight() {
+
+		int statusBarHeight = 0;
+		int resourceId = getActivity().getResources().getIdentifier( "status_bar_height", "dimen", "android" );
+		if ( resourceId > 0 )
+			statusBarHeight = getActivity().getResources().getDimensionPixelSize( resourceId );
+
+		return statusBarHeight;
 	}
 
 	public void setTitle( String name ) {
