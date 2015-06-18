@@ -44,27 +44,8 @@ public class DetailPlanFragmentLayout extends FragmentLayout<DetailPlanFragment,
 		viewPager.setAdapter( slidingTabPagerAdapter );
 
 		pagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById( R.id.pagerSlidingTabStrip );
+		pagerSlidingTabStrip.setBackgroundColor( 0xFFf44336 );
 		pagerSlidingTabStrip.setViewPager( viewPager );
-	}
-
-	@Override
-	public void onCreateOptionsMenu( Menu menu, MenuInflater inflater ) {
-
-		inflater.inflate( R.menu.fragment_detail_plan, menu );
-	}
-
-	@Override
-	public boolean onOptionsItemSelected( MenuItem item ) {
-
-		switch ( item.getItemId() ) {
-
-			case R.id.menuItem_editPlan:
-
-				getLayoutListener().onEditPlanMenuItemSelected();
-				return true;
-		}
-
-		return super.onOptionsItemSelected( item );
 	}
 
 }

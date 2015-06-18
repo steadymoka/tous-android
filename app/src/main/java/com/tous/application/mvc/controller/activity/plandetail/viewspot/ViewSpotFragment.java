@@ -18,9 +18,10 @@ import com.tous.application.event.OnRefreshViewEvent;
 import com.tous.application.mvc.controller.activity.plandetail.DetailPlanFragment;
 import com.tous.application.mvc.controller.activity.spot.SpotCreationActivity;
 import com.tous.application.mvc.controller.activity.spot.SpotDetailActivity;
+import com.tous.application.mvc.controller.dialog.SetDayCountAndTimeDialogFragment;
 import com.tous.application.mvc.model.itemdata.SpotItemData;
 import com.tous.application.mvc.model.plan.Plan;
-import com.tous.application.mvc.model.transport.Spot;
+import com.tous.application.mvc.model.spot.Spot;
 import com.tous.application.mvc.view.plandetail.viewspot.ViewSpotFragmentLayout;
 import com.tous.application.mvc.view.plandetail.viewspot.ViewSpotFragmentLayoutListener;
 import com.tous.application.mvc.view.plandetail.viewspot.SpotItemView;
@@ -95,6 +96,31 @@ public class ViewSpotFragment extends BaseFragment implements ViewSpotFragmentLa
 		Intent intent = new Intent( getActivity(), SpotDetailActivity.class );
 		intent.putExtra( SpotDetailActivity.KEY_SPOT_ID, onSpotItemClickEvent.getSpotId() );
 		startActivity( intent );
+	}
+
+	@Subscribe
+	public void onSpotItemSetTimeClickEvent( SpotItemView.OnSpotItemSetTimeClickEvent onSpotItemSetTimeClickEvent ) {
+
+		Spot spot = onSpotItemSetTimeClickEvent.getSpot();
+
+		SetDayCountAndTimeDialogFragment.newInstance()
+				.setSpot( spot )
+				.setDayCount( plan.getPlanDayCount() )
+				.showDialog( getFragmentManager(), new SetDayCountAndTimeDialogFragment.OnDayCountSelectedListener() {
+
+					@Override
+					public void onDayCountSelected( int dayCount ) {
+
+						OttoUtil.getInstance().postInMainThread( new OnRefreshViewEvent() );
+					}
+
+					@Override
+					public void onInvalid() {
+
+						fragmentLayout.showToast( "연속된 시간을 선택해야 합니다" );
+					}
+
+				} );
 	}
 
 	@Subscribe

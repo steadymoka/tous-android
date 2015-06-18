@@ -9,6 +9,4 @@ public interface DetailPlanFragmentLayoutListener extends LayoutListener {
 
 	SlidingTabPagerAdapter getSlidingTabPagerAdapter();
 
-	void onEditPlanMenuItemSelected();
-
 }

@@ -1,4 +1,4 @@
-package com.tous.application.mvc.model.transport;
+package com.tous.application.mvc.model.spot;
 
 
 import com.moka.framework.database.DataObject;
@@ -11,8 +11,9 @@ public class Spot extends DataObject {
 	private long serverId = -1;
 	private String name;
 	private String content;
-	private long startAt;
-	private long endAt;
+	private int dayCount;
+	private String startTime;
+	private String endTime;
 	private String address;
 	private String site;
 	private String type;
@@ -70,24 +71,34 @@ public class Spot extends DataObject {
 		this.content = content;
 	}
 
-	public long getStartAt() {
+	public int getDayCount() {
 
-		return startAt;
+		return dayCount;
 	}
 
-	public void setStartAt( long startAt ) {
+	public void setDayCount( int dayCount ) {
 
-		this.startAt = startAt;
+		this.dayCount = dayCount;
 	}
 
-	public long getEndAt() {
+	public String getStartTime() {
 
-		return endAt;
+		return startTime;
 	}
 
-	public void setEndAt( long endAt ) {
+	public void setStartTime( String startTime ) {
 
-		this.endAt = endAt;
+		this.startTime = startTime;
+	}
+
+	public String getEndTime() {
+
+		return endTime;
+	}
+
+	public void setEndTime( String endTime ) {
+
+		this.endTime = endTime;
 	}
 
 	public String getAddress() {

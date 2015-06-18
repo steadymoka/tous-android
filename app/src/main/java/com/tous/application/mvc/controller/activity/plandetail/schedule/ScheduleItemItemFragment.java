@@ -18,7 +18,7 @@ import com.tous.application.database.table.spot.SpotTable;
 import com.tous.application.event.OnRefreshViewEvent;
 import com.tous.application.mvc.model.itemdata.ScheduleItemData;
 import com.tous.application.mvc.model.plan.Plan;
-import com.tous.application.mvc.model.transport.Spot;
+import com.tous.application.mvc.model.spot.Spot;
 import com.tous.application.mvc.view.plandetail.shedule.ScheduleItemFragmentLayoutListener;
 import com.tous.application.mvc.view.plandetail.shedule.ScheduleItemFragmentLayout;
 import com.tous.application.mvc.view.plandetail.shedule.ScheduleItemView;
@@ -82,12 +82,6 @@ public class ScheduleItemItemFragment extends BaseFragment implements ScheduleIt
 			recyclerAdapter = new ManjongRecyclerAdapter<>( getActivity(), ScheduleItemView.class, R.layout.view_schedule_item );
 
 		return recyclerAdapter;
-	}
-
-	@Override
-	public void onClickToDetail() {
-
-		OttoUtil.getInstance().post( new OnClickToDetailPlan() );
 	}
 
 	@Subscribe

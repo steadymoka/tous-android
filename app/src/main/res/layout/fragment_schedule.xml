@@ -6,55 +6,55 @@
 	android:orientation="vertical">
 
 	<!--<LinearLayout-->
-		<!--android:id="@+id/linearLayout_topView"-->
-		<!--android:layout_width="match_parent"-->
-		<!--android:layout_height="wrap_content"-->
-		<!--android:orientation="vertical">-->
+	<!--android:id="@+id/linearLayout_topView"-->
+	<!--android:layout_width="match_parent"-->
+	<!--android:layout_height="wrap_content"-->
+	<!--android:orientation="vertical">-->
 
-		<!--<LinearLayout-->
-			<!--android:id="@+id/linearLayout_navigation"-->
-			<!--android:layout_width="match_parent"-->
-			<!--android:layout_height="wrap_content"-->
-			<!--android:gravity="center"-->
-			<!--android:orientation="horizontal">-->
+	<!--<LinearLayout-->
+	<!--android:id="@+id/linearLayout_navigation"-->
+	<!--android:layout_width="match_parent"-->
+	<!--android:layout_height="wrap_content"-->
+	<!--android:gravity="center"-->
+	<!--android:orientation="horizontal">-->
 
-			<!--<TextView-->
-				<!--android:id="@+id/textView_calendar"-->
-				<!--android:layout_width="match_parent"-->
-				<!--android:layout_height="40dp"-->
-				<!--android:layout_weight="1"-->
-				<!--android:background="@drawable/selector_background_sliding_tab"-->
-				<!--android:gravity="center"-->
-				<!--android:text="달력"/>-->
+	<!--<TextView-->
+	<!--android:id="@+id/textView_calendar"-->
+	<!--android:layout_width="match_parent"-->
+	<!--android:layout_height="40dp"-->
+	<!--android:layout_weight="1"-->
+	<!--android:background="@drawable/selector_background_sliding_tab"-->
+	<!--android:gravity="center"-->
+	<!--android:text="달력"/>-->
 
-			<!--<View-->
-				<!--style="@style/VerticalDivider"-->
-				<!--android:layout_marginBottom="10dp"-->
-				<!--android:layout_marginTop="10dp"/>-->
+	<!--<View-->
+	<!--style="@style/VerticalDivider"-->
+	<!--android:layout_marginBottom="10dp"-->
+	<!--android:layout_marginTop="10dp"/>-->
 
-			<!--<TextView-->
-				<!--android:id="@+id/textView_map"-->
-				<!--android:layout_width="match_parent"-->
-				<!--android:layout_height="40dp"-->
-				<!--android:layout_weight="1"-->
-				<!--android:background="@drawable/selector_background_sliding_tab"-->
-				<!--android:gravity="center"-->
-				<!--android:text="지도"/>-->
+	<!--<TextView-->
+	<!--android:id="@+id/textView_map"-->
+	<!--android:layout_width="match_parent"-->
+	<!--android:layout_height="40dp"-->
+	<!--android:layout_weight="1"-->
+	<!--android:background="@drawable/selector_background_sliding_tab"-->
+	<!--android:gravity="center"-->
+	<!--android:text="지도"/>-->
 
-		<!--</LinearLayout>-->
+	<!--</LinearLayout>-->
 
-		<!--<com.moka.framework.widget.calendar.view.CalendarView-->
-			<!--android:id="@+id/calendarView"-->
-			<!--android:layout_width="match_parent"-->
-			<!--android:layout_height="wrap_content"-->
-			<!--android:background="@color/white"/>-->
+	<!--<com.moka.framework.widget.calendar.view.CalendarView-->
+	<!--android:id="@+id/calendarView"-->
+	<!--android:layout_width="match_parent"-->
+	<!--android:layout_height="wrap_content"-->
+	<!--android:background="@color/white"/>-->
 
-		<!--<ImageView-->
-			<!--android:id="@+id/mapView"-->
-			<!--android:layout_width="match_parent"-->
-			<!--android:layout_height="140dp"-->
-			<!--android:scaleType="centerCrop"-->
-			<!--android:src="@drawable/sample_image_map"/>-->
+	<!--<ImageView-->
+	<!--android:id="@+id/mapView"-->
+	<!--android:layout_width="match_parent"-->
+	<!--android:layout_height="140dp"-->
+	<!--android:scaleType="centerCrop"-->
+	<!--android:src="@drawable/sample_image_map"/>-->
 
 	<!--</LinearLayout>-->
 
@@ -75,29 +75,16 @@
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
 			android:layout_marginLeft="6dp"
-			android:text="1일째"/>
-
-		<TextView
-			android:id="@+id/textView_planName"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_gravity="center"
-			android:textStyle="bold"
-			android:gravity="right"
-			android:layout_marginRight="14dp"/>
+			android:text="ToUs와 함께"/>
 
 	</LinearLayout>
-
-	<View
-		android:layout_width="match_parent"
-		android:layout_height="32dp"
-		android:layout_below="@+id/linearLayout_title"
-		android:background="@drawable/ab_solid_shadow_holo"/>
 
 	<android.support.v4.view.ViewPager
 		android:id="@+id/viewPager_schedule"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:layout_below="@+id/linearLayout_title"/>
+		android:layout_below="@+id/linearLayout_title"
+		android:paddingLeft="16dp"
+		android:paddingRight="16dp"/>
 
 </RelativeLayout>

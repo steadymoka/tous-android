@@ -2,7 +2,7 @@ package com.tous.application.mvc.model.itemdata;
 
 
 import com.moka.framework.widget.adapter.ItemData;
-import com.tous.application.mvc.model.transport.Spot;
+import com.tous.application.mvc.model.spot.Spot;
 
 
 public class SpotItemData extends ItemData {

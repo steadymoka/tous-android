@@ -131,6 +131,12 @@ public class ToolbarLayout extends FrameLayout {
 		ViewHelper.setAlpha( view_shadow, alpha );
 	}
 
+	public void setShadow( boolean isShadow ) {
+
+		if ( !isShadow )
+			ViewHelper.setAlpha( view_shadow, 0 );
+	}
+
 	public void setExpand( boolean expand ) {
 
 		Context context = getContext();

@@ -19,10 +19,10 @@ import com.tous.application.mvc.controller.activity.spot.SpotCreationFragment;
 
 public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragment, SpotCreationFragmentLayoutListener> implements View.OnClickListener {
 
+//	private TextView textView_spot;
+//	private TextView textView_restaurant;
+
 	private EditText editText_spot_name;
-	private LinearLayout linearLayout_plan_day;
-	private Button button_startTime;
-	private Button button_endTime;
 	private TextView textView_search_spot_map;
 	private TextView textView_search_spot_wab;
 	private EditText editText_content;
@@ -41,16 +41,14 @@ public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragm
 	@Override
 	protected void onLayoutInflated() {
 
+//		textView_spot = (TextView) findViewById( R.id.textView_spot );
+//		textView_spot.setOnClickListener( this );
+//
+//		textView_restaurant = (TextView) findViewById( R.id.textView_restaurant );
+//		textView_restaurant.setOnClickListener( this );
+//		onClickToSpot();
+
 		editText_spot_name = (EditText) findViewById( R.id.editText_spot_name );
-
-		linearLayout_plan_day = (LinearLayout) findViewById( R.id.linearLayout_plan_day );
-		linearLayout_plan_day.setOnClickListener( this );
-
-		button_startTime = (Button) findViewById( R.id.button_startTime );
-		button_startTime.setOnClickListener( this );
-
-		button_endTime = (Button) findViewById( R.id.button_endTime );
-		button_endTime.setOnClickListener( this );
 
 		textView_search_spot_map = (TextView) findViewById( R.id.textView_search_spot_map );
 		textView_search_spot_map.setOnClickListener( this );
@@ -86,10 +84,15 @@ public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragm
 
 		switch ( view.getId() ) {
 
-			case R.id.linearLayout_plan_day:
-
-				getLayoutListener().onSetPlanDay();
-				break;
+//			case R.id.textView_spot:
+//
+//				getLayoutListener().onClickToSpot();
+//				break;
+//
+//			case R.id.textView_restaurant:
+//
+//				getLayoutListener().onClickToRestaurant();
+//				break;
 
 			case R.id.textView_search_spot_map:
 
@@ -99,16 +102,6 @@ public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragm
 			case R.id.textView_search_spot_web:
 
 				getLayoutListener().onSearchSpotInWeb();
-				break;
-
-			case R.id.button_startTime:
-
-				getLayoutListener().onShowStartTimePicker();
-				break;
-
-			case R.id.button_endTime:
-
-				getLayoutListener().onShowEndTimePicker();
 				break;
 		}
 	}
@@ -132,5 +125,17 @@ public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragm
 
 		return editText_content.getText().toString();
 	}
+
+//	public void onClickToSpot() {
+//
+//		textView_spot.setBackgroundColor( 0xFFffcdd2 );
+//		textView_restaurant.setBackgroundColor( 0xFFF4F4F4 );
+//	}
+//
+//	public void onClickToRestaurant() {
+//
+//		textView_spot.setBackgroundColor( 0xFFF4F4F4 );
+//		textView_restaurant.setBackgroundColor( 0xFFffcdd2 );
+//	}
 
 }

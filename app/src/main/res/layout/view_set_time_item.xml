@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="30dp"
+	android:layout_marginLeft="50dp"
+	android:layout_marginRight="50dp"
+	android:orientation="vertical">
+
+	<View
+		android:id="@+id/horizontal_set_time_item_divider"
+		style="@style/HorizontalDivider"
+		android:visibility="gone"/>
+
+	<View
+		android:id="@+id/horizontal_set_time_item"
+		style="@style/HorizontalDivider"/>
+
+	<LinearLayout
+		android:id="@+id/linearLayout_setTime_container"
+		android:layout_width="match_parent"
+		android:layout_height="30dp"
+		android:orientation="horizontal">
+
+		<TextView
+			android:id="@+id/textView_setTime_time"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"
+			android:gravity="center"/>
+
+		<TextView
+			android:id="@+id/textView_setTime_spot_name"
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="4"
+			android:gravity="center"/>
+
+	</LinearLayout>
+
+</LinearLayout>

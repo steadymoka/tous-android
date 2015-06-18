@@ -37,6 +37,8 @@ public class DetailPlanActivityLayout extends SupportActivityLayout<DetailPlanAc
 
 		toolbarLayout = (ToolbarLayout) findViewById( R.id.toolbarLayout );
 		toolbarLayout.setAlpha( 1 );
+		toolbarLayout.setShadow( false );
+
 	}
 
 	public void setActionBarTitle( String title ) {

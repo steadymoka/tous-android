@@ -1,4 +1,4 @@
-package com.tous.application.mvc.model.spot;
+package com.tous.application.mvc.model.transport;
 
 
 import com.moka.framework.database.DataObject;

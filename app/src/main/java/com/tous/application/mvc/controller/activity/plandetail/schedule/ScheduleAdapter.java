@@ -6,10 +6,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
+import com.tous.application.mvc.model.plan.Plan;
+
 
 public class ScheduleAdapter extends FragmentStatePagerAdapter {
 
 	private long planId;
+	private Plan plan;
+	private int dayCount = 0;
 
 	public ScheduleAdapter( FragmentManager fragmentManager ) {
 
@@ -19,7 +23,7 @@ public class ScheduleAdapter extends FragmentStatePagerAdapter {
 	@Override
 	public int getCount() {
 
-		return 365000;
+		return dayCount;
 	}
 
 	@Override
@@ -45,6 +49,13 @@ public class ScheduleAdapter extends FragmentStatePagerAdapter {
 	public void setPlanId( long planId ) {
 
 		this.planId = planId;
+	}
+
+	public void setPlan( Plan plan ) {
+
+		this.plan = plan;
+		dayCount = plan.getPlanDayCount();
+		notifyDataSetChanged();
 	}
 
 }

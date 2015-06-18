@@ -33,6 +33,6 @@
 
 	<!-- SetDayCountDialogFragment -->
 	<string name="dialog_set_daycount_button">선택</string>
-	<string name="dialog_set_daycount_button_label">여행 날짜를 선택해주세요</string>
+	<string name="dialog_set_daycount_button_label">여행 시간를 선택해주세요</string>
 
 </resources>

@@ -9,14 +9,8 @@
 		android:id="@+id/observableRecyclerView_schedule"
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"/>
-
-	<TextView
-		android:id="@+id/textView_no"
-		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:layout_marginTop="50dp"
-		android:gravity="center"
-		android:text="여행을 계획해보세요"/>
+		android:layout_margin="8dp"
+		android:background="@color/black"/>
 
 </LinearLayout>

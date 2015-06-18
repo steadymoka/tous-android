@@ -2,6 +2,9 @@ package com.tous.application.mvc.view.main;
 
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -110,6 +113,26 @@ public class MainFragmentLayout extends FragmentLayout<MainFragment, MainFragmen
 			mainActivityListener.setExpandToolbar( true );
 			mainActivityListener.setAlpha( 0.0f );
 		}
+	}
+
+	@Override
+	public void onCreateOptionsMenu( Menu menu, MenuInflater inflater ) {
+
+		inflater.inflate( R.menu.fragment_detail_plan, menu );
+	}
+
+	@Override
+	public boolean onOptionsItemSelected( MenuItem item ) {
+
+		switch ( item.getItemId() ) {
+
+			case R.id.menuItem_editPlan:
+
+				getLayoutListener().onEditPlanMenuItemSelected();
+				return true;
+		}
+
+		return super.onOptionsItemSelected( item );
 	}
 
 }

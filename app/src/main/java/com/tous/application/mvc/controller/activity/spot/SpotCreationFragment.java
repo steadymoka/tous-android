@@ -11,27 +11,26 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.doomonafireball.betterpickers.radialtimepicker.RadialTimePickerDialog;
 import com.moka.framework.controller.BaseFragment;
 import com.moka.framework.util.OttoUtil;
+import com.tous.application.database.table.plan.PlanTable;
 import com.tous.application.database.table.spot.SpotTable;
 import com.tous.application.event.OnRefreshViewEvent;
 import com.tous.application.mvc.controller.activity.browser.WebViewActivity;
-import com.tous.application.mvc.controller.dialog.SetDayCountDialogFragment;
-import com.tous.application.mvc.model.transport.Spot;
+import com.tous.application.mvc.model.plan.Plan;
+import com.tous.application.mvc.model.spot.Spot;
 import com.tous.application.mvc.view.spot.SpotCreationFragmentLayout;
 import com.tous.application.mvc.view.spot.SpotCreationFragmentLayoutListener;
 
 
-public class SpotCreationFragment extends BaseFragment implements SpotCreationFragmentLayoutListener, SetDayCountDialogFragment.OnDoneAmountInputtedListener {
+public class SpotCreationFragment extends BaseFragment implements SpotCreationFragmentLayoutListener {
 
 	private SpotCreationFragmentLayout fragmentLayout;
 
-	private RadialTimePickerDialog.OnTimeSetListener startTimeSetListener;
-	private RadialTimePickerDialog.OnTimeSetListener endTimeSetListener;
-
 	private String spotType;
+
 	private long planId;
+	private Plan plan;
 
 	@Override
 	public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
@@ -39,9 +38,17 @@ public class SpotCreationFragment extends BaseFragment implements SpotCreationFr
 		fragmentLayout = new SpotCreationFragmentLayout( this, this, inflater, container );
 		setHasOptionsMenu( true );
 
+		refreshView();
+
 		fragmentLayout.setTitle( spotType + " 등록하기" );
 
 		return fragmentLayout.getRootView();
+	}
+
+	private void refreshView() {
+
+//		onClickToSpot();
+		plan = PlanTable.from( getActivity() ).find( planId );
 	}
 
 	@Override
@@ -65,6 +72,7 @@ public class SpotCreationFragment extends BaseFragment implements SpotCreationFr
 		Spot spot = new Spot();
 		spot.setPlanId( planId );
 		spot.setName( fragmentLayout.getSpotName() );
+		spot.setContent( fragmentLayout.getContent() );
 		spot.setType( spotType );
 
 		if ( isValidSpot( spot ) ) {
@@ -91,50 +99,6 @@ public class SpotCreationFragment extends BaseFragment implements SpotCreationFr
 	 */
 
 	@Override
-	public void onSetPlanDay() {
-
-		SetDayCountDialogFragment.newInstance()
-				.setDayCount( 5 )
-				.showDialog( getFragmentManager(), this );
-	}
-
-	@Override
-	public void onDoneAmountInputted( int previousAmount ) {
-
-	}
-
-	@Override
-	public void onInputCanceled() {
-
-	}
-
-	@Override
-	public void onShowStartTimePicker() {
-
-		if ( null == startTimeSetListener ) {
-
-			startTimeSetListener = new RadialTimePickerDialog.OnTimeSetListener() {
-
-				@Override
-				public void onTimeSet( RadialTimePickerDialog radialTimePickerDialog, int hourOfDay, int minute ) {
-
-				}
-
-			};
-		}
-
-		RadialTimePickerDialog radialTimePickerDialog = RadialTimePickerDialog.newInstance( null, 24, 60, false );
-		radialTimePickerDialog.show( getFragmentManager(), "tag" );
-	}
-
-	@Override
-	public void onShowEndTimePicker() {
-
-		RadialTimePickerDialog radialTimePickerDialog = RadialTimePickerDialog.newInstance( null, 24, 60, true );
-		radialTimePickerDialog.show( getFragmentManager(), "tag" );
-	}
-
-	@Override
 	public void onSearchSpotInWeb() {
 
 		Intent intent = new Intent( getActivity(), WebViewActivity.class );
@@ -146,6 +110,20 @@ public class SpotCreationFragment extends BaseFragment implements SpotCreationFr
 	public void onSearchSpotAddressInMap() {
 
 	}
+
+//	@Override
+//	public void onClickToSpot() {
+//
+//		spotType = DetailPlanFragment.TYPE_VIEW_SPOT;
+//		fragmentLayout.onClickToSpot();
+//	}
+//
+//	@Override
+//	public void onClickToRestaurant() {
+//
+//		spotType = DetailPlanFragment.TYPE_RESTAURANT;
+//		fragmentLayout.onClickToRestaurant();
+//	}
 
 	public SpotCreationFragment setType( String spotType ) {
 

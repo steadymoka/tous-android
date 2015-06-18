@@ -4,11 +4,15 @@ package com.tous.application.mvc.controller.activity.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.moka.framework.controller.BaseFragment;
 import com.tous.application.mvc.controller.activity.image.ImagePickerDialogFragment;
+import com.tous.application.mvc.controller.activity.plancreation.PlanCreationActivity;
 import com.tous.application.mvc.controller.activity.plandetail.DetailPlanActivity;
 import com.tous.application.mvc.model.plan.Plan;
 import com.tous.application.mvc.view.main.MainActivityListener;
@@ -33,6 +37,7 @@ public class MainFragment extends BaseFragment implements MainFragmentLayoutList
 
 		fragmentLayout = new MainFragmentLayout( this, this, inflater, container );
 		fragmentLayout.setMainActivityListener( mainActivityListener );
+		setHasOptionsMenu( true );
 
 		refreshView();
 
@@ -44,6 +49,21 @@ public class MainFragment extends BaseFragment implements MainFragmentLayoutList
 		String imageName = TousPreference.getInstance( getActivity() ).getPlanImageName();
 		isExistImage = ( imageName != null );
 		fragmentLayout.setPlanImage( ImageFileUtil.from( getActivity() ).getFilePath( imageName ) );
+	}
+
+	@Override
+	public void onCreateOptionsMenu( Menu menu, MenuInflater inflater ) {
+
+		fragmentLayout.onCreateOptionsMenu( menu, inflater );
+	}
+
+	@Override
+	public boolean onOptionsItemSelected( MenuItem item ) {
+
+		if ( fragmentLayout.onOptionsItemSelected( item ) )
+			return true;
+		else
+			return super.onOptionsItemSelected( item );
 	}
 
 	@Override
@@ -87,6 +107,14 @@ public class MainFragment extends BaseFragment implements MainFragmentLayoutList
 		TousPreference.getInstance( getActivity() ).setPlanImageName( null );
 		fragmentLayout.setPlanImage( null );
 		isExistImage = false;
+	}
+
+	@Override
+	public void onEditPlanMenuItemSelected() {
+
+		Intent intent = new Intent( getActivity(), PlanCreationActivity.class );
+		intent.putExtra( PlanCreationActivity.KEY_PLAN_ID, plan.getId() );
+		startActivity( intent );
 	}
 
 	public MainFragment setPlan( Plan plan ) {

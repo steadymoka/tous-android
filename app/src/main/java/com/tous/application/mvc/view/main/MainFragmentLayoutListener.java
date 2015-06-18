@@ -10,4 +10,6 @@ public interface MainFragmentLayoutListener extends LayoutListener {
 
 	void onClickToSettingImage();
 
+	void onEditPlanMenuItemSelected();
+
 }

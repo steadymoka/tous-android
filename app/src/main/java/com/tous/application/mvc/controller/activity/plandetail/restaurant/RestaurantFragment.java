@@ -19,7 +19,7 @@ import com.tous.application.mvc.controller.activity.plandetail.DetailPlanFragmen
 import com.tous.application.mvc.controller.activity.spot.SpotCreationActivity;
 import com.tous.application.mvc.model.itemdata.SpotItemData;
 import com.tous.application.mvc.model.plan.Plan;
-import com.tous.application.mvc.model.transport.Spot;
+import com.tous.application.mvc.model.spot.Spot;
 import com.tous.application.mvc.view.plandetail.restaurant.RestaurantFragmentLayout;
 import com.tous.application.mvc.view.plandetail.restaurant.RestaurantFragmentLayoutListener;
 import com.tous.application.mvc.view.plandetail.viewspot.SpotItemView;
@@ -54,7 +54,7 @@ public class RestaurantFragment extends BaseFragment implements RestaurantFragme
 	private List<SpotItemData> makeItems() {
 
 		List<SpotItemData> spotItemDatas = new ArrayList<>();
-		for (  Spot spot : getDataFromDB() )
+		for ( Spot spot : getDataFromDB() )
 			spotItemDatas.add( new SpotItemData( spot ) );
 
 		return spotItemDatas;
@@ -75,6 +75,10 @@ public class RestaurantFragment extends BaseFragment implements RestaurantFragme
 		return recyclerAdapter;
 	}
 
+	/**
+	 * Item ClickListener
+	 */
+
 	@Override
 	public void onClickToAddRestaurant() {
 
@@ -84,16 +88,16 @@ public class RestaurantFragment extends BaseFragment implements RestaurantFragme
 		startActivity( intent );
 	}
 
-	public RestaurantFragment setPlan( Plan plan ) {
-
-		this.plan = plan;
-		return this;
-	}
-
 	@Subscribe
 	public void onRefreshViewEvent( OnRefreshViewEvent onRefreshViewEvent ) {
 
 		refreshView();
+	}
+
+	public RestaurantFragment setPlan( Plan plan ) {
+
+		this.plan = plan;
+		return this;
 	}
 
 	@Override

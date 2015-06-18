@@ -3,6 +3,7 @@ package com.tous.application.mvc.view.spot;
 
 import android.support.v7.app.ActionBar;
 
+import com.moka.framework.support.toolbar.ToolbarLayout;
 import com.moka.framework.view.SupportActivityLayout;
 import com.tous.application.R;
 import com.tous.application.mvc.controller.activity.spot.SpotDetailActivity;
@@ -29,6 +30,9 @@ public class SpotDetailActivityLayout extends SupportActivityLayout<SpotDetailAc
 		actionBar = getActivity().getSupportActionBar();
 		actionBar.setDisplayShowHomeEnabled( true );
 		actionBar.setDisplayHomeAsUpEnabled( true );
+
+		ToolbarLayout toolbarLayout = (ToolbarLayout) findViewById( R.id.toolbarLayout );
+		toolbarLayout.setAlpha( 1 );
 	}
 
 	public int getFrameContainerId() {

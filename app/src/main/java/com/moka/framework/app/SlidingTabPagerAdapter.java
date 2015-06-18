@@ -83,8 +83,7 @@ public class SlidingTabPagerAdapter extends FragmentViewPagerAdapter implements 
 		public TabInfo( Fragment fragment, String title ) {
 
 			this.fragment = fragment;
-			this.title = title;
-			this.iconResId = 0;
+			this.title = title;;
 		}
 
 		public Fragment getFragment() {

@@ -11,8 +11,7 @@ import com.moka.framework.database.BaseTable;
 import com.moka.framework.util.UriBuilder;
 import com.squareup.phrase.Phrase;
 import com.tous.application.database.TousDB;
-import com.tous.application.mvc.model.spot.Transport;
-import com.tous.application.mvc.model.transport.Spot;
+import com.tous.application.mvc.model.transport.Transport;
 import com.tous.application.util.DateUtil;
 
 import java.util.ArrayList;

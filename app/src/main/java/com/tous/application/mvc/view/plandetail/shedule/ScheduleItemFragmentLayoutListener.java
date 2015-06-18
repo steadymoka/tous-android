@@ -8,8 +8,6 @@ import com.moka.framework.view.LayoutListener;
 
 public interface ScheduleItemFragmentLayoutListener extends LayoutListener {
 
-	void onClickToDetail();
-
 	RecyclerView.Adapter getRecyclerViewAdapter();
 
 }

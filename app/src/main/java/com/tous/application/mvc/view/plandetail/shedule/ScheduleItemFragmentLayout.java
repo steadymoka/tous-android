@@ -18,7 +18,6 @@ public class ScheduleItemFragmentLayout extends FragmentLayout<ScheduleItemItemF
 
 	private ObservableRecyclerView observableRecyclerView_schedule;
 	private OnScrollDelegate onScrollDelegate;
-	private TextView textView_no;
 
 	public ScheduleItemFragmentLayout( ScheduleItemItemFragment fragment, ScheduleItemFragmentLayoutListener layoutListener, LayoutInflater inflater, ViewGroup container ) {
 
@@ -40,9 +39,6 @@ public class ScheduleItemFragmentLayout extends FragmentLayout<ScheduleItemItemF
 
 	private void initView() {
 
-		textView_no = (TextView) findViewById( R.id.textView_no );
-		textView_no.setOnClickListener( this );
-
 		observableRecyclerView_schedule = (ObservableRecyclerView) findViewById( R.id.observableRecyclerView_schedule );
 	}
 
@@ -60,19 +56,16 @@ public class ScheduleItemFragmentLayout extends FragmentLayout<ScheduleItemItemF
 	@Override
 	public void onClick( View view ) {
 
-		getLayoutListener().onClickToDetail();
 	}
 
 	public void setNoMode() {
 
-		observableRecyclerView_schedule.setVisibility( View.GONE );
-		textView_no.setVisibility( View.VISIBLE );
+//		observableRecyclerView_schedule.setVisibility( View.GONE );
 	}
 
 	public void setYesMode() {
 
-		observableRecyclerView_schedule.setVisibility( View.VISIBLE );
-		textView_no.setVisibility( View.GONE );
+//		observableRecyclerView_schedule.setVisibility( View.VISIBLE );
 	}
 
 }

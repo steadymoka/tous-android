@@ -12,7 +12,6 @@ import com.tous.application.database.table.plan.PlanTable;
 import com.tous.application.database.table.spot.SpotTable;
 import com.tous.application.database.table.transport.TransportTable;
 import com.tous.application.database.table.user.UserTable;
-import com.tous.application.mvc.model.spot.Transport;
 
 
 public class TousProvider extends ContentProvider {

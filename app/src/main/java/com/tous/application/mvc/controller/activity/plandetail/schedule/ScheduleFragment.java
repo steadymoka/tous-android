@@ -26,7 +26,6 @@ public class ScheduleFragment extends BaseFragment implements ScheduleFragmentLa
 
 	private ScheduleFragmentLayout fragmentLayout;
 
-//	private CalendarAdapter calendarAdapter;
 	private ScheduleAdapter scheduleAdapter;
 
 	private Handler handler;
@@ -49,21 +48,11 @@ public class ScheduleFragment extends BaseFragment implements ScheduleFragmentLa
 
 	private void initView() {
 
-		fragmentLayout.showCalendar();
-		handler.postDelayed( new Runnable() {
-
-			@Override
-			public void run() {
-
-				fragmentLayout.setDayIndex( CalendarUtil.getDayIndexFrom( DateUtil.parseDate( plan.getStartDate() ) ) );
-			}
-		}, 200 );
+		fragmentLayout.setDayIndex( CalendarUtil.getDayIndexFrom( DateUtil.parseDate( plan.getStartDate() ) ) );
 	}
 
 	private void refreshView() {
 
-		fragmentLayout.setPlanName( plan.getName() );
-//		calendarAdapter.setPlan( plan );
 	}
 
 	@Override
@@ -73,36 +62,15 @@ public class ScheduleFragment extends BaseFragment implements ScheduleFragmentLa
 			scheduleAdapter = new ScheduleAdapter( getActivity().getSupportFragmentManager() );
 
 		scheduleAdapter.setPlanId( plan.getId() );
+		scheduleAdapter.setPlan( plan );
 
 		return scheduleAdapter;
 	}
-
-//	@Override
-//	public CalendarViewAdapter<?, ?> getCalendarViewAdapter() {
-//
-//		if ( null == calendarAdapter )
-//			calendarAdapter = new CalendarAdapter( getActivity() );
-//
-//		return calendarAdapter;
-//	}
-
-//	@Override
-//	public DateProvider getDateProvider() {
-//
-//		return this;
-//	}
 
 	/**
 	 * Click Listener
 	 */
 
-//	@Override
-//	public void onCalendarItemSelected( final CalendarCellData data ) {
-//
-//		int dayIndex = CalendarUtil.getDayIndexFrom( data.getDate() );
-//		if ( null != fragmentLayout )
-//			fragmentLayout.setDayIndex( dayIndex );
-//	}
 	@Override
 	public void onDaySelected( int dayIndex ) {
 
@@ -119,18 +87,6 @@ public class ScheduleFragment extends BaseFragment implements ScheduleFragmentLa
 		else
 			fragmentLayout.setDayCount( "ToUs 와 함께" );
 	}
-
-//	@Override
-//	public void onClickToCalendar() {
-//
-//		fragmentLayout.showCalendar();
-//	}
-//
-//	@Override
-//	public void onClickToMap() {
-//
-//		fragmentLayout.showMap();
-//	}
 
 	@Override
 	public void onDestroyView() {

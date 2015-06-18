@@ -11,7 +11,7 @@ import com.moka.framework.database.BaseTable;
 import com.moka.framework.util.UriBuilder;
 import com.squareup.phrase.Phrase;
 import com.tous.application.database.TousDB;
-import com.tous.application.mvc.model.transport.Spot;
+import com.tous.application.mvc.model.spot.Spot;
 import com.tous.application.util.DateUtil;
 
 import java.util.ArrayList;
@@ -33,14 +33,15 @@ public class SpotTable extends BaseTable<Spot> {
 	public static final String CONTENT = "content";
 	public static final String ADDRESS = "address";
 	public static final String SITE = "site";
-	public static final String START_AT = "start_at";
-	public static final String END_AT = "end_at";
+	public static final String DAY_COUNT = "day_count";
+	public static final String START_TIME = "start_at";
+	public static final String END_TIME = "end_at";
 	public static final String TYPE = "type";
 	public static final String DIRTY_FLAG = "dirty_flag";
 	public static final String CREATED_AT = "created_at";
 	public static final String UPDATED_AT = "updated_at";
 
-	private static final String[] PROJECTION = { ID, PLAN_ID, SERVER_ID, NAME, CONTENT, START_AT, END_AT, ADDRESS, SITE, TYPE, DIRTY_FLAG, CREATED_AT, UPDATED_AT };
+	private static final String[] PROJECTION = { ID, PLAN_ID, SERVER_ID, NAME, CONTENT, DAY_COUNT, START_TIME, END_TIME, ADDRESS, SITE, TYPE, DIRTY_FLAG, CREATED_AT, UPDATED_AT };
 
 	private Context context;
 
@@ -56,14 +57,14 @@ public class SpotTable extends BaseTable<Spot> {
 		final String queryStringFormat = "CREATE TABLE {table_name} ( " +
 				"{id} INTEGER PRIMARY KEY AUTOINCREMENT, {plan_id} TEXT, {server_id} INTEGER, " +
 				"{name} TEXT, {content} TEXT, " +
-				"{start_at} TEXT, {end_at} TEXT, {address} TEXT, {site} TEXT, {type} TEXT, " +
+				"{day_count} TEXT, {start_time} TEXT, {end_time} TEXT, {address} TEXT, {site} TEXT, {type} TEXT, " +
 				"{dirty_flag} INTEGER DEFAULT 1, {created_at} INTEGER, {updated_at} INTEGER);";
 
 		final String queryString = Phrase.from( queryStringFormat )
 				.put( "table_name", TABLE_NAME )
 				.put( "id", ID ).put( "plan_id", PLAN_ID ).put( "server_id", SERVER_ID )
 				.put( "name", NAME ).put( "content", CONTENT )
-				.put( "start_at", START_AT ).put( "end_at", END_AT ).put( "address", ADDRESS ).put( "site", SITE ).put( "type", TYPE )
+				.put( "day_count", DAY_COUNT ).put( "start_time", START_TIME ).put( "end_time", END_TIME ).put( "address", ADDRESS ).put( "site", SITE ).put( "type", TYPE )
 				.put( "dirty_flag", DIRTY_FLAG ).put( "created_at", CREATED_AT ).put( "updated_at", UPDATED_AT )
 				.format().toString();
 
@@ -81,8 +82,9 @@ public class SpotTable extends BaseTable<Spot> {
 		values.put( SERVER_ID, spot.getServerId() );
 		values.put( NAME, spot.getName() );
 		values.put( CONTENT, spot.getContent() );
-		values.put( START_AT, spot.getStartAt() );
-		values.put( END_AT, spot.getEndAt() );
+		values.put( DAY_COUNT, spot.getDayCount() );
+		values.put( START_TIME, spot.getStartTime() );
+		values.put( END_TIME, spot.getEndTime() );
 		values.put( ADDRESS, spot.getAddress() );
 		values.put( SITE, spot.getSite() );
 		values.put( TYPE, spot.getType() );
@@ -166,6 +168,31 @@ public class SpotTable extends BaseTable<Spot> {
 		return spots;
 	}
 
+	public List<Spot> findSpotListOfDayCountAndPlan( int dayCount, long planId ) {
+
+		String[] projection = PROJECTION;
+		String selection = DAY_COUNT + "=? AND " + PLAN_ID + "=?";
+		String[] selectionArgs = { String.valueOf( dayCount ), String.valueOf( planId ) };
+		String sortOrder = null;
+
+		ArrayList<Spot> spots = new ArrayList<>();
+		Cursor cursor = context.getContentResolver()
+				.query( CONTENT_URI, projection, selection, selectionArgs, sortOrder );
+
+		if ( null != cursor ) {
+
+			if ( 0 < cursor.getCount() ) {
+
+				while ( cursor.moveToNext() )
+					spots.add( parseFrom( cursor ) );
+			}
+
+			cursor.close();
+		}
+
+		return spots;
+	}
+
 	public List<Spot> findSpotListOfPlanAndType( long planId, String spotType ) {
 
 		String[] projection = PROJECTION;
@@ -199,8 +226,9 @@ public class SpotTable extends BaseTable<Spot> {
 		spot.setServerId( cursor.getLong( cursor.getColumnIndex( SERVER_ID ) ) );
 		spot.setName( cursor.getString( cursor.getColumnIndex( NAME ) ) );
 		spot.setContent( cursor.getString( cursor.getColumnIndex( CONTENT ) ) );
-		spot.setStartAt( cursor.getLong( cursor.getColumnIndex( START_AT ) ) );
-		spot.setEndAt( cursor.getLong( cursor.getColumnIndex( END_AT ) ) );
+		spot.setDayCount( cursor.getInt( cursor.getColumnIndex( DAY_COUNT ) ) );
+		spot.setStartTime( cursor.getString( cursor.getColumnIndex( START_TIME ) ) );
+		spot.setEndTime( cursor.getString( cursor.getColumnIndex( END_TIME ) ) );
 		spot.setAddress( cursor.getString( cursor.getColumnIndex( ADDRESS ) ) );
 		spot.setSite( cursor.getString( cursor.getColumnIndex( SITE ) ) );
 		spot.setType( cursor.getString( cursor.getColumnIndex( TYPE ) ) );
@@ -221,8 +249,9 @@ public class SpotTable extends BaseTable<Spot> {
 		values.put( SERVER_ID, spot.getServerId() );
 		values.put( NAME, spot.getName() );
 		values.put( CONTENT, spot.getContent() );
-		values.put( START_AT, spot.getStartAt() );
-		values.put( END_AT, spot.getEndAt() );
+		values.put( DAY_COUNT, spot.getDayCount() );
+		values.put( START_TIME, spot.getStartTime() );
+		values.put( END_TIME, spot.getEndTime() );
 		values.put( ADDRESS, spot.getAddress() );
 		values.put( SITE, spot.getSite() );
 		values.put( TYPE, spot.getType() );
