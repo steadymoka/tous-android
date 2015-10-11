@@ -48,4 +48,24 @@
 	<color name="view_calendar_griditem_background_blue_pressed">#FF4B70BD</color>
 	<color name="view_calendar_griditem_background_blue_disabled">#FF4B70BD</color>
 
+	<!-- DrawerListItemBackground -->
+	<color name="drawer_item_background">#FF795548</color>
+	<color name="drawer_item_background_white">#FFFFFFFF</color>
+	<color name="drawer_item_background_tranparent_pressed">#BBBBBBBB</color>
+	<color name="drawer_item_background_current_plan_background">#eeeeee</color>
+	<color name="drawer_item_current_plan_background">#FF4e342e</color>
+
+	<color name="drawer_item_background_gray">#FF424242</color>
+
+	<!--SpotType-->
+	<color name="spot_type_view_spot">#FF80cbc4</color>
+	<color name="spot_type_view_spot_pressed">#FF00796b</color>
+
+	<color name="spot_type_restaurant">#FFffa726</color>
+	<color name="spot_type_restaurant_pressed">#FFf57c00</color>
+
+	<color name="spot_type_lodgment">#FF9575cd</color>
+	<color name="spot_type_lodgment_pressed">#FF512da8</color>
+
+
 </resources>

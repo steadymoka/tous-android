@@ -12,9 +12,11 @@ public class Spot extends DataObject {
 	private String name;
 	private String content;
 	private int dayCount;
-	private String startTime;
-	private String endTime;
+	private float startTime = 0;
+	private float endTime = 0;
 	private String address;
+	private double longitude;
+	private double latitude;
 	private String site;
 	private String type;
 	private int dirtyFlag = 1;
@@ -81,22 +83,22 @@ public class Spot extends DataObject {
 		this.dayCount = dayCount;
 	}
 
-	public String getStartTime() {
+	public float getStartTime() {
 
 		return startTime;
 	}
 
-	public void setStartTime( String startTime ) {
+	public void setStartTime( float startTime ) {
 
 		this.startTime = startTime;
 	}
 
-	public String getEndTime() {
+	public float getEndTime() {
 
 		return endTime;
 	}
 
-	public void setEndTime( String endTime ) {
+	public void setEndTime( float endTime ) {
 
 		this.endTime = endTime;
 	}
@@ -109,6 +111,26 @@ public class Spot extends DataObject {
 	public void setAddress( String address ) {
 
 		this.address = address;
+	}
+
+	public double getLongitude() {
+
+		return longitude;
+	}
+
+	public void setLongitude( double longitude ) {
+
+		this.longitude = longitude;
+	}
+
+	public double getLatitude() {
+
+		return latitude;
+	}
+
+	public void setLatitude( double latitude ) {
+
+		this.latitude = latitude;
 	}
 
 	public String getSite() {

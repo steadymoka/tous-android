@@ -29,8 +29,13 @@ public class DetailPlanActivity extends BaseActivity implements DetailPlanActivi
 		long planId = getIntent().getLongExtra( KEY_PLAN_ID, -1 );
 		loadDataFromDB( planId );
 
+		DetailPlanFragment detailPlanFragment = DetailPlanFragment
+				.newInstance()
+				.setPlan( plan )
+				.setDetailPlanActivityListener( activityLayout );
+
 		getSupportFragmentManager().beginTransaction()
-				.replace( activityLayout.getFrameContainerId(), DetailPlanFragment.newInstance().setPlan( plan ) )
+				.replace( activityLayout.getFrameContainerId(), detailPlanFragment )
 				.commit();
 
 		activityLayout.setActionBarTitle( plan.getName() );

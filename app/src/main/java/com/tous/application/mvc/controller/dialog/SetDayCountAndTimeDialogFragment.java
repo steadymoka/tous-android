@@ -13,6 +13,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.moka.framework.controller.BaseDialogFragment;
@@ -30,10 +32,12 @@ public class SetDayCountAndTimeDialogFragment extends BaseDialogFragment impleme
 
 	private ObservableRecyclerView observableRecyclerView_setTime;
 	private View rootView;
+	private LinearLayout linearLayout_title;
+	private TextView textView_title;
 	private Button button_save;
 	private TextView textView_dayCount;
-	private TextView textView_preDayCount;
-	private TextView textView_nextDayCount;
+	private ImageView textView_preDayCount;
+	private ImageView textView_nextDayCount;
 
 	private SetTimeRecyclerViewAdapter setTimeRecyclerViewAdapter;
 	private OnDayCountSelectedListener onDaySavedListener;
@@ -63,13 +67,19 @@ public class SetDayCountAndTimeDialogFragment extends BaseDialogFragment impleme
 
 	private void initView() {
 
+		linearLayout_title = (LinearLayout) rootView.findViewById( R.id.linearLayout_title );
+
+		textView_title = (TextView) rootView.findViewById( R.id.textView_title );
+		textView_title.setText( "\'" + spot.getName() + "\'" );
+		textView_title.setSelected( true );
+
 		textView_dayCount = (TextView) rootView.findViewById( R.id.textView_dayCount );
 		if ( 0 != spot.getDayCount() )
 			textView_dayCount.setText( spot.getDayCount() + "일차" );
 
-		textView_preDayCount = (TextView) rootView.findViewById( R.id.textView_preDayCount );
+		textView_preDayCount = (ImageView) rootView.findViewById( R.id.textView_preDayCount );
 		textView_preDayCount.setOnClickListener( this );
-		textView_nextDayCount = (TextView) rootView.findViewById( R.id.textView_nextDayCount );
+		textView_nextDayCount = (ImageView) rootView.findViewById( R.id.textView_nextDayCount );
 		textView_nextDayCount.setOnClickListener( this );
 
 		observableRecyclerView_setTime = (ObservableRecyclerView) rootView.findViewById( R.id.observableRecyclerView_setTime );
@@ -80,6 +90,27 @@ public class SetDayCountAndTimeDialogFragment extends BaseDialogFragment impleme
 
 		button_save = (Button) rootView.findViewById( R.id.button_save );
 		button_save.setOnClickListener( this );
+
+		setTitleBackground();
+	}
+
+	private void setTitleBackground() {
+
+		if ( spot.getType().equals( "명소" ) ) {
+
+			linearLayout_title.setBackgroundColor( getResources().getColor( R.color.spot_type_view_spot ) );
+			button_save.setBackgroundColor( getResources().getColor( R.color.spot_type_view_spot ) );
+		}
+		else if ( spot.getType().equals( "맛집" ) ) {
+
+			linearLayout_title.setBackgroundColor( getResources().getColor( R.color.spot_type_restaurant ) );
+			button_save.setBackgroundColor( getResources().getColor( R.color.spot_type_restaurant ) );
+		}
+		else {
+
+			linearLayout_title.setBackgroundColor( getResources().getColor( R.color.spot_type_lodgment ) );
+			button_save.setBackgroundColor( getResources().getColor( R.color.spot_type_lodgment ) );
+		}
 	}
 
 	private RecyclerView.Adapter getRecyclerAdapter() {
@@ -180,8 +211,8 @@ public class SetDayCountAndTimeDialogFragment extends BaseDialogFragment impleme
 	private void saveSpot() {
 
 		spot.setDayCount( getCurrentDayCount() );
-		spot.setStartTime( timeOfHourList.get( 0 ).toString() + ":00" );
-		spot.setEndTime( timeOfHourList.get( timeOfHourList.size() - 1 ).toString() + ":00" );
+		spot.setStartTime( timeOfHourList.get( 0 ) );
+		spot.setEndTime( timeOfHourList.get( timeOfHourList.size() - 1 ) );
 		SpotTable.from( getActivity() ).update( spot );
 	}
 

@@ -44,6 +44,7 @@ public class SetTimeItemView extends RecyclerItemView<SetTimeItemData> implement
 
 		textView_setTime_time = (TextView) findViewById( R.id.textView_setTime_time );
 		textView_setTime_spot_name = (TextView) findViewById( R.id.textView_setTime_spot_name );
+		textView_setTime_spot_name.setSelected( true );
 
 		horizontal_set_time_item_divider = findViewById( R.id.horizontal_set_time_item_divider );
 		horizontal_set_time_item = findViewById( R.id.horizontal_set_time_item );
@@ -61,10 +62,10 @@ public class SetTimeItemView extends RecyclerItemView<SetTimeItemData> implement
 
 		for ( Spot spot : spotList ) {
 
-			if ( null != spot && null != spot.getStartTime() && null != spot.getEndTime() ) {
+			if ( null != spot && 0 != spot.getStartTime() && 0 != spot.getEndTime() ) {
 
-				int startTimeOfHour = Integer.valueOf( spot.getStartTime().split( ":" )[0] );
-				int endTimeOfHour = Integer.valueOf( spot.getEndTime().split( ":" )[0] );
+				int startTimeOfHour = (int) spot.getStartTime();
+				int endTimeOfHour = (int) spot.getEndTime();
 				int timeOfHour = data.getTimeOfHour();
 
 				if ( timeOfHour >= startTimeOfHour && timeOfHour <= endTimeOfHour )
@@ -74,8 +75,8 @@ public class SetTimeItemView extends RecyclerItemView<SetTimeItemData> implement
 
 		if ( null != selectedSpot ) {
 
-			int startTimeOfHour = Integer.valueOf( selectedSpot.getStartTime().split( ":" )[0] );
-			int endTimeOfHour = Integer.valueOf( selectedSpot.getEndTime().split( ":" )[0] );
+			int startTimeOfHour = (int) selectedSpot.getStartTime();
+			int endTimeOfHour = (int) selectedSpot.getEndTime();
 			int timeOfHour = data.getTimeOfHour();
 
 			if ( timeOfHour == startTimeOfHour ) {
@@ -90,8 +91,10 @@ public class SetTimeItemView extends RecyclerItemView<SetTimeItemData> implement
 
 				if ( selectedSpot.getType().equals( DetailPlanFragment.TYPE_VIEW_SPOT ) )
 					linearLayout_setTime_container.setBackgroundColor( 0xFFe6ee9c );
-				else
+				else if ( selectedSpot.getType().equals( DetailPlanFragment.TYPE_RESTAURANT ) )
 					linearLayout_setTime_container.setBackgroundColor( 0xFFa5d6a7 );
+				else
+					linearLayout_setTime_container.setBackgroundColor( 0xFF9575cd );
 
 				horizontal_set_time_item.setVisibility( View.GONE );
 				isAlreadySelected = true;

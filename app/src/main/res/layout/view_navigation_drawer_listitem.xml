@@ -30,25 +30,25 @@
 			android:id="@+id/textView_detailTitle"
 			android:layout_width="0dp"
 			android:layout_height="32dp"
+			android:layout_marginLeft="12dp"
 			android:layout_weight="1"
 			android:gravity="center_vertical"
 			android:singleLine="true"
-			android:textColor="#FF808080"
-			android:textSize="16dp"
-			android:text="ddd"/>
+			android:textColor="#FFFFFF"
+			android:textSize="14dp"/>
 
 	</LinearLayout>
 
 	<View
 		android:id="@+id/horizontalDivider_top"
+		style="@style/HorizontalDivider"
 		android:layout_gravity="top"
-		android:visibility="gone"
-		style="@style/HorizontalDivider"/>
+		android:visibility="gone"/>
 
 	<View
 		android:id="@+id/horizontalDivider_bottom"
+		style="@style/HorizontalDivider"
 		android:layout_gravity="bottom"
-		android:visibility="gone"
-		style="@style/HorizontalDivider"/>
+		android:visibility="gone"/>
 
 </FrameLayout>

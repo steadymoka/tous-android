@@ -6,11 +6,13 @@ import com.moka.framework.view.LayoutListener;
 
 public interface SpotCreationFragmentLayoutListener extends LayoutListener {
 
-	void onSavePlan();
+	void onSaveSpot();
 
 	void onSearchSpotInWeb();
 
 	void onSearchSpotAddressInMap();
+
+	void onClickImage();
 
 //	void onClickToSpot();
 //

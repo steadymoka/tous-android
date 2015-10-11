@@ -14,6 +14,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,13 +27,14 @@ import com.tous.application.R;
 public class WebViewFragmentLayout extends FragmentLayout<BaseFragment, WebViewFragmentLayoutListener> implements OnClickListener {
 
 	private WebView webView;
+	private LinearLayout linearLayout_web_view_title;
 	private FrameLayout frameLayout_webViewContainer;
 
 	private ProgressBar progressBar_progress;
 
 	private ImageView imageView_refresh;
 	private ProgressBar progressBar_loading;
-	private TextView textView_share;
+	private TextView textView_copy;
 
 	public WebViewFragmentLayout( BaseFragment fragment, WebViewFragmentLayoutListener layoutListener, LayoutInflater inflater, ViewGroup container ) {
 
@@ -54,6 +56,9 @@ public class WebViewFragmentLayout extends FragmentLayout<BaseFragment, WebViewF
 		webView.setWebChromeClient( getLayoutListener().getWebChromeClient() );
 		initWebSettings( webView.getSettings() );
 
+		linearLayout_web_view_title = (LinearLayout) findViewById( R.id.linearLayout_web_view_title );
+		linearLayout_web_view_title.setOnClickListener( this );
+
 		frameLayout_webViewContainer = (FrameLayout) findViewById( R.id.frameLayout_webViewContainer );
 		frameLayout_webViewContainer.setLayoutParams( new RelativeLayout.LayoutParams( -1, -1 ) );
 		frameLayout_webViewContainer.addView( webView );
@@ -65,8 +70,8 @@ public class WebViewFragmentLayout extends FragmentLayout<BaseFragment, WebViewF
 
 		progressBar_loading = (ProgressBar) findViewById( R.id.progressBar_loading );
 
-		textView_share = (TextView) findViewById( R.id.textView_share );
-		textView_share.setOnClickListener( this );
+		textView_copy = (TextView) findViewById( R.id.textView_copy );
+		textView_copy.setOnClickListener( this );
 
 		updateActionView();
 	}
@@ -95,14 +100,20 @@ public class WebViewFragmentLayout extends FragmentLayout<BaseFragment, WebViewF
 
 		switch ( view.getId() ) {
 
+			case R.id.linearLayout_web_view_title:
+
+				getLayoutListener().onClose();
+				break;
+
 			case R.id.imageView_refresh:
 
 				getLayoutListener().onRefresh();
 				break;
 
-			case R.id.textView_share:
+			case R.id.textView_copy:
 
-				getLayoutListener().onShare();
+				getLayoutListener().onCopyLink( webView.getUrl() );
+//				getLayoutListener().onCopy();
 				break;
 		}
 
@@ -136,7 +147,7 @@ public class WebViewFragmentLayout extends FragmentLayout<BaseFragment, WebViewF
 
 			case R.id.copy_link:
 
-				getLayoutListener().onCopyLink();
+				getLayoutListener().onCopyLink( webView.getUrl() );
 				return true;
 
 			default:
@@ -197,8 +208,8 @@ public class WebViewFragmentLayout extends FragmentLayout<BaseFragment, WebViewF
 
 	public void openContextMenu() {
 
-		getFragment().registerForContextMenu( getRootView() );
-		getActivity().openContextMenu( getRootView() );
+//		getFragment().registerForContextMenu( getRootView() );
+//		getActivity().openContextMenu( getRootView() );
 	}
 
 	public void destroyWebView() {

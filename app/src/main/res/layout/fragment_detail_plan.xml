@@ -11,7 +11,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="42dp"
 		android:background="@color/base_app_color_red"
-		app:dividerColor="@color/base_app_color_red"
+		app:dividerColor="@color/transparency"
 		app:dividerPadding2="11dp"
 		app:indicatorColor="@color/white"
 		app:indicatorHeight="2dp"

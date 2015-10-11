@@ -24,4 +24,9 @@ public class PlanListItemData extends ItemData {
 		return plan.getId();
 	}
 
+	public Plan getPlan() {
+
+		return plan;
+	}
+
 }

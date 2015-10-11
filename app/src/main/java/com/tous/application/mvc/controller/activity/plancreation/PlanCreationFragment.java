@@ -32,6 +32,8 @@ public class PlanCreationFragment extends BaseFragment implements PlanCreationFr
 	private long planId;
 	private boolean editMode = false;
 
+	private Plan plan;
+
 	private GregorianCalendar startDateCalendar;
 	private GregorianCalendar endDateCalendar;
 	private SimpleDateFormat dateFormat;
@@ -57,7 +59,7 @@ public class PlanCreationFragment extends BaseFragment implements PlanCreationFr
 
 	private void setPlanForEdit( long planId ) {
 
-		Plan plan = PlanTable.from( getActivity() ).find( planId );
+		plan = PlanTable.from( getActivity() ).find( planId );
 
 		fragmentLayout.setPlanName( plan.getName() );
 		fragmentLayout.setPlanContent( plan.getContent() );
@@ -103,7 +105,10 @@ public class PlanCreationFragment extends BaseFragment implements PlanCreationFr
 
 		if ( isValidPlan( plan ) ) {
 
-			PlanTable.from( getActivity() ).insert( plan );
+			if ( !editMode )
+				PlanTable.from( getActivity() ).insert( plan );
+			else
+				PlanTable.from( getActivity() ).update( plan );
 			OttoUtil.getInstance().post( new OnRefreshViewEvent() );
 			getActivity().finish();
 		}
@@ -111,7 +116,8 @@ public class PlanCreationFragment extends BaseFragment implements PlanCreationFr
 
 	private Plan getPlan() {
 
-		Plan plan = new Plan();
+		if ( null == plan )
+			plan = new Plan();
 
 		plan.setName( fragmentLayout.getPlanName() );
 		plan.setContent( fragmentLayout.getPlanContent() );

@@ -2,42 +2,45 @@
 <LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:layout_width="match_parent"
+	android:layout_width="260dp"
 	android:layout_height="match_parent"
 	android:orientation="horizontal">
 
 	<LinearLayout
 		android:id="@+id/linearLayout_profile"
-		android:layout_width="0dp"
-		android:layout_height="200dp"
-		android:gravity="center"
-		android:orientation="vertical"
-		android:layout_weight="2">
+		android:layout_width="match_parent"
+		android:layout_height="160dp"
+		android:background="@drawable/ic_default_image_02"
+		android:gravity="bottom"
+		android:orientation="vertical">
 
-		<de.hdodenhof.circleimageview.CircleImageView
-			android:id="@+id/circleiamgeView_profileImage"
-			android:layout_width="100dp"
-			android:layout_height="100dp"
-			app:border_color="#FFE6E6E6"
-			app:border_width="1dp"/>
+		<!--<de.hdodenhof.circleimageview.CircleImageView-->
+		<!--android:id="@+id/circleiamgeView_profileImage"-->
+		<!--android:layout_width="100dp"-->
+		<!--android:layout_height="100dp"-->
+		<!--app:border_color="#FFE6E6E6"-->
+		<!--app:border_width="1dp"/>-->
 
 		<TextView
 			android:id="@+id/textView_userName"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:gravity="center"/>
+			android:layout_marginLeft="24dp"
+			android:gravity="left"
+			android:textColor="@color/white"
+			android:textStyle="bold"
+			android:textSize="24sp"/>
 
 		<TextView
 			android:id="@+id/textView_userEmail"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:gravity="center"/>
+			android:layout_marginLeft="24dp"
+			android:layout_marginBottom="24dp"
+			android:gravity="left"
+			android:textColor="@color/white"
+			android:textSize="16sp"/>
 
 	</LinearLayout>
-
-	<TextView
-		android:layout_width="0dp"
-		android:layout_height="match_parent"
-		android:layout_weight="1"/>
 
 </LinearLayout>

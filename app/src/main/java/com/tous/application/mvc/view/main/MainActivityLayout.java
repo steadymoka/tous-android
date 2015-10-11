@@ -9,14 +9,13 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.FrameLayout;
 
 import com.moka.framework.support.toolbar.ToolbarLayout;
 import com.moka.framework.view.SupportActivityLayout;
-import com.nineoldandroids.view.ViewHelper;
 import com.tous.application.R;
 import com.tous.application.mvc.controller.activity.main.MainActivity;
 import com.tous.application.mvc.controller.activity.main.drawer.NavigationDrawerFragment;
+import com.tous.application.mvc.model.plan.Plan;
 
 
 public class MainActivityLayout extends SupportActivityLayout<MainActivity, MainActivityLayoutListener> implements MainActivityListener {
@@ -50,6 +49,7 @@ public class MainActivityLayout extends SupportActivityLayout<MainActivity, Main
 
 		toolbarLayout = (ToolbarLayout) findViewById( R.id.toolbarLayout );
 		toolbarLayout.setAlpha( 1 );
+		getActivity().setTitle( "Tous" );
 
 		drawerLayout = (DrawerLayout) findViewById( R.id.drawer_layout );
 		drawerToggle = new ContentDrawerToggle( getActivity(), drawerLayout, toolbarLayout.getToolbar(), 0, 0 );
@@ -80,16 +80,6 @@ public class MainActivityLayout extends SupportActivityLayout<MainActivity, Main
 		return statusBarHeight;
 	}
 
-	public void setTitle( String name ) {
-
-		actionBar.setTitle( name );
-	}
-
-	public int getFragmentContainerID() {
-
-		return R.id.frameLayout_container_main;
-	}
-
 	@Override
 	public void setExpandToolbar( boolean expandToolbar ) {
 
@@ -100,6 +90,21 @@ public class MainActivityLayout extends SupportActivityLayout<MainActivity, Main
 	public void setAlpha( float alpha ) {
 
 		toolbarLayout.setAlpha( alpha );
+	}
+
+	public void setTitle( String name ) {
+
+		actionBar.setTitle( name );
+	}
+
+	public int getFragmentContainerID() {
+
+		return R.id.frameLayout_container_main;
+	}
+
+	public void setPlanToNavigationDrawerFragment( Plan plan ) {
+
+		navigationDrawerFragment.setPlan( plan );
 	}
 
 	private static class ContentDrawerToggle extends ActionBarDrawerToggle {
@@ -125,7 +130,7 @@ public class MainActivityLayout extends SupportActivityLayout<MainActivity, Main
 //				ViewHelper.setPivotX( drawerView, drawerView.getWidth() );
 //				ViewHelper.setRotationY( drawerView, -67 * ( 1 - slideOffset ) );
 
-				ViewHelper.setTranslationX( contentView, drawerView.getWidth() * slideOffset );
+//				ViewHelper.setTranslationX( contentView, drawerView.getWidth() * slideOffset );
 			}
 
 			super.onDrawerSlide( drawerView, slideOffset );

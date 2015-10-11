@@ -25,10 +25,8 @@ public class SpotDetailActivity extends BaseActivity implements SpotDetailActivi
 		long spotId = getIntent().getLongExtra( KEY_SPOT_ID, -1 );
 
 		getSupportFragmentManager().beginTransaction()
-				.replace( activityLayout.getFrameContainerId(), SpotDetailFragment.newInstance().setSpotId( spotId ) )
+				.replace( activityLayout.getFrameContainerId(), SpotDetailFragment.newInstance().setSpotId( spotId ).setListener( activityLayout ) )
 				.commit();
-
-		activityLayout.setTitle( SpotTable.from( this ).find( spotId ).getName() );
 	}
 
 }

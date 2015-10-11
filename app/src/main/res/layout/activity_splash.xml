@@ -4,7 +4,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:background="#FFFFFFFF"
-	android:scaleType="centerInside"
-	android:src="@drawable/ic_logo_splash">
+	android:scaleType="centerCrop"
+	android:src="@drawable/image_splash">
 
 </ImageView>

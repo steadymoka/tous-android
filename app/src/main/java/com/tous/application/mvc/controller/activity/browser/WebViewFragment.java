@@ -24,6 +24,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.moka.framework.controller.BaseFragment;
+import com.moka.framework.util.OttoUtil;
+import com.tous.application.event.OnRefreshViewEvent;
+import com.tous.application.event.OnWebUrlCopyEvent;
 import com.tous.application.mvc.view.browser.WebViewFragmentLayout;
 import com.tous.application.mvc.view.browser.WebViewFragmentLayoutListener;
 
@@ -36,7 +39,7 @@ public class WebViewFragment extends BaseFragment implements WebViewFragmentLayo
 
 	private String mUrl = null;
 
-	@SuppressLint("InlinedApi")
+	@SuppressLint( "InlinedApi" )
 	@Override
 	public void onCreate( Bundle savedInstanceState ) {
 
@@ -51,7 +54,7 @@ public class WebViewFragment extends BaseFragment implements WebViewFragmentLayo
 			getActivity().getWindow().addFlags( WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED );
 	}
 
-	@SuppressLint({ "SetJavaScriptEnabled", "NewApi" })
+	@SuppressLint( { "SetJavaScriptEnabled", "NewApi" } )
 	public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
 
 		fragmentLayout = new WebViewFragmentLayout( this, this, inflater, container );
@@ -69,19 +72,7 @@ public class WebViewFragment extends BaseFragment implements WebViewFragmentLayo
 	@Override
 	public WebChromeClient getWebChromeClient() {
 
-		return new TodaitWebChromeClient();
-	}
-
-	@Override
-	public void onGoBack() {
-
-		fragmentLayout.goBack();
-	}
-
-	@Override
-	public void onGoForward() {
-
-		fragmentLayout.goForward();
+		return new TousWebChromeClient();
 	}
 
 	@Override
@@ -91,7 +82,7 @@ public class WebViewFragment extends BaseFragment implements WebViewFragmentLayo
 	}
 
 	@Override
-	public void onShare() {
+	public void onCopy() {
 
 		fragmentLayout.openContextMenu();
 	}
@@ -102,24 +93,33 @@ public class WebViewFragment extends BaseFragment implements WebViewFragmentLayo
 		try {
 
 			startActivity( new Intent( Intent.ACTION_VIEW, Uri.parse( this.mUrl ) ) );
-		} catch ( ActivityNotFoundException localActivityNotFoundException ) {
+		}
+		catch ( ActivityNotFoundException localActivityNotFoundException ) {
 
 			fragmentLayout.showToast( "ddddd" );
 		}
 	}
 
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	@SuppressLint("NewApi")
-	@SuppressWarnings("deprecation")
+	@TargetApi( Build.VERSION_CODES.HONEYCOMB )
+	@SuppressLint( "NewApi" )
+	@SuppressWarnings( "deprecation" )
 	@Override
-	public void onCopyLink() {
+	public void onCopyLink( String url ) {
 
 		if ( Build.VERSION_CODES.HONEYCOMB > Build.VERSION.SDK_INT )
-			( (android.text.ClipboardManager) getActivity().getSystemService( Context.CLIPBOARD_SERVICE ) ).setText( this.mUrl );
+			( (android.text.ClipboardManager) getActivity().getSystemService( Context.CLIPBOARD_SERVICE ) ).setText( url );
 		else
-			( (ClipboardManager) getActivity().getSystemService( Context.CLIPBOARD_SERVICE ) ).setPrimaryClip( ClipData.newPlainText( "Todait", this.mUrl ) );
+			( (ClipboardManager) getActivity().getSystemService( Context.CLIPBOARD_SERVICE ) ).setPrimaryClip( ClipData.newPlainText( "Tous", url ) );
 
-		fragmentLayout.showToast( "ddddd" );
+		OttoUtil.getInstance().postInMainThread( new OnWebUrlCopyEvent( url ) );
+
+		fragmentLayout.showToast( "링크가 저장되었습니다" );
+	}
+
+	@Override
+	public void onClose() {
+
+		getActivity().finish();
 	}
 
 	@Override
@@ -129,13 +129,20 @@ public class WebViewFragment extends BaseFragment implements WebViewFragmentLayo
 		fragmentLayout.onCreateContextMenu( contextMenu, view, contextMenuInfo );
 	}
 
-	@SuppressLint({ "NewApi" })
+	@SuppressLint( { "NewApi" } )
 	public boolean onContextItemSelected( MenuItem menuItem ) {
 
 		if ( fragmentLayout.onContextItemSelected( menuItem ) )
 			return true;
 		else
 			return super.onContextItemSelected( menuItem );
+	}
+
+	@Override
+	public boolean onBackPressed() {
+
+		fragmentLayout.goBack();
+		return false;
 	}
 
 	@Override
@@ -148,12 +155,13 @@ public class WebViewFragment extends BaseFragment implements WebViewFragmentLayo
 	public void onDestroyView() {
 
 		super.onDestroyView();
+		OttoUtil.getInstance().postInMainThread( new OnRefreshViewEvent() );
 		fragmentLayout.destroyWebView();
 	}
 
-	private class TodaitWebChromeClient extends WebChromeClient {
+	private class TousWebChromeClient extends WebChromeClient {
 
-		public TodaitWebChromeClient() {
+		public TousWebChromeClient() {
 
 		}
 
@@ -193,11 +201,13 @@ public class WebViewFragment extends BaseFragment implements WebViewFragmentLayo
 				try {
 
 					WebViewFragment.this.startActivity( intent );
-				} catch ( ActivityNotFoundException localActivityNotFoundException ) {
+				}
+				catch ( ActivityNotFoundException localActivityNotFoundException ) {
 
 					// WebViewFragment.this.mMarketTv.setVisibility( View.GONE );
 				}
-			} else {
+			}
+			else {
 
 				fragmentLayout.finishLoading();
 			}

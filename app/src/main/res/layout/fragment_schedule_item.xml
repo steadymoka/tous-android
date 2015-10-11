@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:orientation="vertical">
+	android:layout_height="match_parent">
 
 	<com.moka.framework.widget.scrollobservableview.ObservableRecyclerView
 		android:id="@+id/observableRecyclerView_schedule"
-		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:layout_margin="8dp"
-		android:background="@color/black"/>
+		android:background="@drawable/shape_fragment_schedule_view_background"/>
 
-</LinearLayout>
+	<TextView
+		android:id="@+id/textView_empty"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:gravity="center"
+		android:text="등록된 일정이 없습니다.\n\n새 일정을 추가하시려면\n상단의 탭을 이용해 보세요!"
+		android:textColor="#FF666666"/>
+
+</RelativeLayout>

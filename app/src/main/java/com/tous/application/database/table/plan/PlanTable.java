@@ -133,6 +133,31 @@ public class PlanTable extends BaseTable<Plan> {
 		return plans;
 	}
 
+	public List<Plan> findAllOfUser( long userId ) {
+
+		String[] projection = PROJECTION;
+		String selection = USER_ID + "=?";
+		String[] selectionArgs = { String.valueOf( userId ) };
+		String sortOrder = null;
+
+		ArrayList<Plan> plans = new ArrayList<>();
+		Cursor cursor = context.getContentResolver()
+				.query( CONTENT_URI, projection, selection, selectionArgs, sortOrder );
+
+		if ( null != cursor ) {
+
+			if ( 0 < cursor.getCount() ) {
+
+				while ( cursor.moveToNext() )
+					plans.add( parseFrom( cursor ) );
+			}
+
+			cursor.close();
+		}
+
+		return plans;
+	}
+
 	private static Plan parseFrom( Cursor cursor ) {
 
 		Plan plan = new Plan();

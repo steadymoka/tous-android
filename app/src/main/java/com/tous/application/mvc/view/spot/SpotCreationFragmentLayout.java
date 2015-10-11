@@ -7,24 +7,32 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.moka.framework.util.ScreenUtil;
 import com.moka.framework.view.FragmentLayout;
+import com.squareup.picasso.Picasso;
 import com.tous.application.R;
 import com.tous.application.mvc.controller.activity.spot.SpotCreationFragment;
+
+import java.io.File;
 
 
 public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragment, SpotCreationFragmentLayoutListener> implements View.OnClickListener {
 
-//	private TextView textView_spot;
-//	private TextView textView_restaurant;
+	private ImageView imageView_addImage;
 
+	private TextView textView_spotType;
 	private EditText editText_spot_name;
+
+	private LinearLayout linearLayout_search_spot_map;
 	private TextView textView_search_spot_map;
-	private TextView textView_search_spot_wab;
+
+	private LinearLayout linearLayout_search_spot_web;
+	private TextView textView_search_spot_web;
 	private EditText editText_content;
 
 	public SpotCreationFragmentLayout( SpotCreationFragment fragment, SpotCreationFragmentLayoutListener layoutListener, LayoutInflater inflater, ViewGroup container ) {
@@ -41,20 +49,21 @@ public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragm
 	@Override
 	protected void onLayoutInflated() {
 
-//		textView_spot = (TextView) findViewById( R.id.textView_spot );
-//		textView_spot.setOnClickListener( this );
-//
-//		textView_restaurant = (TextView) findViewById( R.id.textView_restaurant );
-//		textView_restaurant.setOnClickListener( this );
-//		onClickToSpot();
+		textView_spotType = (TextView) findViewById( R.id.textView_spotType );
+
+		imageView_addImage = (ImageView) findViewById( R.id.imageView_addImage );
+		imageView_addImage.setOnClickListener( this );
 
 		editText_spot_name = (EditText) findViewById( R.id.editText_spot_name );
 
-		textView_search_spot_map = (TextView) findViewById( R.id.textView_search_spot_map );
-		textView_search_spot_map.setOnClickListener( this );
+		linearLayout_search_spot_map = (LinearLayout) findViewById( R.id.linearLayout_search_spot_map );
+		linearLayout_search_spot_map.setOnClickListener( this );
 
-		textView_search_spot_wab = (TextView) findViewById( R.id.textView_search_spot_web );
-		textView_search_spot_wab.setOnClickListener( this );
+		linearLayout_search_spot_web = (LinearLayout) findViewById( R.id.linearLayout_search_spot_web );
+		linearLayout_search_spot_web.setOnClickListener( this );
+
+		textView_search_spot_map = (TextView) findViewById( R.id.textView_search_spot_map );
+		textView_search_spot_web = (TextView) findViewById( R.id.textView_search_spot_web );
 
 		editText_content = (EditText) findViewById( R.id.editText_content );
 	}
@@ -72,7 +81,7 @@ public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragm
 
 			case R.id.menuItem_save:
 
-				getLayoutListener().onSavePlan();
+				getLayoutListener().onSaveSpot();
 				return true;
 		}
 
@@ -84,22 +93,17 @@ public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragm
 
 		switch ( view.getId() ) {
 
-//			case R.id.textView_spot:
-//
-//				getLayoutListener().onClickToSpot();
-//				break;
-//
-//			case R.id.textView_restaurant:
-//
-//				getLayoutListener().onClickToRestaurant();
-//				break;
+			case R.id.imageView_addImage:
 
-			case R.id.textView_search_spot_map:
+				getLayoutListener().onClickImage();
+				break;
+
+			case R.id.linearLayout_search_spot_map:
 
 				getLayoutListener().onSearchSpotAddressInMap();
 				break;
 
-			case R.id.textView_search_spot_web:
+			case R.id.linearLayout_search_spot_web:
 
 				getLayoutListener().onSearchSpotInWeb();
 				break;
@@ -111,9 +115,29 @@ public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragm
 		getActivity().setTitle( spotType );
 	}
 
+	public void setSpotTypeTextColorViewSpot() {
+
+		textView_spotType.setTextColor( 0xFF80cbc4 );
+	}
+
+	public void setSpotTypeTextColorRestaurant() {
+
+		textView_spotType.setTextColor( 0xFFffa726 );
+	}
+
+	public void setSpotTypeTextColorLogment() {
+
+		textView_spotType.setTextColor( 0xFF512da8 );
+	}
+
 	public void setErrorSpotName() {
 
 		editText_spot_name.setError( getActivity().getString( R.string.fragment_spot_creation_error_spot_name ) );
+	}
+
+	public void setSpotName( String spotName ) {
+
+		editText_spot_name.setText( spotName );
 	}
 
 	public String getSpotName() {
@@ -126,16 +150,55 @@ public class SpotCreationFragmentLayout extends FragmentLayout<SpotCreationFragm
 		return editText_content.getText().toString();
 	}
 
-//	public void onClickToSpot() {
-//
-//		textView_spot.setBackgroundColor( 0xFFffcdd2 );
-//		textView_restaurant.setBackgroundColor( 0xFFF4F4F4 );
-//	}
-//
-//	public void onClickToRestaurant() {
-//
-//		textView_spot.setBackgroundColor( 0xFFF4F4F4 );
-//		textView_restaurant.setBackgroundColor( 0xFFffcdd2 );
-//	}
+	public void setContent( String content ) {
+
+		editText_content.setText( content );
+	}
+
+	public void setTextView_search_spot_map( String address ) {
+
+		textView_search_spot_map.setText( address );
+	}
+
+	public String getTextView_search_spot_map() {
+
+		return textView_search_spot_map.getText().toString();
+	}
+
+	public String getSearchSpotWebUrl() {
+
+		return textView_search_spot_web.getText().toString();
+	}
+
+	public void setSearchSpotWebUrl( String copyUrl ) {
+
+		textView_search_spot_web.setText( copyUrl );
+	}
+
+	public void setImage( String imagePath ) {
+
+		int defaultImage = R.drawable.image_add_image;
+
+		int headerWidth = ScreenUtil.getWidthPixels( getContext() );
+		int headerHeight = ScreenUtil.getHeightPixels( getContext() );
+//		int headerHeight = (int) ( headerWidth / 1.5f );
+
+		if ( null != imagePath ) {
+
+			Picasso.with( getContext() )
+					.load( new File( imagePath ) )
+					.centerCrop()
+					.resize( headerWidth, (int) ( headerWidth / 1.7 ) )
+					.into( imageView_addImage );
+		}
+		else {
+
+			Picasso.with( getContext() )
+					.load( defaultImage )
+					.centerCrop()
+					.resize( headerWidth, (int) ( headerWidth / 1.7 ) )
+					.into( imageView_addImage );
+		}
+	}
 
 }

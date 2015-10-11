@@ -138,26 +138,49 @@ public class CalendarItemView extends CalendarCellView<CalendarItemData> impleme
 
 			if ( data.isToday() )
 				textColor = SELECTED_TODAY_COLOR;
+			else if ( data.isPlanningDay() )
+				textColor = SELECTED_PLANNING_DAY_COLOR;
 			else
 				textColor = SELECTED_COLOR;
 		}
 		else {
 
-			if ( data.isCurrentMonth() ) {
-
-				if ( data.isToday() )
-					textColor = UNSELECTED_TODAY_COLOR;
-				else
-					textColor = UNSELECTED_COLOR;
-			}
-			else {
-
-				if ( data.isToday() )
-					textColor = OTHER_MONTH_TODAY_COLOR;
-				else
-					textColor = OTHER_MONTH_COLOR;
-			}
+			if ( data.isToday() )
+				textColor = UNSELECTED_TODAY_COLOR;
+			else if ( data.isPlanningDay() )
+				textColor = UNSELECTED_PLANNING_DAY_COLOR;
+			else
+				textColor = UNSELECTED_COLOR;
 		}
+
+		dateTextPaint.setColor( textColor );
+
+//		int textColor;
+//
+//		if ( data.isSelected() ) {
+//
+//			if ( data.isToday() )
+//				textColor = SELECTED_TODAY_COLOR;
+//			else
+//				textColor = SELECTED_COLOR;
+//		}
+//		else {
+//
+//			if ( data.isCurrentMonth() ) {
+//
+//				if ( data.isToday() )
+//					textColor = UNSELECTED_TODAY_COLOR;
+//				else
+//					textColor = UNSELECTED_COLOR;
+//			}
+//			else {
+//
+//				if ( data.isToday() )
+//					textColor = OTHER_MONTH_TODAY_COLOR;
+//				else
+//					textColor = OTHER_MONTH_COLOR;
+//			}
+//		}
 
 		dateTextPaint.setColor( textColor );
 	}

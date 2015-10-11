@@ -23,7 +23,7 @@
 	<fragment
 		android:id="@+id/navigation_drawer"
 		android:name="com.tous.application.mvc.controller.activity.main.drawer.NavigationDrawerFragment"
-		android:layout_width="240dp"
+		android:layout_width="260dp"
 		android:layout_height="match_parent"
 		android:layout_gravity="left"
 		tools:layout="@layout/fragment_navigation_drawer"/>

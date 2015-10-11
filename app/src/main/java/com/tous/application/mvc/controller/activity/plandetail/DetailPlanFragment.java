@@ -1,32 +1,25 @@
 package com.tous.application.mvc.controller.activity.plandetail;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.moka.framework.app.SlidingTabPagerAdapter;
 import com.moka.framework.app.SlidingTabPagerAdapter.TabInfo;
 import com.moka.framework.controller.BaseFragment;
-import com.squareup.otto.Subscribe;
+import com.moka.framework.support.toolbar.ToolbarLayout;
 import com.tous.application.R;
-import com.tous.application.mvc.controller.activity.plancreation.PlanCreationActivity;
 import com.tous.application.mvc.controller.activity.plandetail.lodgment.LodgmentFragment;
 import com.tous.application.mvc.controller.activity.plandetail.restaurant.RestaurantFragment;
 import com.tous.application.mvc.controller.activity.plandetail.schedule.ScheduleFragment;
-import com.tous.application.mvc.controller.activity.plandetail.viewspot.ViewSpotFragment;
 import com.tous.application.mvc.controller.activity.plandetail.transport.TransportFragment;
-import com.tous.application.mvc.controller.activity.spot.SpotDetailActivity;
+import com.tous.application.mvc.controller.activity.plandetail.viewspot.ViewSpotFragment;
 import com.tous.application.mvc.model.plan.Plan;
-import com.tous.application.mvc.model.spot.Spot;
+import com.tous.application.mvc.view.plandetail.DetailPlanActivityListener;
 import com.tous.application.mvc.view.plandetail.DetailPlanFragmentLayout;
 import com.tous.application.mvc.view.plandetail.DetailPlanFragmentLayoutListener;
-import com.tous.application.mvc.view.plandetail.viewspot.SpotItemView;
 
 
 public class DetailPlanFragment extends BaseFragment implements DetailPlanFragmentLayoutListener {
@@ -36,6 +29,7 @@ public class DetailPlanFragment extends BaseFragment implements DetailPlanFragme
 	public static final String TYPE_LODGMENT = "숙소";
 
 	private DetailPlanFragmentLayout fragmentLayout;
+	private DetailPlanActivityListener detailPlanActivityListener;
 
 	private ScheduleFragment scheduleFragment;
 	private RestaurantFragment restaurantFragment;
@@ -51,6 +45,13 @@ public class DetailPlanFragment extends BaseFragment implements DetailPlanFragme
 		fragmentLayout = new DetailPlanFragmentLayout( this, this, inflater, container );
 
 		return fragmentLayout.getRootView();
+	}
+
+	@Override
+	public void onResume() {
+
+		fragmentLayout.setDetailPlanActivityListener( detailPlanActivityListener );
+		super.onResume();
 	}
 
 	@Override
@@ -95,6 +96,15 @@ public class DetailPlanFragment extends BaseFragment implements DetailPlanFragme
 	public DetailPlanFragment setPlan( Plan plan ) {
 
 		this.plan = plan;
+		return this;
+	}
+
+	public DetailPlanFragment setDetailPlanActivityListener( DetailPlanActivityListener detailPlanActivityListener ) {
+
+		this.detailPlanActivityListener = detailPlanActivityListener;
+		if ( null != fragmentLayout )
+			fragmentLayout.setDetailPlanActivityListener( detailPlanActivityListener );
+
 		return this;
 	}
 

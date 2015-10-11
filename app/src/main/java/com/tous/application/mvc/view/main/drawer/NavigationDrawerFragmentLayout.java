@@ -69,6 +69,11 @@ public class NavigationDrawerFragmentLayout extends FragmentLayout<NavigationDra
 
 				getLayoutListener().onClickSignOut();
 				break;
+
+			case NavigationListItemData.DETAIL_ID_NAVIGATION_PLAN_ID_PLUS_100:
+
+				getLayoutListener().onCLickPlanItem( settingListItemData.getPlan() );
+				break;
 		}
 	}
 

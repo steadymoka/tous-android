@@ -19,6 +19,7 @@ import com.tous.application.mvc.controller.activity.plandetail.DetailPlanFragmen
 import com.tous.application.mvc.controller.activity.spot.SpotCreationActivity;
 import com.tous.application.mvc.controller.activity.spot.SpotDetailActivity;
 import com.tous.application.mvc.controller.dialog.SetDayCountAndTimeDialogFragment;
+import com.tous.application.mvc.controller.dialog.SpotItemDeleteDialogFragment;
 import com.tous.application.mvc.model.itemdata.SpotItemData;
 import com.tous.application.mvc.model.plan.Plan;
 import com.tous.application.mvc.model.spot.Spot;
@@ -50,7 +51,13 @@ public class ViewSpotFragment extends BaseFragment implements ViewSpotFragmentLa
 
 	private void refreshView() {
 
-		recyclerAdapter.setItems( makeItems() );
+		List<SpotItemData> spotItemDatas = makeItems();
+		recyclerAdapter.setItems( spotItemDatas );
+
+		if ( spotItemDatas.isEmpty() )
+			fragmentLayout.setEmptyMessage( true );
+		else
+			fragmentLayout.setEmptyMessage( false );
 	}
 
 	private List<SpotItemData> makeItems() {
@@ -96,6 +103,14 @@ public class ViewSpotFragment extends BaseFragment implements ViewSpotFragmentLa
 		Intent intent = new Intent( getActivity(), SpotDetailActivity.class );
 		intent.putExtra( SpotDetailActivity.KEY_SPOT_ID, onSpotItemClickEvent.getSpotId() );
 		startActivity( intent );
+	}
+
+	@Subscribe
+	public void onSpotItemLongClickEvent( SpotItemView.OnSpotItemLongClickEvent onSpotItemLongClickEventnt ) {
+
+		SpotItemDeleteDialogFragment.newInstance()
+				.setSpotId( onSpotItemLongClickEventnt.getSpotId() )
+				.showDialog( getFragmentManager(), null );
 	}
 
 	@Subscribe

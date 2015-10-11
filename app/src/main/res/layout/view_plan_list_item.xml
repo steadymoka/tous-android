@@ -1,20 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
 	android:id="@+id/linearLayout_plan"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
-	android:layout_height="120dp"
-	android:layout_gravity="center"
+	android:layout_height="140dp"
 	android:layout_marginLeft="8dp"
 	android:layout_marginRight="8dp"
 	android:layout_marginTop="8dp"
-	android:background="@drawable/selector_background_drawer_listitem_function">
+	android:background="@drawable/selector_background_plan_list_listitem_function">
+
+	<ImageView
+		android:id="@+id/imageView_plan_background"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:scaleType="centerCrop"/>
+
+	<ImageView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="#42000000"/>
 
 	<TextView
 		android:id="@+id/textView_planName"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="40dp"
 		android:gravity="center"
+		android:text="후쿠오카 여행"
+		android:textColor="@color/white"
 		android:textSize="24dp"/>
 
-</LinearLayout>
+	<TextView
+		android:id="@+id/textView_period"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/textView_planName"
+		android:gravity="center"
+		android:text="111-2232"
+		android:textColor="@color/white"/>
+
+</RelativeLayout>

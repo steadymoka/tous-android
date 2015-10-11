@@ -6,4 +6,6 @@ import com.moka.framework.view.LayoutListener;
 
 public interface SpotCreationActivityLayoutListener extends LayoutListener {
 
+	void onHomeMenuItemSelected();
+
 }

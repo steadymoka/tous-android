@@ -35,7 +35,7 @@ public class NavigationListItemView extends RecyclerItemView<NavigationListItemD
 
 		horizontalDivider_top = findViewById( R.id.horizontalDivider_top );
 		horizontalDivider_bottom = findViewById( R.id.horizontalDivider_bottom );
-		horizontalDivider_bottom.setVisibility( View.VISIBLE );
+//		horizontalDivider_bottom.setVisibility( View.VISIBLE );
 	}
 
 	@Override
@@ -78,6 +78,27 @@ public class NavigationListItemView extends RecyclerItemView<NavigationListItemD
 
 			textView_detailTitle.setVisibility( View.INVISIBLE );
 		}
+
+		if ( settingListItemData.isPlanList() ) {
+
+			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT );
+			lp.setMargins( 120, 0, -30, 0 );
+			imageView_detailIcon.setLayoutParams( lp );
+			textView_detailTitle.setTextColor( 0xFF666666 );
+
+			if ( settingListItemData.isCurrentPlan() )
+				linearLayout_settingDetail.setBackgroundResource( R.drawable.selector_background_drawer_listitem_current_plan_function );
+			else
+				linearLayout_settingDetail.setBackgroundResource( R.drawable.selector_background_drawer_listitem_function );
+		}
+		else {
+
+			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT );
+			lp.setMargins( 0, 0, -0, 0 );
+			imageView_detailIcon.setLayoutParams( lp );
+			textView_detailTitle.setTextColor( 0xFF000000 );
+			linearLayout_settingDetail.setBackgroundResource( R.drawable.selector_background_drawer_listitem_function );
+		}
 	}
 
 	public void setOnItemClickListener( OnItemClickListener onItemClickListener ) {
@@ -87,10 +108,10 @@ public class NavigationListItemView extends RecyclerItemView<NavigationListItemD
 
 	public void setPosition( int position ) {
 
-		if ( 0 == position )
-			horizontalDivider_top.setVisibility( View.VISIBLE );
-		else
-			horizontalDivider_top.setVisibility( View.GONE );
+//		if ( 0 == position )
+//			horizontalDivider_top.setVisibility( View.VISIBLE );
+//		else
+//			horizontalDivider_top.setVisibility( View.GONE );
 	}
 
 	public interface OnItemClickListener {

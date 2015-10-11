@@ -15,6 +15,7 @@ import com.squareup.picasso.Picasso;
 import com.tous.application.R;
 
 import java.io.File;
+import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -22,7 +23,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class NavigationListHeaderView extends FrameLayout implements View.OnClickListener {
 
 	private LinearLayout linearLayout_profile;
-	private CircleImageView circleiamgeView_profileImage;
+//	private CircleImageView circleiamgeView_profileImage;
 
 	private TextView textView_userName;
 	private TextView textView_userEmail;
@@ -46,11 +47,18 @@ public class NavigationListHeaderView extends FrameLayout implements View.OnClic
 		inflate( getContext(), R.layout.view_navigation_list_header, this );
 
 		linearLayout_profile = (LinearLayout) findViewById( R.id.linearLayout_profile );
+		initBackground();
 
-		circleiamgeView_profileImage = (CircleImageView) findViewById( R.id.circleiamgeView_profileImage );
+//		circleiamgeView_profileImage = (CircleImageView) findViewById( R.id.circleiamgeView_profileImage );
 
 		textView_userName = (TextView) findViewById( R.id.textView_userName );
 		textView_userEmail = (TextView) findViewById( R.id.textView_userEmail );
+	}
+
+	private void initBackground() {
+
+		int[] images = { R.drawable.ic_default_image_02, R.drawable.ic_default_image_03, R.drawable.ic_default_image_04, R.drawable.ic_default_image_05 };
+		linearLayout_profile.setBackgroundResource( images[new Random().nextInt( images.length )] );
 	}
 
 	@Override
@@ -59,39 +67,6 @@ public class NavigationListHeaderView extends FrameLayout implements View.OnClic
 		widthMeasureSpec = MeasureSpec
 				.makeMeasureSpec( ScreenUtil.getWidthPixels( getContext() ), MeasureSpec.EXACTLY );
 		super.onMeasure( widthMeasureSpec, heightMeasureSpec );
-	}
-
-	public void setProfileImage( String imagePath, Activity activity ) {
-
-		DisplayMetrics displayMetrics = new DisplayMetrics();
-		activity.getWindowManager().getDefaultDisplay().getMetrics( displayMetrics );
-		int headerWidth = displayMetrics.widthPixels;
-		int headerHeight = (int) ( displayMetrics.widthPixels / 1.9f );
-
-		if ( null != imagePath ) {
-
-			Picasso.with( getContext() )
-					.load( new File( imagePath ) )
-					.centerCrop()
-					.resize( headerWidth, headerHeight )
-					.into( circleiamgeView_profileImage );
-		}
-		else {
-
-			int image = R.drawable.ic_sample_profile_image;
-
-			Picasso.with( getContext() )
-					.load( image )
-					.centerCrop()
-					.resize( headerWidth, headerHeight )
-					.into( circleiamgeView_profileImage );
-		}
-	}
-
-	public void setProfile( String userName, String userEmail ) {
-
-		textView_userName.setText( userName );
-		textView_userEmail.setText( userEmail );
 	}
 
 	@Override
@@ -105,6 +80,39 @@ public class NavigationListHeaderView extends FrameLayout implements View.OnClic
 					headerViewListener.onClickToProfile();
 				break;
 		}
+	}
+
+	public void setProfileImage( String imagePath, Activity activity ) {
+
+//		DisplayMetrics displayMetrics = new DisplayMetrics();
+//		activity.getWindowManager().getDefaultDisplay().getMetrics( displayMetrics );
+//		int headerWidth = displayMetrics.widthPixels;
+//		int headerHeight = (int) ( displayMetrics.widthPixels / 1.9f );
+//
+//		if ( null != imagePath ) {
+//
+//			Picasso.with( getContext() )
+//					.load( new File( imagePath ) )
+//					.centerCrop()
+//					.resize( headerWidth, headerHeight )
+//					.into( circleiamgeView_profileImage );
+//		}
+//		else {
+//
+//			int image = R.drawable.ic_sample_profile_image;
+//
+//			Picasso.with( getContext() )
+//					.load( image )
+//					.centerCrop()
+//					.resize( headerWidth, headerHeight )
+//					.into( circleiamgeView_profileImage );
+//		}
+	}
+
+	public void setProfile( String userName, String userEmail ) {
+
+		textView_userName.setText( userName );
+		textView_userEmail.setText( userEmail );
 	}
 
 	public void setHeaderViewListener( HeaderViewListener headerViewListener ) {

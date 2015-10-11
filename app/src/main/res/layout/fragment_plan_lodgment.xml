@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
+<RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:gravity="center"
-	android:textSize="30sp"
-	android:text="준비중">
+	android:layout_height="match_parent">
 
-</TextView>
+	<com.moka.framework.widget.scrollobservableview.ObservableRecyclerView
+		android:id="@+id/observableRecyclerView_lodgment"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"/>
+
+	<TextView
+		android:id="@+id/textView_empty"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:gravity="center"
+		android:text="등록된 숙소가 없습니다.\n\n새 숙소를 추가하시려면\n우측 하단의 버튼을 이용해 보세요!"
+		android:textColor="#FF666666"
+		android:visibility="gone"/>
+
+	<com.moka.framework.widget.fab.FloatingActionButton
+		android:id="@+id/floatingActionButton_add_lodgment"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentRight="true"
+		android:layout_margin="16dp"
+		android:src="@drawable/ic_floating_add_item"
+		app:fab_colorNormal="@color/spot_type_lodgment"
+		app:fab_colorPressed="@color/spot_type_lodgment_pressed"/>
+
+</RelativeLayout>

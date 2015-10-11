@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.moka.framework.support.toolbar.ToolbarLayout
+	android:id="@+id/toolbarLayout"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+
+		<fragment
+			android:id="@+id/map"
+			android:name="com.google.android.gms.maps.MapFragment"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"/>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical"
+			android:paddingBottom="@dimen/vertical_page_margin"
+			android:paddingLeft="@dimen/horizontal_page_margin"
+			android:paddingRight="@dimen/horizontal_page_margin"
+			android:paddingTop="@dimen/vertical_page_margin">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="32dp"
+				android:background="@drawable/shape_activity_search_location_view_background"
+				android:gravity="center_vertical"
+				android:orientation="horizontal"
+				android:paddingLeft="12dp"
+				android:paddingRight="12dp">
+
+				<ImageView
+					android:layout_width="24dp"
+					android:layout_height="32dp"
+					android:layout_marginRight="8dp"
+					android:adjustViewBounds="true"
+					android:cropToPadding="true"
+					android:scaleType="centerInside"
+					android:src="@drawable/ic_search_holo_light"/>
+
+				<AutoCompleteTextView
+					android:id="@+id/autocomplete_places"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:singleLine="true"
+					android:background="@color/transparency"
+					android:hint="@string/autocomplete_hint"
+					android:textColor="@android:color/primary_text_light"/>
+
+			</LinearLayout>
+
+			<TextView
+				android:id="@+id/place_details"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:autoLink="all"
+				android:text=""
+				android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+			<TextView
+				android:id="@+id/place_attribution"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:autoLink="all"
+				android:paddingTop="8dp"
+				android:text=""
+				android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+		</LinearLayout>
+
+	</RelativeLayout>
+
+</com.moka.framework.support.toolbar.ToolbarLayout>

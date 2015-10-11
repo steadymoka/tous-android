@@ -17,6 +17,8 @@ public class WebViewActivity extends BaseActivity implements WebViewActivityLayo
 
 	private WebViewActivityLayout activityLayout;
 
+	private WebViewFragment webViewFragment;
+
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
 
@@ -28,7 +30,7 @@ public class WebViewActivity extends BaseActivity implements WebViewActivityLayo
 		String url = intent.getStringExtra( KEY_URL );
 		if ( null != url ) {
 
-			WebViewFragment webViewFragment = new WebViewFragment();
+			webViewFragment = new WebViewFragment();
 
 			Bundle args = new Bundle();
 			args.putString( WebViewFragment.KEY_URL, url );
@@ -36,6 +38,12 @@ public class WebViewActivity extends BaseActivity implements WebViewActivityLayo
 
 			getSupportFragmentManager().beginTransaction().replace( activityLayout.getWebViewFragmentContainer(), webViewFragment ).commit();
 		}
+	}
+
+	@Override
+	public void onBackPressed() {
+
+		webViewFragment.onBackPressed();
 	}
 
 }

@@ -4,7 +4,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="65dp"
-	android:background="@drawable/selector_background_drawer_listitem_function"
+	android:background="@drawable/selector_background_plan_list_listitem_function"
 	android:orientation="vertical">
 
 	<View style="@style/HorizontalDivider"/>
@@ -35,7 +35,10 @@
 				android:id="@+id/textView_spotName"
 				android:layout_width="match_parent"
 				android:layout_height="30dp"
+				android:ellipsize="marquee"
 				android:gravity="center_vertical"
+				android:marqueeRepeatLimit="3"
+				android:singleLine="true"
 				android:textSize="18dp"/>
 
 			<TextView

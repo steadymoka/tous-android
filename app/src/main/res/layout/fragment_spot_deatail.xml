@@ -4,12 +4,200 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
-	<ImageView
+	<LinearLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:scaleType="fitStart"
-		android:src="@drawable/sample_image_spot_detail">
+		android:layout_height="wrap_content"
+		android:paddingBottom="20dp"
+		android:orientation="vertical">
 
-	</ImageView>
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="200dp"
+			android:orientation="vertical">
+
+			<ImageView
+				android:id="@+id/imageView_spotImage"
+				android:layout_width="match_parent"
+				android:layout_height="200dp"
+				android:scaleType="centerCrop"/>
+
+			<ImageView
+				android:id="@+id/imageView_alpha"
+				android:layout_width="match_parent"
+				android:layout_height="200dp"
+				android:background="#28000000"/>
+
+		</RelativeLayout>
+
+		<LinearLayout
+			android:id="@+id/linearLayout_spotName"
+			android:layout_width="match_parent"
+			android:layout_height="90dp"
+			android:background="#f44336"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/textView_spotName"
+				android:layout_width="match_parent"
+				android:layout_height="60dp"
+				android:ellipsize="marquee"
+				android:marqueeRepeatLimit="3"
+				android:paddingLeft="16dp"
+				android:paddingTop="16dp"
+				android:singleLine="true"
+				android:textColor="@color/white"
+				android:textSize="26dp"/>
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/linearLayout_planTime"
+			android:layout_width="match_parent"
+			android:layout_height="48dp"
+			android:layout_below="@+id/linearLayout_spotName"
+			android:layout_marginTop="8dp"
+			android:gravity="center_vertical"
+			android:orientation="horizontal"
+			android:paddingLeft="16dp">
+
+			<ImageView
+				android:layout_width="24dp"
+				android:layout_height="32dp"
+				android:layout_gravity="center_vertical"
+				android:layout_marginRight="16dp"
+				android:adjustViewBounds="true"
+				android:cropToPadding="true"
+				android:src="@drawable/ic_spot_create_plan_time_black"/>
+
+			<TextView
+				android:id="@+id/textView_planTime"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:background="@color/transparency"
+				android:gravity="center_vertical"
+				android:hint="일정의 지역을 검색 하세요 \n ㅇㅇㅇㅇ"
+				android:textColor="#FF666666"
+				android:textSize="14dp"/>
+
+		</LinearLayout>
+
+		<View
+			style="@style/HorizontalDivider"
+			android:layout_height="1dp"
+			android:layout_marginLeft="48dp"
+			android:layout_marginRight="48dp"/>
+
+		<LinearLayout
+			android:id="@+id/linearLayout_search_spot_map"
+			android:layout_width="match_parent"
+			android:layout_height="48dp"
+			android:background="@drawable/selector_background_creation_button_function"
+			android:gravity="center_vertical"
+			android:orientation="horizontal"
+			android:paddingLeft="16dp">
+
+			<ImageView
+				android:layout_width="24dp"
+				android:layout_height="32dp"
+				android:layout_marginRight="16dp"
+				android:adjustViewBounds="true"
+				android:cropToPadding="true"
+				android:scaleType="centerInside"
+				android:src="@drawable/ic_spot_create_search_map_black"/>
+
+			<TextView
+				android:id="@+id/textView_search_spot_map"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:background="@color/transparency"
+				android:gravity="center_vertical"
+				android:hint="일정의 지역을 검색 하세요"
+				android:singleLine="true"
+				android:textColor="#FF666666"
+				android:textColorHint="#FFC8C8C8"
+				android:textSize="14dp"/>
+
+		</LinearLayout>
+
+		<View
+			style="@style/HorizontalDivider"
+			android:layout_height="1dp"
+			android:layout_marginLeft="48dp"
+			android:layout_marginRight="48dp"/>
+
+		<LinearLayout
+			android:id="@+id/linearLayout_search_spot_web"
+			android:layout_width="match_parent"
+			android:layout_height="48dp"
+			android:background="@drawable/selector_background_creation_button_function"
+			android:gravity="center_vertical"
+			android:orientation="horizontal"
+			android:paddingLeft="16dp">
+
+			<ImageView
+				android:layout_width="24dp"
+				android:layout_height="32dp"
+				android:layout_marginRight="16dp"
+				android:adjustViewBounds="true"
+				android:cropToPadding="true"
+				android:scaleType="centerInside"
+				android:src="@drawable/ic_spot_create_search_web_black"/>
+
+			<TextView
+				android:id="@+id/textView_search_spot_web"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:background="@color/transparency"
+				android:gravity="center_vertical"
+				android:hint="@string/fragment_spot_creation_search_spot"
+				android:singleLine="true"
+				android:textColor="#FF666666"
+				android:textColorHint="#FFC8C8C8"
+				android:textSize="14dp"/>
+
+		</LinearLayout>
+
+		<View
+			style="@style/HorizontalDivider"
+			android:layout_height="1dp"
+			android:layout_marginLeft="48dp"
+			android:layout_marginRight="48dp"/>
+
+		<LinearLayout
+			android:id="@+id/linearLayout_spotContent"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/selector_background_creation_button_function"
+			android:gravity="center_vertical"
+			android:orientation="horizontal"
+			android:paddingLeft="16dp">
+
+			<ImageView
+				android:layout_width="24dp"
+				android:layout_height="32dp"
+				android:layout_gravity="top"
+				android:layout_marginRight="16dp"
+				android:layout_marginTop="4dp"
+				android:adjustViewBounds="true"
+				android:cropToPadding="true"
+				android:scaleType="centerInside"
+				android:src="@drawable/ic_spot_content_black"/>
+
+			<TextView
+				android:id="@+id/textView_spotContent"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:background="@color/transparency"
+				android:gravity="top"
+				android:hint="메모를 입력해주세요"
+				android:minLines="6"
+				android:textColor="#FF666666"
+				android:textColorHint="#FFC8C8C8"
+				android:textSize="14dp"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
 
 </ScrollView>

@@ -16,11 +16,13 @@ import com.tous.application.mvc.controller.activity.plandetail.DetailPlanFragmen
 import com.tous.application.widget.PagerSlidingTabStrip;
 
 
-public class DetailPlanFragmentLayout extends FragmentLayout<DetailPlanFragment, DetailPlanFragmentLayoutListener> {
+public class DetailPlanFragmentLayout extends FragmentLayout<DetailPlanFragment, DetailPlanFragmentLayoutListener> implements ViewPager.OnPageChangeListener {
 
 	private SlidingTabPagerAdapter slidingTabPagerAdapter;
 	private ViewPager viewPager;
 	private PagerSlidingTabStrip pagerSlidingTabStrip;
+
+	private DetailPlanActivityListener detailPlanActivityListener;
 
 	public DetailPlanFragmentLayout( DetailPlanFragment fragment, DetailPlanFragmentLayoutListener layoutListener, LayoutInflater inflater, ViewGroup container ) {
 
@@ -46,6 +48,53 @@ public class DetailPlanFragmentLayout extends FragmentLayout<DetailPlanFragment,
 		pagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById( R.id.pagerSlidingTabStrip );
 		pagerSlidingTabStrip.setBackgroundColor( 0xFFf44336 );
 		pagerSlidingTabStrip.setViewPager( viewPager );
+		pagerSlidingTabStrip.setOnPageChangeListener( this );
+	}
+
+	@Override
+	public void onPageScrolled( int position, float positionOffset, int positionOffsetPixels ) {
+
+
+	}
+
+	@Override
+	public void onPageSelected( int position ) {
+
+		if ( position == 0 ) {
+
+			if ( null != detailPlanActivityListener )
+				detailPlanActivityListener.setToolbarBackgroundColorFrom( "" );
+			pagerSlidingTabStrip.setBackgroundColor( 0xFFf44336 );
+		}
+		else if ( position == 1 ) {
+
+			if ( null != detailPlanActivityListener )
+				detailPlanActivityListener.setToolbarBackgroundColorFrom( "명소" );
+			pagerSlidingTabStrip.setBackgroundColor( 0xFF80cbc4 );
+		}
+		else if ( position == 2 ) {
+
+			if ( null != detailPlanActivityListener )
+				detailPlanActivityListener.setToolbarBackgroundColorFrom( "맛집" );
+			pagerSlidingTabStrip.setBackgroundColor( 0xFFffb74d );
+		}
+		else {
+
+			if ( null != detailPlanActivityListener )
+				detailPlanActivityListener.setToolbarBackgroundColorFrom( "숙소" );
+			pagerSlidingTabStrip.setBackgroundColor( 0xFF9575cd );
+		}
+
+	}
+
+	@Override
+	public void onPageScrollStateChanged( int state ) {
+
+	}
+
+	public void setDetailPlanActivityListener( DetailPlanActivityListener detailPlanActivityListener ) {
+
+		this.detailPlanActivityListener = detailPlanActivityListener;
 	}
 
 }

@@ -4,6 +4,7 @@ package com.tous.application.util;
 import android.content.Context;
 
 import com.moka.framework.util.CrashlyticsUtil;
+import com.tous.application.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -133,6 +134,26 @@ public class DateUtil {
 
 			return dateFormatTimeStamp_formatToTimestamp.format( date );
 		}
+	}
+
+	private static final Calendar calendar_addDate = Calendar.getInstance();
+
+	public static Date addDate( Date date, int value ) {
+
+		synchronized ( calendar_addDate ) {
+
+			calendar_addDate.setTime( date );
+			calendar_addDate.add( Calendar.DATE, value );
+
+			return calendar_addDate.getTime();
+		}
+	}
+
+	public static String formatToString( Date date ) {
+
+		SimpleDateFormat dateFormat = new SimpleDateFormat( context.getString( R.string.fragment_plan_create_button_date_format ), Locale.getDefault() );
+
+		return dateFormat.format( date );
 	}
 
 }

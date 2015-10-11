@@ -10,6 +10,15 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"/>
 
+	<TextView
+		android:id="@+id/textView_empty"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:gravity="center"
+		android:text="등록된 맛집이 없습니다.\n\n새 맛집를 추가하시려면\n우측 하단의 버튼을 이용해 보세요!"
+		android:textColor="#FF666666"
+		android:visibility="gone"/>
+
 	<com.moka.framework.widget.fab.FloatingActionButton
 		android:id="@+id/floatingActionButton_add_restaurant"
 		android:layout_width="wrap_content"
@@ -18,7 +27,7 @@
 		android:layout_alignParentRight="true"
 		android:layout_margin="16dp"
 		android:src="@drawable/ic_floating_add_item"
-		app:fab_colorNormal="@color/base_app_color_red"
-		app:fab_colorPressed="@color/transparent"/>
+		app:fab_colorNormal="@color/spot_type_restaurant"
+		app:fab_colorPressed="@color/spot_type_restaurant_pressed"/>
 
 </RelativeLayout>

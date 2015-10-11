@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:background="#FFF4F4F4">
+			android:background="@color/white">
 
 	<LinearLayout
 		android:layout_width="match_parent"
@@ -11,9 +11,10 @@
 		android:paddingBottom="48dp">
 
 		<TextView
+			android:id="@+id/textView_spotType"
 			android:layout_width="match_parent"
 			android:layout_height="48dp"
-			android:gravity="center"
+			android:gravity="center_vertical"
 			android:paddingLeft="16dp"
 			android:paddingRight="16dp"
 			android:text="TOUS 와 함께 "
@@ -21,31 +22,13 @@
 
 		<View style="@style/HorizontalDivider"/>
 
-		<!--<LinearLayout-->
-			<!--android:layout_width="match_parent"-->
-			<!--android:layout_height="48dp"-->
-			<!--android:orientation="horizontal">-->
+		<ImageView
+			android:id="@+id/imageView_addImage"
+			android:layout_width="match_parent"
+			android:layout_height="150dp"
+			android:scaleType="centerCrop"
+			android:src="@drawable/image_add_image"/>
 
-			<!--<TextView-->
-				<!--android:id="@+id/textView_spot"-->
-				<!--android:layout_width="0dp"-->
-				<!--android:layout_height="match_parent"-->
-				<!--android:layout_weight="1"-->
-				<!--android:gravity="center"-->
-				<!--android:textColor="#FFAFAFAF"-->
-				<!--android:text="명소"/>-->
-
-			<!--<TextView-->
-				<!--android:id="@+id/textView_restaurant"-->
-				<!--android:layout_width="0dp"-->
-				<!--android:layout_height="match_parent"-->
-				<!--android:layout_weight="1"-->
-				<!--android:background="#ffcdd2"-->
-				<!--android:gravity="center"-->
-				<!--android:textColor="#FFAFAFAF"-->
-				<!--android:text="맛집"/>-->
-
-		<!--</LinearLayout>-->
 
 		<LinearLayout
 			android:layout_width="match_parent"
@@ -57,14 +40,14 @@
 			android:paddingLeft="16dp"
 			android:paddingRight="16dp">
 
-			<ImageView
-				android:layout_width="24dp"
-				android:layout_height="32dp"
-				android:layout_marginRight="8dp"
-				android:adjustViewBounds="true"
-				android:cropToPadding="true"
-				android:scaleType="centerInside"
-				android:src="@drawable/ic_write_text_gray"/>
+			<!--<ImageView-->
+			<!--android:layout_width="24dp"-->
+			<!--android:layout_height="32dp"-->
+			<!--android:layout_marginRight="8dp"-->
+			<!--android:adjustViewBounds="true"-->
+			<!--android:cropToPadding="true"-->
+			<!--android:scaleType="centerInside"-->
+			<!--android:src="@drawable/ic_write_text_gray"/>-->
 
 			<EditText
 				android:id="@+id/editText_spot_name"
@@ -80,13 +63,21 @@
 
 		</LinearLayout>
 
+		<View
+			style="@style/HorizontalDivider"
+			android:layout_marginLeft="16dp"
+			android:layout_marginRight="16dp"/>
+
 		<LinearLayout
+			android:id="@+id/linearLayout_search_spot_map"
 			android:layout_width="match_parent"
 			android:layout_height="48dp"
 			android:layout_weight="3"
+			android:background="@drawable/selector_background_creation_button_function"
 			android:gravity="center_vertical"
 			android:orientation="horizontal"
-			android:paddingLeft="16dp">
+			android:paddingLeft="16dp"
+			android:paddingTop="16dp">
 
 			<ImageView
 				android:layout_width="24dp"
@@ -95,28 +86,37 @@
 				android:adjustViewBounds="true"
 				android:cropToPadding="true"
 				android:scaleType="centerInside"
-				android:src="@drawable/ic_search_holo_light"/>
+				android:src="@drawable/ic_spot_create_search_map"/>
 
 			<TextView
 				android:id="@+id/textView_search_spot_map"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
-				android:background="@drawable/selector_background_creation_button_function"
+				android:background="@color/transparency"
 				android:gravity="center_vertical"
-				android:hint="주소검색"
+				android:hint="일정의 지역을 검색 하세요"
 				android:singleLine="true"
 				android:textColor="#FF666666"
-				android:textSize="16dp"/>
+				android:textColorHint="#FFC8C8C8"
+				android:textSize="14dp"/>
 
 		</LinearLayout>
 
+		<View
+			style="@style/HorizontalDivider"
+			android:layout_marginLeft="16dp"
+			android:layout_marginRight="16dp"/>
+
 		<LinearLayout
+			android:id="@+id/linearLayout_search_spot_web"
 			android:layout_width="match_parent"
 			android:layout_height="48dp"
 			android:layout_weight="3"
+			android:background="@drawable/selector_background_creation_button_function"
 			android:gravity="center_vertical"
 			android:orientation="horizontal"
-			android:paddingLeft="16dp">
+			android:paddingLeft="16dp"
+			android:paddingTop="16dp">
 
 			<ImageView
 				android:layout_width="24dp"
@@ -125,20 +125,26 @@
 				android:adjustViewBounds="true"
 				android:cropToPadding="true"
 				android:scaleType="centerInside"
-				android:src="@drawable/ic_search_holo_light"/>
+				android:src="@drawable/ic_spot_create_search_web"/>
 
 			<TextView
 				android:id="@+id/textView_search_spot_web"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
-				android:background="@drawable/selector_background_creation_button_function"
+				android:background="@color/transparency"
 				android:gravity="center_vertical"
 				android:hint="@string/fragment_spot_creation_search_spot"
 				android:singleLine="true"
 				android:textColor="#FF666666"
-				android:textSize="16dp"/>
+				android:textColorHint="#FFC8C8C8"
+				android:textSize="14dp"/>
 
 		</LinearLayout>
+
+		<View
+			style="@style/HorizontalDivider"
+			android:layout_marginLeft="16dp"
+			android:layout_marginRight="16dp"/>
 
 		<LinearLayout
 			android:layout_width="match_parent"
@@ -162,15 +168,16 @@
 			<EditText
 				android:id="@+id/editText_content"
 				android:layout_width="match_parent"
-				android:layout_height="100dp"
+				android:layout_height="wrap_content"
 				android:layout_gravity="top"
 				android:layout_marginTop="8dp"
 				android:background="@color/transparency"
 				android:gravity="top"
 				android:hint="@string/fragment_spot_creation_spot_content"
+				android:minLines="6"
 				android:textColor="#FF666666"
 				android:textColorHint="#FFC8C8C8"
-				android:textSize="16dp"/>
+				android:textSize="14dp"/>
 
 		</LinearLayout>
 

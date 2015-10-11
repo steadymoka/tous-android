@@ -48,7 +48,13 @@ public class RestaurantFragment extends BaseFragment implements RestaurantFragme
 
 	private void refreshView() {
 
-		recyclerAdapter.setItems( makeItems() );
+		List<SpotItemData> spotItemDatas = makeItems();
+		recyclerAdapter.setItems( spotItemDatas );
+
+		if ( spotItemDatas.isEmpty() )
+			fragmentLayout.setEmptyMessage( true );
+		else
+			fragmentLayout.setEmptyMessage( false );
 	}
 
 	private List<SpotItemData> makeItems() {

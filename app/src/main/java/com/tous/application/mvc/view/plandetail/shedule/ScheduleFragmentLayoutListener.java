@@ -13,6 +13,10 @@ public interface ScheduleFragmentLayoutListener extends LayoutListener {
 
 	PagerAdapter getSchedulePagerAdapter();
 
-	void onDaySelected( int dayIndex );
+	void onPageSelected( int position );
+
+	void onClickCalendar();
+
+	void onClickMap();
 
 }

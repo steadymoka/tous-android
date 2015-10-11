@@ -162,7 +162,7 @@ public class ImagePickerDialogFragment extends BaseDialogFragment implements Vie
 			directory.mkdirs();
 
 		String str = DateUtil.formatToTimestamp( new Date() );
-		File file = new File( directory, "todait_" + str + ".jpg" );
+		File file = new File( directory, "tous_" + str + ".jpg" );
 
 		return Uri.fromFile( file );
 	}
@@ -198,7 +198,7 @@ public class ImagePickerDialogFragment extends BaseDialogFragment implements Vie
 
 				if ( Activity.RESULT_OK == resultCode ) {
 
-					String selectedImagePath = getOriginalImagePath( data.getData() );
+						String selectedImagePath = getOriginalImagePath( data.getData() );
 					if ( null != selectedImagePath )
 						startImageEditorActivity( selectedImagePath );
 				}
@@ -207,11 +207,11 @@ public class ImagePickerDialogFragment extends BaseDialogFragment implements Vie
 
 			case REQUEST_CODE_PICK_MANY_IMAGE:
 
-//				if ( Activity.RESULT_OK == resultCode ) {
-//
+				if ( Activity.RESULT_OK == resultCode ) {
+
 //					ArrayList<String> selectedImagePaths = data.getStringArrayListExtra( GalleryActivity.KEY_SELECTED_IMAGES );
 //					startImageEditorActivity( selectedImagePaths );
-//				}
+				}
 
 				break;
 

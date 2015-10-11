@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
+import com.tous.application.database.table.image.ImageTable;
 import com.tous.application.database.table.plan.PlanTable;
 import com.tous.application.database.table.spot.SpotTable;
 import com.tous.application.database.table.transport.TransportTable;
@@ -39,6 +40,10 @@ public class TousProvider extends ContentProvider {
 		// transport
 		uriMatcher.addURI( TousDB.AUTHORITY, TransportTable.TABLE_NAME, TransportTable.CODE_TRANSPORT );
 		uriMatcher.addURI( TousDB.AUTHORITY, TransportTable.TABLE_NAME + "/#", TransportTable.CODE_TRANSPORT_ID );
+
+		// image
+		uriMatcher.addURI( TousDB.AUTHORITY, ImageTable.TABLE_NAME, ImageTable.CODE_IMAGE );
+		uriMatcher.addURI( TousDB.AUTHORITY, ImageTable.TABLE_NAME + "/#", ImageTable.CODE_IMAGE_ID );
 
 		return uriMatcher;
 	}
@@ -86,6 +91,12 @@ public class TousProvider extends ContentProvider {
 			case TransportTable.CODE_TRANSPORT:
 
 				resultUri = TransportTable.from( getContext() )
+						.insert( database, uri, values );
+				break;
+
+			case ImageTable.CODE_IMAGE:
+
+				resultUri = ImageTable.from( getContext() )
 						.insert( database, uri, values );
 				break;
 
@@ -161,6 +172,20 @@ public class TousProvider extends ContentProvider {
 						.find( database, uri, projection, selection, selectionArgs, sortOrder );
 				break;
 
+			// image
+
+			case ImageTable.CODE_IMAGE:
+
+				resultCursor = ImageTable.from( getContext() )
+						.findAll( database, uri, projection, selection, selectionArgs, sortOrder );
+				break;
+
+			case ImageTable.CODE_IMAGE_ID:
+
+				resultCursor = ImageTable.from( getContext() )
+						.find( database, uri, projection, selection, selectionArgs, sortOrder );
+				break;
+
 			default:
 				throw new UnsupportedOperationException( "Unknown uri: " + uri );
 		}
@@ -233,6 +258,19 @@ public class TousProvider extends ContentProvider {
 						.update( database, uri, values, selection, selectionArgs );
 				break;
 
+			// user
+
+			case ImageTable.CODE_IMAGE:
+
+				updateRow = UserTable.from( getContext() )
+						.updateAll( database, uri, values, selection, selectionArgs );
+				break;
+
+			case ImageTable.CODE_IMAGE_ID:
+
+				updateRow = ImageTable.from( getContext() )
+						.update( database, uri, values, selection, selectionArgs );
+				break;
 
 			default:
 				throw new UnsupportedOperationException( "Unknown uri: " + uri );
@@ -244,7 +282,41 @@ public class TousProvider extends ContentProvider {
 	@Override
 	public int delete( Uri uri, String selection, String[] selectionArgs ) {
 
-		return 0;
+		SQLiteDatabase database = tousDBHelper.getWritableDatabase();
+		int match = uriMatcher.match( uri );
+		int deleteRow = 0;
+
+		switch ( match ) {
+
+			// plan
+
+			case PlanTable.CODE_PLAN_ID:
+
+				deleteRow = PlanTable.from( getContext() )
+						.delete( database, uri, selection, selectionArgs );
+				break;
+
+			// spot
+
+			case SpotTable.CODE_SPOT_ID:
+
+				deleteRow = SpotTable.from( getContext() )
+						.delete( database, uri, selection, selectionArgs );
+				break;
+
+			// user
+
+			case ImageTable.CODE_IMAGE_ID:
+
+				deleteRow = ImageTable.from( getContext() )
+						.delete( database, uri, selection, selectionArgs );
+				break;
+
+			default:
+				throw new UnsupportedOperationException( "Unknown uri: " + uri );
+		}
+
+		return deleteRow;
 	}
 
 }

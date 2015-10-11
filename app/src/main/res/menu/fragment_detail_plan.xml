@@ -5,7 +5,7 @@
 
 	<item
 		android:id="@+id/menuItem_editPlan"
-		android:icon="@drawable/abc_ic_menu_copy_mtrl_am_alpha"
+		android:icon="@drawable/ic_edit_plan"
 		android:title="@string/fragment_detail_plan_menu_edit_plan"
 		app:showAsAction="always"/>
 

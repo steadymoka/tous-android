@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.moka.framework.view.FragmentLayout;
 import com.moka.framework.widget.adapter.OnScrollDelegate;
@@ -18,6 +19,7 @@ public class ViewSpotFragmentLayout extends FragmentLayout<ViewSpotFragment, Vie
 
 	private ObservableRecyclerView observableRecyclerView_spots;
 	private FloatingActionButton floatingActionButton_add_spot;
+	private TextView textView_empty;
 
 	private OnScrollDelegate onScrollDelegate;
 
@@ -43,6 +45,7 @@ public class ViewSpotFragmentLayout extends FragmentLayout<ViewSpotFragment, Vie
 
 		observableRecyclerView_spots = (ObservableRecyclerView) findViewById( R.id.observableRecyclerView_spots );
 		floatingActionButton_add_spot = (FloatingActionButton) findViewById( R.id.floatingActionButton_add_spot );
+		textView_empty = (TextView) findViewById( R.id.textView_empty );
 	}
 
 	private void bindView() {
@@ -57,6 +60,7 @@ public class ViewSpotFragmentLayout extends FragmentLayout<ViewSpotFragment, Vie
 		floatingActionButton_add_spot.setOnClickListener( this );
 		floatingActionButton_add_spot
 				.attachToRecyclerView( observableRecyclerView_spots, onScrollDelegate );
+
 	}
 
 	@Override
@@ -69,6 +73,14 @@ public class ViewSpotFragmentLayout extends FragmentLayout<ViewSpotFragment, Vie
 				getLayoutListener().onClickToAddSpot();
 				break;
 		}
+	}
+
+	public void setEmptyMessage( boolean isEmpty ) {
+
+		if ( isEmpty )
+			textView_empty.setVisibility( View.VISIBLE );
+		else
+			textView_empty.setVisibility( View.GONE );
 	}
 
 }

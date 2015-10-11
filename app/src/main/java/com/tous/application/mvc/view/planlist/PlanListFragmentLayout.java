@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.moka.framework.view.FragmentLayout;
 import com.moka.framework.widget.adapter.OnScrollDelegate;
@@ -19,6 +20,7 @@ public class PlanListFragmentLayout extends FragmentLayout<PlanListFragment, Pla
 	private ObservableRecyclerView observableRecyclerView_plan_list;
 	private FloatingActionButton floatingActionButton_add_plan;
 
+	private TextView textView_empty;
 	private OnScrollDelegate onScrollDelegate;
 
 	public PlanListFragmentLayout( PlanListFragment fragment, PlanListFragmentLayoutListener layoutListener, LayoutInflater inflater, ViewGroup container ) {
@@ -43,6 +45,8 @@ public class PlanListFragmentLayout extends FragmentLayout<PlanListFragment, Pla
 
 		observableRecyclerView_plan_list = (ObservableRecyclerView) findViewById( R.id.observableRecyclerView_plan_list );
 		floatingActionButton_add_plan = (FloatingActionButton) findViewById( R.id.floatingActionButton_add_plan );
+
+		textView_empty = (TextView) findViewById( R.id.textView_empty );
 	}
 
 	private void bindView() {
@@ -69,6 +73,14 @@ public class PlanListFragmentLayout extends FragmentLayout<PlanListFragment, Pla
 				getLayoutListener().onClickToAddPlan();
 				break;
 		}
+	}
+
+	public void setEmptyMessage( boolean isEmpty ) {
+
+		if ( isEmpty )
+			textView_empty.setVisibility( View.VISIBLE );
+		else
+			textView_empty.setVisibility( View.GONE );
 	}
 
 }

@@ -31,7 +31,7 @@ public class ScheduleAdapter extends FragmentStatePagerAdapter {
 
 		return ScheduleItemItemFragment.newInstance()
 				.setPlanId( planId )
-				.setDayIndex( position );
+				.setDayCount( position );
 	}
 
 	@Override

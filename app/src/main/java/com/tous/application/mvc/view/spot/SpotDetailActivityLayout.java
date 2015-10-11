@@ -9,9 +9,10 @@ import com.tous.application.R;
 import com.tous.application.mvc.controller.activity.spot.SpotDetailActivity;
 
 
-public class SpotDetailActivityLayout extends SupportActivityLayout<SpotDetailActivity, SpotDetailActivityLayoutListener> {
+public class SpotDetailActivityLayout extends SupportActivityLayout<SpotDetailActivity, SpotDetailActivityLayoutListener> implements SpotDetailListener {
 
 	private ActionBar actionBar;
+	private ToolbarLayout toolbarLayout;
 
 	public SpotDetailActivityLayout( SpotDetailActivity activity, SpotDetailActivityLayoutListener layoutListener ) {
 
@@ -30,9 +31,11 @@ public class SpotDetailActivityLayout extends SupportActivityLayout<SpotDetailAc
 		actionBar = getActivity().getSupportActionBar();
 		actionBar.setDisplayShowHomeEnabled( true );
 		actionBar.setDisplayHomeAsUpEnabled( true );
+		setTitle( "" );
 
-		ToolbarLayout toolbarLayout = (ToolbarLayout) findViewById( R.id.toolbarLayout );
-		toolbarLayout.setAlpha( 1 );
+		toolbarLayout = (ToolbarLayout) findViewById( R.id.toolbarLayout );
+		toolbarLayout.setAlpha( 0.0f );
+		toolbarLayout.setExpand( true );
 	}
 
 	public int getFrameContainerId() {
@@ -42,7 +45,15 @@ public class SpotDetailActivityLayout extends SupportActivityLayout<SpotDetailAc
 
 	public void setTitle( String title ) {
 
-		actionBar.setTitle( title );
+		getActivity().setTitle( title );
+	}
+
+	@Override
+	public void hideToolbar() {
+
+		toolbarLayout = (ToolbarLayout) findViewById( R.id.toolbarLayout );
+		toolbarLayout.setAlpha( 0.0f );
+		toolbarLayout.setExpand( true );
 	}
 
 }

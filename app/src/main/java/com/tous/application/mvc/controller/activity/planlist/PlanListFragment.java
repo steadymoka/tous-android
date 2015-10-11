@@ -19,7 +19,9 @@ import com.tous.application.database.table.plan.PlanTable;
 import com.tous.application.event.OnRefreshViewEvent;
 import com.tous.application.mvc.controller.activity.main.MainActivity;
 import com.tous.application.mvc.controller.activity.plancreation.PlanCreationActivity;
+import com.tous.application.mvc.controller.dialog.SpotItemDeleteDialogFragment;
 import com.tous.application.mvc.model.itemdata.PlanListItemData;
+import com.tous.application.mvc.model.itemdata.SpotItemData;
 import com.tous.application.mvc.model.plan.Plan;
 import com.tous.application.mvc.view.planlist.PlanListFragmentLayout;
 import com.tous.application.mvc.view.planlist.PlanListFragmentLayoutListener;
@@ -46,7 +48,13 @@ public class PlanListFragment extends BaseFragment implements PlanListFragmentLa
 
 	private void refreshView() {
 
-		recyclerAdapter.setItems( makeItems() );
+		List<PlanListItemData> planListItemDatas = makeItems();
+		recyclerAdapter.setItems( planListItemDatas );
+
+		if ( planListItemDatas.isEmpty() )
+			fragmentLayout.setEmptyMessage( true );
+		else
+			fragmentLayout.setEmptyMessage( false );
 	}
 
 	private List<PlanListItemData> makeItems() {
@@ -105,6 +113,14 @@ public class PlanListFragment extends BaseFragment implements PlanListFragmentLa
 
 			e.printStackTrace();
 		}
+	}
+
+	@Subscribe
+	public void onPlanListItemLongClick( PlanListItemView.OnPlanListItemLongClickEvent onPlanListItemLongClickEvent ) {
+
+		SpotItemDeleteDialogFragment.newInstance()
+				.setPlan( onPlanListItemLongClickEvent.getPlanId() )
+				.showDialog( getFragmentManager(), null );
 	}
 
 	@Override

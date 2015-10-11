@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.moka.framework.view.FragmentLayout;
 import com.moka.framework.widget.adapter.OnScrollDelegate;
@@ -18,6 +19,7 @@ public class RestaurantFragmentLayout extends FragmentLayout<RestaurantFragment,
 
 	private ObservableRecyclerView observableRecyclerView_restaurants;
 	private FloatingActionButton floatingActionButton_add_restaurant;
+	private TextView textView_empty;
 
 	private OnScrollDelegate onScrollDelegate;
 
@@ -43,6 +45,7 @@ public class RestaurantFragmentLayout extends FragmentLayout<RestaurantFragment,
 
 		observableRecyclerView_restaurants = (ObservableRecyclerView) findViewById( R.id.observableRecyclerView_restaurants );
 		floatingActionButton_add_restaurant = (FloatingActionButton) findViewById( R.id.floatingActionButton_add_restaurant );
+		textView_empty = (TextView) findViewById( R.id.textView_empty );
 	}
 
 	private void bindView() {
@@ -69,6 +72,14 @@ public class RestaurantFragmentLayout extends FragmentLayout<RestaurantFragment,
 				getLayoutListener().onClickToAddRestaurant();
 				break;
 		}
+	}
+
+	public void setEmptyMessage( boolean isEmpty ) {
+
+		if ( isEmpty )
+			textView_empty.setVisibility( View.VISIBLE );
+		else
+			textView_empty.setVisibility( View.GONE );
 	}
 
 }

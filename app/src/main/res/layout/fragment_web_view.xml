@@ -20,8 +20,8 @@
 			android:id="@+id/linearLayout_web_view_title"
 			android:layout_width="wrap_content"
 			android:layout_height="match_parent"
-			android:orientation="horizontal"
-			android:layout_weight="2.5">
+			android:layout_weight="2.5"
+			android:orientation="horizontal">
 
 			<ImageButton
 				android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
 				android:layout_height="match_parent"
 				android:background="@color/transparency"
 				android:gravity="center_vertical"
-				android:text="sample"/>
+				android:text="웹으로 검색"/>
 
 		</LinearLayout>
 
@@ -54,7 +54,7 @@
 				android:background="@color/transparency"
 				android:paddingBottom="12dp"
 				android:paddingTop="12dp"
-				android:src="@drawable/ic_up"
+				android:src="@drawable/ic_webview_refresh"
 				android:visibility="invisible"/>
 
 			<ProgressBar
@@ -64,18 +64,19 @@
 				android:layout_height="24dp"
 				android:layout_gravity="center"
 				android:visibility="visible"/>
+
 		</FrameLayout>
 
 		<TextView
-			android:id="@+id/textView_share"
+			android:id="@+id/textView_copy"
 			android:layout_width="0dp"
 			android:layout_height="match_parent"
-			android:layout_weight="1.5"
-			android:text="링크저장하기"
-			android:gravity="center"
+			android:layout_weight="1.9"
 			android:background="@color/transparency"
+			android:gravity="center"
 			android:paddingBottom="12dp"
-			android:paddingTop="12dp"/>
+			android:paddingTop="12dp"
+			android:text="링크저장하기"/>
 
 	</LinearLayout>
 

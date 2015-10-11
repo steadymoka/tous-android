@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.moka.framework.view.LayoutListener;
+import com.tous.application.mvc.model.plan.Plan;
 
 
 public interface NavigationFragmentLayoutListener extends LayoutListener {
@@ -18,5 +19,7 @@ public interface NavigationFragmentLayoutListener extends LayoutListener {
 	void onClickExchangeRate();
 
 	void onClickSignOut();
+
+	void onCLickPlanItem( Plan plan );
 
 }

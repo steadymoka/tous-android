@@ -9,20 +9,18 @@ import com.moka.framework.view.LayoutListener;
 
 public interface WebViewFragmentLayoutListener extends LayoutListener {
 
-	public WebViewClient getWebViewClient();
+	WebViewClient getWebViewClient();
 
-	public WebChromeClient getWebChromeClient();
+	WebChromeClient getWebChromeClient();
 
-	public void onGoBack();
+	void onRefresh();
 
-	public void onGoForward();
+	void onCopy();
 
-	public void onRefresh();
+	void onOpenInWebBrowser();
 
-	public void onShare();
+	void onCopyLink( String url );
 
-	public void onOpenInWebBrowser();
-
-	public void onCopyLink();
+	void onClose();
 
 }

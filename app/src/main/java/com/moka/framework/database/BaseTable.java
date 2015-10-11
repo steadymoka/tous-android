@@ -70,6 +70,15 @@ public abstract class BaseTable<DATA extends DataObject> {
 		return database.update( TABLE_NAME, values, selection, selectionArgs );
 	}
 
+	public int delete( SQLiteDatabase database, Uri uri, String selection, String[] selectionArgs ) {
+
+		long id = ContentUris.parseId( uri );
+		selection = "id=?";
+		selectionArgs = new String[]{ String.valueOf( id ) };
+
+		return database.delete( TABLE_NAME, selection, selectionArgs );
+	}
+
 	public abstract void createTable( SQLiteDatabase database );
 
 	public abstract Uri insert( DATA data );

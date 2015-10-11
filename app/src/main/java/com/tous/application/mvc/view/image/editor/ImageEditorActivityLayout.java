@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 
 import com.moka.framework.controller.BaseActivity;
+import com.moka.framework.support.toolbar.ToolbarLayout;
 import com.moka.framework.view.SupportActivityLayout;
 import com.tous.application.R;
 
@@ -30,6 +31,9 @@ public class ImageEditorActivityLayout extends SupportActivityLayout<BaseActivit
 		actionBar = getActivity().getSupportActionBar();
 		actionBar.setDisplayShowHomeEnabled( true );
 		actionBar.setDisplayHomeAsUpEnabled( true );
+
+		ToolbarLayout toolbarLayout = (ToolbarLayout) findViewById( R.id.toolbarLayout );
+		toolbarLayout.setAlpha( 1 );
 	}
 
 	@Override

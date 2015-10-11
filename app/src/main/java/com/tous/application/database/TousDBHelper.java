@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.tous.application.database.table.image.ImageTable;
 import com.tous.application.database.table.plan.PlanTable;
 import com.tous.application.database.table.spot.SpotTable;
 import com.tous.application.database.table.transport.TransportTable;
@@ -28,6 +29,7 @@ public class TousDBHelper extends SQLiteOpenHelper {
 		PlanTable.from( context ).createTable( database );
 		SpotTable.from( context ).createTable( database );
 		TransportTable.from( context ).createTable( database );
+		ImageTable.from( context ).createTable( database );
 	}
 
 	@Override
